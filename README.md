@@ -71,6 +71,14 @@ https://paletadecores.com/paleta/939393/aeaeae/c9c9c9/e4e4e4/ffffff
 Landingpage:
 
 ![Landingpage](https://github.com/user-attachments/assets/56eb15e7-97d3-495d-a86c-2379bb00f015)
+![image](https://github.com/user-attachments/assets/eb41921f-efa3-4308-a344-119a4f66531d)
+
+![image](https://github.com/user-attachments/assets/b35cc631-c436-42f9-a3b2-42fbefffd49a)
+
+![image](https://github.com/user-attachments/assets/870131e4-44d0-4f15-85ef-f25b33039495)
+![image](https://github.com/user-attachments/assets/fe46fe18-18c0-4828-b305-c13a15309733)
+
+
 
 
 ## 📂 Tecnologias Utilizadas
