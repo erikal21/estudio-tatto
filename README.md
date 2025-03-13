@@ -78,7 +78,7 @@ Landingpage:
 ![image](https://github.com/user-attachments/assets/870131e4-44d0-4f15-85ef-f25b33039495)
 ![image](https://github.com/user-attachments/assets/fe46fe18-18c0-4828-b305-c13a15309733)
 ---
-## M-% MER | Modelo Entidade e Relacionamento do Projeto
+## MER | Modelo Entidade e Relacionamento do Projeto
 
 ![image](img/mer_estudiotatto_cadastros.png)
 
