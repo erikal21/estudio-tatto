@@ -85,7 +85,7 @@ Landingpage:
 ## 📂 Tecnologias Utilizadas
 
 - **Front-end:** HTML, CSS, JavaScript
-- **Back-end:**
-- **Banco de Dados:**
+- **Back-end:** Java
+- **Banco de Dados:** MySQL
 
 💡 *Projeto em desenvolvimento por nossa equipe!* 🚀
