@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EstudioTattoo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            font-family: 'Oswald', sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        section {
+            padding: 50px;
+        }
+        .section-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h2 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .card {
+            background-color: #1a1a1a;
+            padding: 20px;
+            width: 250px;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card-title, .card-description {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .button {
+            background-color: red;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .review-section {
+            background-color: #0d0d0d; /* Agora é a mesma cor do fundo */
+            padding: 50px;
+        }
+        .review-card {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border: 4px solid red;
+            position: relative;
+        }
+        .review-card::before {
+            content: '“';
+            font-size: 48px;
+            color: red;
+            display: block;
+            text-align: left;
+        }
+        .review-card .author {
+            margin-top: 10px;
+            border-top: 2px solid red;
+            padding-top: 5px;
+            font-size: 14px;
+            text-align: left;
+            font-weight: bold;
+        }
+        .service-card {
+            background-color: #0d0d0d;
+            padding: 20px;
+            border-top: 4px solid red;
+            border-bottom: 4px solid red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<section id="artistas" class="section-container">
+    <h2>Artistas</h2>
+    <div class="container">
+        <div class="card-wrapper">
+            <div class="card">
+                <img src="artista1.jpg" alt="Artista 1">
+            </div>
+            <h3 class="card-title">Artista 1</h3>
+            <p class="card-description">Especialista em realismo.</p>
+            <button class="button" onclick="openModal('modal1')">Ver galeria</button>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <img src="artista2.jpg" alt="Artista 2">
+            </div>
+            <h3 class="card-title">Artista 2</h3>
+            <p class="card-description">Especialista em old school.</p>
+            <button class="button" onclick="openModal('modal2')">Ver galeria</button>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <img src="artista3.jpg" alt="Artista 3">
+            </div>
+            <h3 class="card-title">Artista 3</h3>
+            <p class="card-description">Especialista em aquarela.</p>
+            <button class="button" onclick="openModal('modal3')">Ver galeria</button>
+        </div>
+    </div>
+</section>
+
+<section class="review-section section-container" id="reviews">
+    <h2>Reviews</h2>
+    <div class="container">
+        <div class="review-card">Ótima experiência!
+            <div class="author">- João Silva</div>
+        </div>
+        <div class="review-card">Muito profissional e talentoso!
+            <div class="author">- Maria Santos</div>
+        </div>
+        <div class="review-card">Voltarei para mais tatuagens!
+            <div class="author">- Carlos Mendes</div>
+        </div>
+    </div>
+</section>
+
+<section id="servicos" class="section-container">
+    <h2>Serviços</h2>
+    <div class="container">
+        <div class="service-card">
+            <h3>Tatuagem Blackwork</h3>
+            <p>Estilo monocromático com uso intenso de preto.</p>
+        </div>
+        <div class="service-card">
+            <h3>Tatuagem Colorida</h3>
+            <p>Design vibrante e colorido, com grande detalhamento.</p>
+        </div>
+        <div class="service-card">
+            <h3>Tatuagem Minimalista</h3>
+            <p>Linhas finas e desenhos sutis, perfeitos para traços delicados.</p>
+        </div>
+        <div class="service-card">
+            <h3>Tatuagem Tribal</h3>
+            <p>Design geométrico inspirado em culturas antigas.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    function openModal(id) {
+        document.getElementById(id).style.display = 'flex';
+    }
+    function closeModal(id) {
+        document.getElementById(id).style.display = 'none';
+    }
+</script>
+</body>
+</html>
