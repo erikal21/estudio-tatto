@@ -10,29 +10,30 @@
 
 <div class="container">
     <div class="login">
-        Cadastro
+        CADASTRO
     </div>
-    <form action="/submit-cadastro" method="post" class="formulario" enctype="multipart/form-data">
-        <label for="nome">Nome:</label>
+    <form action="/create-usuario" method="post" class="formulario">
+        <label for="nome">Digite o seu nome:</label>
         <input type="text" name="nome" id="nome" required>
 
-        <label for="email">E-mail:</label>
+        <label for="email">Digite o seu e-mail:</label>
         <input type="email" name="email" id="email" required>
 
-        <label for="data-nascimento">Data de nascimento:</label>
-        <input type="date" name="data-nascimento" id="data-nascimento" required>
+        <label for="senha">Digite a sua senha:</label>
+        <input type="password" name="senha" id="senha" required>
 
-        <label for="cpf">CPF:</label>
-        <input type="text" name="cpf" id="cpf" pattern="\d{11}" title="Digite um CPF válido com 11 números" required>
+        <label for="telefone">Digite seu telefone:</label>
+        <input type="text" name="telefone" id="telefone">
 
-        <label for="telefone">Telefone celular:</label>
-        <input type="tel" name="telefone" id="telefone" pattern="\(\d{2}\) \d{5}-\d{4}" title="Formato esperado: (XX) XXXXX-XXXX" required>
+        <label for="endereco">Digite seu endereço:</label>
+        <input type="text" name="endereco" id="endereco">
 
-        <label for="foto">Foto de perfil:</label>
-        <input type="file" name="foto" id="foto" accept="image/*" required>
-
-        <label for="endereco">Endereço:</label>
-        <input type="text" name="endereco" id="endereco" placeholder="Integração futura com API de endereço" required>
+        <label for="tipo_usuario">Tipo de usuário:</label>
+        <select name="tipo_usuario" id="tipo_usuario" required>
+            <option value="usuario">Usuário</option>
+            <option value="tatuador">Tatuador</option>
+            <option value="admin">Admin</option>
+        </select>
 
         <button type="submit">Cadastrar</button>
     </form>
