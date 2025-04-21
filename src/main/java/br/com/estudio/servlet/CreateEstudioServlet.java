@@ -9,14 +9,18 @@ import java.io.IOException;
 
 @WebServlet("/create-estudio")
 public class CreateEstudioServlet  extends HttpServlet{
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String nmName = request.getParameter("nm-name");
-
+        String nmEmail= request.getParameter("nm-email");
+        String nmPassword= request.getParameter("nm-password");
         System.out.println(nmName);
+        System.out.println(nmEmail);
+        System.out.println(nmPassword);
 
-        request.getRequestDispatcher("index.html").forward(request, response);
+        request.getRequestDispatcher("login.html").forward(request, response);
 
     }
 
