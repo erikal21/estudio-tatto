@@ -10,8 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css">
-    
+
 </head>
+<script src="./script.js"></script>
 <body>
 <header>
     <nav>
@@ -55,60 +56,105 @@
 </section>
 
 <!-- Artistas -->
-<section id="artistas" class="section-container">
+<!--<section id="artistas" class="section-container">-->
+<!--    <h2>Artistas</h2>-->
+<!--    <div class="container-art">-->
+<!--        <div class="card-wrapper">-->
+<!--            <div class="card">-->
+<!--                <img src="artista1.jpg" alt="Artista 1"/>-->
+<!--            </div>-->
+<!--            <h3 class="card-title">Artista 1</h3>-->
+<!--            <p class="card-description">Especialista em realismo.</p>-->
+<!--            <button class="button_art" onclick="openModal('modal1')">-->
+<!--                Ver galeria-->
+<!--            </button>-->
+<!--        </div>-->
+<!--        <div class="card-wrapper">-->
+<!--            <div class="card">-->
+<!--                <img src="artista2.jpg" alt="Artista 2"/>-->
+<!--            </div>-->
+<!--            <h3 class="card-title">Artista 2</h3>-->
+<!--            <p class="card-description">Especialista em old school.</p>-->
+<!--            <button class="button_art" onclick="openModal('modal2')">-->
+<!--                Ver galeria-->
+<!--            </button>-->
+<!--        </div>-->
+<!--        <div class="card-wrapper">-->
+<!--            <div class="card">-->
+<!--                <img src="artista3.jpg" alt="Artista 3"/>-->
+<!--            </div>-->
+<!--            <h3 class="card-title">Artista 3</h3>-->
+<!--            <p class="card-description">Especialista em aquarela.</p>-->
+<!--            <button class="button_art" onclick="openModal('modal3')">-->
+<!--                Ver galeria-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!--&lt;!&ndash; Reviews &ndash;&gt;-->
+<!--<section class="review-section section-container" id="reviews">-->
+<!--    <h2>Reviews</h2>-->
+<!--    <div class="container-art">-->
+<!--        <div class="review-card">-->
+<!--            Ótima experiência!-->
+<!--            <div class="author">- João Silva</div>-->
+<!--        </div>-->
+<!--        <div class="review-card">-->
+<!--            Muito profissional e talentoso!-->
+<!--            <div class="author">- Maria Santos</div>-->
+<!--        </div>-->
+<!--        <div class="review-card">-->
+<!--            Voltarei para mais tatuagens!-->
+<!--            <div class="author">- Carlos Mendes</div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!-- Seção Artistas -->
+<!-- Artistas -->
+<section id="artistas" class="section">
     <h2>Artistas</h2>
-    <div class="container-art">
-        <div class="card-wrapper">
+    <div class="carousel-container">
+        <button class="prev" onclick="scrollCarousel('artist-carousel', -1)">❮</button>
+        <div class="carousel" id="artist-carousel">
+            <!-- Card 1 exemplo -->
             <div class="card">
-                <img src="artista1.jpg" alt="Artista 1"/>
+                <h3>João Tinta</h3>
+                <p>Especialista em realismo e sombreamento.</p>
+                <button class="gallery-btn" onclick="openModal('João Tinta')">Ver Galeria</button>
             </div>
-            <h3 class="card-title">Artista 1</h3>
-            <p class="card-description">Especialista em realismo.</p>
-            <button class="button_art" onclick="openModal('modal1')">
-                Ver galeria
-            </button>
+            <!-- Adicione mais cards conforme cadastro -->
         </div>
-        <div class="card-wrapper">
-            <div class="card">
-                <img src="artista2.jpg" alt="Artista 2"/>
-            </div>
-            <h3 class="card-title">Artista 2</h3>
-            <p class="card-description">Especialista em old school.</p>
-            <button class="button_art" onclick="openModal('modal2')">
-                Ver galeria
-            </button>
-        </div>
-        <div class="card-wrapper">
-            <div class="card">
-                <img src="artista3.jpg" alt="Artista 3"/>
-            </div>
-            <h3 class="card-title">Artista 3</h3>
-            <p class="card-description">Especialista em aquarela.</p>
-            <button class="button_art" onclick="openModal('modal3')">
-                Ver galeria
-            </button>
-        </div>
+        <button class="next" onclick="scrollCarousel('artist-carousel', 1)">❯</button>
     </div>
 </section>
 
 <!-- Reviews -->
-<section class="review-section section-container" id="reviews">
+<section id="reviews" class="section">
     <h2>Reviews</h2>
-    <div class="container-art">
-        <div class="review-card">
-            Ótima experiência!
-            <div class="author">- João Silva</div>
+    <div class="carousel-container">
+        <button class="prev" onclick="scrollCarousel('review-carousel', -1)">❮</button>
+        <div class="carousel" id="review-carousel">
+            <div class="card review">
+                <p>"Ótimo atendimento e trabalho impecável!"</p>
+                <span>– Carla M.</span>
+            </div>
+            <!-- Adicione mais reviews conforme necessário -->
         </div>
-        <div class="review-card">
-            Muito profissional e talentoso!
-            <div class="author">- Maria Santos</div>
-        </div>
-        <div class="review-card">
-            Voltarei para mais tatuagens!
-            <div class="author">- Carlos Mendes</div>
-        </div>
+        <button class="next" onclick="scrollCarousel('review-carousel', 1)">❯</button>
     </div>
 </section>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3 id="modalTitle"></h3>
+        <p>Galeria do artista. (Imagens ou textos personalizados)</p>
+    </div>
+</div>
+
 
 <!-- Serviços -->
 <section id="servicos" class="section-container">
