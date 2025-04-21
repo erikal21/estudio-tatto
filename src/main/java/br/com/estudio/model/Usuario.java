@@ -2,7 +2,6 @@ package br.com.estudio.model;
 
 public class Usuario {
 
-    private String name;
     private String nome;
     private String email;
     private String senha;
@@ -10,6 +9,17 @@ public class Usuario {
     private String endereco;
     private String tipoUsuario;
 
+    public Usuario(String nome, String email, String senha, String telefone, String endereco, String tipoUsuario) {
+
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    // Getters e Setters
     public String getNome() {
         return nome;
     }
@@ -18,20 +28,20 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getTelefone() {
@@ -48,14 +58,6 @@ public class Usuario {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public String getTipoUsuario() {

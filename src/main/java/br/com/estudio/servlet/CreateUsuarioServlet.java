@@ -25,7 +25,7 @@ public class CreateUsuarioServlet extends HttpServlet {
         String endereco = request.getParameter("endereco");
         String tipoUsuario = request.getParameter("tipo_usuario");
 
-        Usuario usuario = new Usuario();
+        Usuario usuario = new Usuario(nome, email, senha, telefone, endereco, tipoUsuario);
         usuario.setNome(nome);
         usuario.setEmail(email);
         usuario.setSenha(senha);
@@ -36,6 +36,7 @@ public class CreateUsuarioServlet extends HttpServlet {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.createUser(usuario);
 
-        response.sendRedirect("login.html"); // ou uma página de sucesso
+        response.sendRedirect("/find-all-users");
+
     }
 }

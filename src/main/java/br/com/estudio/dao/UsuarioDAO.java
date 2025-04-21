@@ -3,6 +3,10 @@ import br.com.estudio.model.Usuario;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class UsuarioDAO {
 
@@ -30,6 +34,50 @@ public class UsuarioDAO {
 
         } catch (Exception e) {
             System.out.println("Error in connection: " + e.getMessage());
+        }
+    }
+
+    public List<Usuario> findAllUsers() {
+
+        String SQL = "SELECT * FROM USUARIO";
+
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+
+            System.out.println("success in database connection");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            List<Usuario> usuarios = new ArrayList<>();
+
+            while (resultSet.next()) {
+
+                String usuarioNome = resultSet.getString("nome");
+                String usuarioEmail = resultSet.getString("email");
+                String usuarioSenha = resultSet.getString("senha");
+                String usuarioTelefone = resultSet.getString("telefone");
+                String usuarioEndereco = resultSet.getString("endereco");
+                String usuarioTipoUsuario = resultSet.getString("tipo_usuario");
+
+                Usuario usuario = new Usuario(usuarioNome,usuarioEmail, usuarioSenha, usuarioTelefone, usuarioEndereco, usuarioTipoUsuario);
+
+                usuarios.add(usuario);
+            }
+
+            System.out.println("success in select * usuario");
+
+            connection.close();
+
+            return usuarios;
+
+        } catch (Exception e) {
+
+            System.out.println("fail in database connection: " + e.getMessage());
+
+            return Collections.emptyList();
+
         }
     }
 
