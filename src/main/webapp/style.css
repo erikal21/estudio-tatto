@@ -94,6 +94,14 @@
         padding: 50px;
         background-color: #621ad2;
       }
+
+      .container-art{
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        background-color: #121212;
+      }
       .contato {
         font-family: "Oswald", sans-serif;
         font-size: 100px;
@@ -466,19 +474,20 @@
           .modal-content {
             background-color: #000000;
             padding: 30px;
-            border: 2px solid #621ad2;
+            border: 2px solid red;
             width: 90%;
             max-width: 700px;
             border-radius: 12px;
             color: white;
-            box-shadow: 0 0 20px #621ad2;
+            box-shadow: 0 0 20px red;
             position: relative;
             text-align: center;
             animation: fadeIn 0.4s ease-in-out;
           }
 
           .modal-content h2 {
-            color: #310c77;
+            color: white;
+            opacity: 0.5;
             font-size: 32px;
             margin-bottom: 10px;
           }
@@ -495,6 +504,7 @@
             height: auto;
             border: 2px solid #621ad2;
             border-radius: 8px;
+            
           }
 
           .close {
@@ -524,3 +534,39 @@
               transform: scale(1);
             }
           }
+
+          #artistas h2{
+                  font-size: 100px;
+                  margin-bottom: 30px;
+                  color: #fff;
+                  opacity: 0.5;
+          }
+
+          #reviews h2{
+                  font-size: 100px;
+                  margin-bottom: 30px;
+                  color: #fff;
+                  opacity: 0.5;
+          }
+
+          #servicos h2{
+                  font-size: 100px;
+                  margin-bottom: 30px;
+                  color: #fff;
+                  opacity: 0.5;
+          }
+
+                  .button_art {
+                    font-family: "Oswald", sans-serif;
+                    background-color: rgb(0, 0, 0);
+                    color: white;
+                    padding: 10px;
+                    border: 2px solid red;
+                    cursor: pointer;
+                    margin-top: 10px;
+                    transition: background-color 0.3s;
+                  }
+
+                  .button_art:hover {
+                    background-color: red;
+                  }
