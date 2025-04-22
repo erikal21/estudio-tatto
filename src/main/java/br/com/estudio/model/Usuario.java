@@ -2,6 +2,7 @@ package br.com.estudio.model;
 
 public class Usuario {
 
+    private String id;
     private String nome;
     private String email;
     private String senha;
@@ -11,6 +12,17 @@ public class Usuario {
 
     public Usuario(String nome, String email, String senha, String telefone, String endereco, String tipoUsuario) {
 
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public Usuario(String id, String nome, String email, String senha, String telefone, String endereco, String tipoUsuario) {
+
+        this.id= id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -66,5 +78,13 @@ public class Usuario {
 
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

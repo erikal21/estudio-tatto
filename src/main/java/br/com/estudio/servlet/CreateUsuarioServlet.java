@@ -15,7 +15,7 @@ import java.io.IOException;
 public class CreateUsuarioServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse resp)
             throws ServletException, IOException {
 
         String nome = request.getParameter("nome");
@@ -36,7 +36,7 @@ public class CreateUsuarioServlet extends HttpServlet {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.createUser(usuario);
 
-        response.sendRedirect("/find-all-users");
+        resp.sendRedirect("/find-all-usuarios");
 
     }
 }

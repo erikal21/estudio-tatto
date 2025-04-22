@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/find-all-users")
+@WebServlet("/find-all-usuarios")
 
 public class ListUserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        List<Usuario> infoUsuarios = new UsuarioDAO().findAllUsers();
+        List<Usuario> infoUsuarios = new UsuarioDAO().findAllUsuarios();
 
         req.setAttribute("infoUsuarios", infoUsuarios);
 
