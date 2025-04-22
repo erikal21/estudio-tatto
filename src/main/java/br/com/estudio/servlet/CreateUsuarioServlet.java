@@ -15,28 +15,30 @@ import java.io.IOException;
 public class CreateUsuarioServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse resp)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        String nome = request.getParameter("nome");
-        String email = request.getParameter("email");
-        String senha = request.getParameter("senha");
-        String telefone = request.getParameter("telefone");
-        String endereco = request.getParameter("endereco");
-        String tipoUsuario = request.getParameter("tipo_usuario");
-
-        Usuario usuario = new Usuario(nome, email, senha, telefone, endereco, tipoUsuario);
-        usuario.setNome(nome);
-        usuario.setEmail(email);
-        usuario.setSenha(senha);
-        usuario.setTelefone(telefone);
-        usuario.setEndereco(endereco);
-        usuario.setTipoUsuario(tipoUsuario);
+        String usuarioId = req.getParameter("id");
+        String nome = req.getParameter("nome");
+        String email = req.getParameter("email");
+        String senha = req.getParameter("senha");
+        String telefone = req.getParameter("telefone");
+        String endereco = req.getParameter("endereco");
+        String tipoUsuario = req.getParameter("tipo_usuario");
 
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        usuarioDAO.createUser(usuario);
+
+        Usuario usuario = new Usuario(usuarioId, nome, email, senha, telefone, endereco, tipoUsuario);
+
+        if (usuarioId == null || usuarioId.isBlank()) {
+
+            usuarioDAO.createUser(usuario);
+
+        } else {
+
+            usuarioDAO.updateUsuario(usuario);
+        }
 
         resp.sendRedirect("/find-all-usuarios");
-
     }
 }

@@ -106,4 +106,36 @@ public class UsuarioDAO {
         }
     }
 
+    public void updateUsuario(Usuario usuario) {
+
+        String SQL = "UPDATE USUARIO SET nome = ?, email = ?, senha = ?, telefone = ?, endereco = ?, tipo_usuario = ? WHERE ID_USUARIO = ?";
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+
+            System.out.println("Conexão com o banco de dados bem-sucedida");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1, usuario.getNome());
+            preparedStatement.setString(2, usuario.getEmail());
+            preparedStatement.setString(3, usuario.getSenha());
+            preparedStatement.setString(4, usuario.getTelefone());
+            preparedStatement.setString(5, usuario.getEndereco());
+            preparedStatement.setString(6, usuario.getTipoUsuario());
+            preparedStatement.setString(7, usuario.getId());
+
+            preparedStatement.executeUpdate();
+
+            System.out.println("ID recebido para update: " + usuario.getId());
+            System.out.println("Usuário atualizado com sucesso");
+
+            connection.close();
+
+        } catch (Exception e) {
+            System.out.println("Falha na conexão com o banco de dados ou na atualização do usuário");
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+
+
 }

@@ -33,6 +33,8 @@
                   <form action="/delete-usuario" method="post">
                       <input type="hidden" id="id" name="id" value="${usuario.id}">
                       <button type="submit">Delete</button>
+                       <span> | </span>
+                        <a href="cadastro.jsp?id=${usuario.id}&nome=${usuario.nome}&email=${usuario.email}&senha=${usuario.senha}&telefone=${usuario.telefone}&endereco=${usuario.endereco}&tipo_usuario=${usuario.tipoUsuario}">Update</a>
                   </form>
                 </td>
 
