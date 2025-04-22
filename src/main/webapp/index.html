@@ -1,54 +1,320 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>Landingpage</title>
+
+    <link  href="@import url('https://fonts.cdnfonts.com/css/annabelle');" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+
 </head>
+<script src="./script.js"></script>
 <body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="">Home </a></li>
+            <li><a href="">Sobre </a></li>
+            <li><a href="">Loja </a></li>
+            <li><a href="">Artistas </a></li>
+            <li><a href="">Contato </a></li>
+            <li><a href="login.html">👤</a></li>
+        </ul>
+    </nav>
+</header>
 
-<style>
-    body {
-            background-color: #000000;
-          }
-    .login {
-        font-family: 'Oswald', sans-serif;
-        color: #AAA4A4;
-        font-size: 100px;
-    }
-    button {
-          width: 50px;
-          height: 50px;
-          font-size: 30px;
-          font-weight: bold;
-          color: #310C77;
-          background-color: transparent;
-          border: 2px solid red;
-          cursor: pointer;
-          justify-content: center;
-          align-items: center;
-          color: #FFFFFFFF;
-          transition: 0.3s;
-      }
-
-      button:hover {
-          background-color: red;
-          color: #FFFFFFFF;
-      }
-</style>
-
-<form action="/create-estudio" method="post">
-
-    <div class="login">
-          LOGIN
+<section class="hero" id="Home">
+    <div>
+        <h1>
+            ENCONTRE <br/>
+            o tatuador <br/>
+            PERFEITO <br/>
+            para <span>VOCÊ</span>
+        </h1>
     </div>
-    <input type="text" name="nm-name" id="nm-name">
+</section>
 
-    <input type="text" name="nm-name" id="nm-name">
+<section id="sobre">
+    <h2>SOBRE</h2>
+    <p>
+        Bem-vindo ao StudioTatto, a plataforma que conecta tatuadores talentosos
+        a pessoas que desejam transformar ideias em arte na pele. Seja você um
+        apaixonado por tatuagens em busca do artista ideal ou um tatuador
+        querendo expandir seu alcance e mostrar seu trabalho, este é o lugar
+        certo!
+    </p>
+    <div class="fotosTattoo">
+        <img src="img/fotoT67.jpg" alt="Foto1"/>
+        <img src="img/fotoT2.jpg" alt="Foto2"/>
+        <img src="img/fotoT3.jpg" alt="Foto3"/>
+        <img src="img/fotoT5.jpg" alt="Foto4"/>
+    </div>
+</section>
 
-    <button type="submit">Entrar</button>
-    <a href="">Criar uma conta</a>
+<!-- Artistas -->
+<!--<section id="artistas" class="section-container">-->
+<!--    <h2>Artistas</h2>-->
+<!--    <div class="container-art">-->
+<!--        <div class="card-wrapper">-->
+<!--            <div class="card">-->
+<!--                <img src="artista1.jpg" alt="Artista 1"/>-->
+<!--            </div>-->
+<!--            <h3 class="card-title">Artista 1</h3>-->
+<!--            <p class="card-description">Especialista em realismo.</p>-->
+<!--            <button class="button_art" onclick="openModal('modal1')">-->
+<!--                Ver galeria-->
+<!--            </button>-->
+<!--        </div>-->
+<!--        <div class="card-wrapper">-->
+<!--            <div class="card">-->
+<!--                <img src="artista2.jpg" alt="Artista 2"/>-->
+<!--            </div>-->
+<!--            <h3 class="card-title">Artista 2</h3>-->
+<!--            <p class="card-description">Especialista em old school.</p>-->
+<!--            <button class="button_art" onclick="openModal('modal2')">-->
+<!--                Ver galeria-->
+<!--            </button>-->
+<!--        </div>-->
+<!--        <div class="card-wrapper">-->
+<!--            <div class="card">-->
+<!--                <img src="artista3.jpg" alt="Artista 3"/>-->
+<!--            </div>-->
+<!--            <h3 class="card-title">Artista 3</h3>-->
+<!--            <p class="card-description">Especialista em aquarela.</p>-->
+<!--            <button class="button_art" onclick="openModal('modal3')">-->
+<!--                Ver galeria-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 
-</form>
+<!--&lt;!&ndash; Reviews &ndash;&gt;-->
+<!--<section class="review-section section-container" id="reviews">-->
+<!--    <h2>Reviews</h2>-->
+<!--    <div class="container-art">-->
+<!--        <div class="review-card">-->
+<!--            Ótima experiência!-->
+<!--            <div class="author">- João Silva</div>-->
+<!--        </div>-->
+<!--        <div class="review-card">-->
+<!--            Muito profissional e talentoso!-->
+<!--            <div class="author">- Maria Santos</div>-->
+<!--        </div>-->
+<!--        <div class="review-card">-->
+<!--            Voltarei para mais tatuagens!-->
+<!--            <div class="author">- Carlos Mendes</div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!-- Seção Artistas -->
+<!-- Artistas -->
+<section id="artistas" class="section">
+    <h2>Artistas</h2>
+    <div class="carousel-container">
+        <button class="prev" onclick="scrollCarousel('artist-carousel', -1)">❮</button>
+        <div class="carousel" id="artist-carousel">
+            <!-- Card 1 exemplo -->
+            <div class="card">
+                <h3>João Tinta</h3>
+                <p>Especialista em realismo e sombreamento.</p>
+                <button class="gallery-btn" onclick="openModal('João Tinta')">Ver Galeria</button>
+            </div>
+            <!-- Adicione mais cards conforme cadastro -->
+        </div>
+        <button class="next" onclick="scrollCarousel('artist-carousel', 1)">❯</button>
+    </div>
+</section>
+
+<!-- Reviews -->
+<section id="reviews" class="section">
+    <h2>Reviews</h2>
+    <div class="carousel-container">
+        <button class="prev" onclick="scrollCarousel('review-carousel', -1)">❮</button>
+        <div class="carousel" id="review-carousel">
+            <div class="card review">
+                <p>"Ótimo atendimento e trabalho impecável!"</p>
+                <span>– Carla M.</span>
+            </div>
+            <!-- Adicione mais reviews conforme necessário -->
+        </div>
+        <button class="next" onclick="scrollCarousel('review-carousel', 1)">❯</button>
+    </div>
+</section>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3 id="modalTitle"></h3>
+        <p>Galeria do artista. (Imagens ou textos personalizados)</p>
+    </div>
+</div>
+
+
+<!-- Serviços -->
+<section id="servicos" class="section-container">
+    <h2>Serviços</h2>
+    <div class="container-art">
+        <div class="service-card">
+            <h3>Tatuagem Blackwork</h3>
+            <p>Estilo monocromático com uso intenso de preto.</p>
+        </div>
+        <div class="service-card">
+            <h3>Tatuagem Colorida</h3>
+            <p>Design vibrante e colorido, com grande detalhamento.</p>
+        </div>
+        <div class="service-card">
+            <h3>Tatuagem Minimalista</h3>
+            <p>
+                Linhas finas e desenhos sutis, perfeitos para traços delicados.
+            </p>
+        </div>
+        <div class="service-card">
+            <h3>Tatuagem Tribal</h3>
+            <p>Design geométrico inspirado em culturas antigas.</p>
+        </div>
+    </div>
+</section>
+
+<!-- MODAIS -->
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal1')">&times;</span>
+        <h2>Artista 1</h2>
+        <p>Estilo: Realismo</p>
+        <p>Localização: São Paulo, SP</p>
+        <img src="portfolio1.jpg" alt="Portfólio Artista 1"/>
+    </div>
+</div>
+
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal2')">&times;</span>
+        <h2>Artista 2</h2>
+        <p>Estilo: Old School</p>
+        <p>Localização: Rio de Janeiro, RJ</p>
+        <img src="portfolio2.jpg" alt="Portfólio Artista 2"/>
+    </div>
+</div>
+
+<div id="modal3" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal3')">&times;</span>
+        <h2>Artista 3</h2>
+        <p>Estilo: Aquarela</p>
+        <p>Localização: Belo Horizonte, MG</p>
+        <img src="portfolio3.jpg" alt="Portfólio Artista 3"/>
+    </div>
+</div>
+
+<script>
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+</script>
 </body>
 </html>
+
+<div class="container3">
+    <div class="faq">FAQ</div>
+    <div class="principais">PRINCIPAIS</div>
+    <div class="perguntas">PERGUNTAS</div>
+
+    <div class="container4">
+        <div class="column">
+            <div class="input-faq">
+                <input type="text" placeholder="Digite sua pergunta"/>
+                <div class="item">1</div>
+                <button class="button">+</button>
+            </div>
+        </div>
+        <div class="column1">
+            <div class="input-faq1">
+                <input type="text" placeholder="Digite sua pergunta"/>
+                <div class="item">1</div>
+                <button class="button">-</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="description">
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. It has been the industry's standard dummy text ever since the
+        1500s.
+    </div>
+</div>
+
+<div class="container2">
+    <div class="metade-esquerda">
+        <div class="boxEsq">
+            <div class="contato">TRABALHE</div>
+            <div class="conosco">CONOSCO</div>
+</div>
+        <div class="description1">
+            Somos um estúdio de tatuagem que vai além da tinta na pele, aqui respiramos arte, criatividade e autenticidade todos os dias. Nosso espaço é moderno, acolhedor e focado em proporcionar a melhor experiência tanto para os nossos clientes quanto para os profissionais que trabalham conosco.
+            Estamos em busca de tatuadores(as) talentosos, apaixonados pela arte e comprometidos com o atendimento de qualidade. Seja você iniciante ou experiente, aqui você terá liberdade para criar, desenvolver seu estilo e crescer junto com a gente.
+            Você é um artista e busca um espaço onde sua arte seja valorizada?
+<div class="geforce">
+    <a href="cadastroArtista.html">Então venha fazer parte do nosso time!</a>
+
+</div>
+
+        </div>
+</div>
+    <div class="metade-direita">
+        <div class="form">FORM</div>
+        <div class="input-container">
+            <input type="text" placeholder="Digite sua dúvida"/>
+        </div>
+        <div class="button-container">
+            <button>BOTÃO DE CONTATO</button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="contato">CONTATO</div>
+    <div class="fale">FALE</div>
+    <div class="conosco">CONOSCO</div>
+
+    <div class="info">
+        <div>
+            <p>
+                <strong>ENDEREÇO</strong><br/>Rua Dr. Simões Mendes <br/>03475900
+            </p>
+        </div>
+        <div>
+            <p><strong>TELEFONE</strong><br/>(11) 9999-9999</p>
+        </div>
+        <div>
+            <p><strong>EMAIL</strong><br/>studdio.tatto@gmail.com</p>
+        </div>
+    </div>
+
+    <div class="social">
+        <p>
+            <a href="https://www.instagram.com/">INSTAGRAM</a>
+            <a href="https://www.facebook.com/">FACEBOOK</a>
+            <a href="https://x.com/">TWITTER</a>
+            <br/>
+            Siga para atualizações e inspirações
+        </p>
+
+
+
+    </div>
+</div>
+</body>
+</html>
+
+
