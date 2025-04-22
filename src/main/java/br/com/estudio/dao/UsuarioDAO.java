@@ -1,4 +1,5 @@
 package br.com.estudio.dao;
+import br.com.estudio.config.ConnectionPoolConfig;
 import br.com.estudio.model.Usuario;
 import java.sql.DriverManager;
 import java.sql.Connection;
@@ -16,8 +17,8 @@ public class UsuarioDAO {
         String SQL = "INSERT INTO USUARIO (nome, email, senha, telefone, endereco, tipo_usuario) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-            System.out.println("Success in database connection");
+
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
@@ -45,9 +46,7 @@ public class UsuarioDAO {
 
         try {
 
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-
-            System.out.println("success in database connection");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -90,8 +89,7 @@ public class UsuarioDAO {
         String SQL = "DELETE FROM USUARIO WHERE ID_USUARIO = ?";
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-            System.out.println("Conexão com banco de dados bem-sucedida");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setString(1, idUsuario);
@@ -111,11 +109,11 @@ public class UsuarioDAO {
         String SQL = "UPDATE USUARIO SET nome = ?, email = ?, senha = ?, telefone = ?, endereco = ?, tipo_usuario = ? WHERE ID_USUARIO = ?";
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
 
-            System.out.println("Conexão com o banco de dados bem-sucedida");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
             preparedStatement.setString(1, usuario.getNome());
             preparedStatement.setString(2, usuario.getEmail());
             preparedStatement.setString(3, usuario.getSenha());
