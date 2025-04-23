@@ -57,6 +57,7 @@ label {
     font-size: 16px;
 }
 
+<<<<<<< HEAD
 input {
     padding: 10px;
     font-size: 16px;
@@ -87,6 +88,42 @@ input::placeholder {
 button:hover {
     background-color: red;
 }
+=======
+.input-container {
+        margin-top: 100px;
+      }
+      .input-container input {
+        width: 80%;
+        max-width: 400px;
+        outline: none;
+        padding: 10px;
+        border: 2px solid red;
+        background-color: black;
+        font-size: 16px;
+        text-align: center;
+        color: #ffffff;
+      }
+      .input-container input::placeholder {
+        color: white;
+        opacity: 0.7;
+      }
+
+      .button-container {
+        margin-top: 30px;
+      }
+      .button-container button {
+        width: 80%;
+        max-width: 330px;
+        padding: 10px;
+        border: 2px solid red;
+        background-color: black;
+        font-size: 16px;
+        text-align: center;
+        color: #ffffff;
+        font-size: 15px;
+        font-family: "Oswald", sans-serif;
+      }
+>>>>>>> b84f8d26c15049d6a36a9275fe4a315d455cca7b
 
 a {
     display: block;
