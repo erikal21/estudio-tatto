@@ -4,6 +4,7 @@
     color: white;
     margin: 0;
     padding: 0;
+    background-color: black;
   }
 
       header {
@@ -151,7 +152,7 @@
       .metade-esquerda {
         width: 50%;
         height: 100%;
-        background-color: #d9d9d9;
+        background-color: black;
       }
       .metade-direita {
         width: 50%;
@@ -163,7 +164,7 @@
         font-size: 100px;
         text-transform: uppercase;
         color: #d9d9d9;
-        padding-right: 500px;
+        padding: 25px;
       }
       .input-container {
         margin-top: 100px;
@@ -178,6 +179,7 @@
         font-size: 16px;
         text-align: center;
         color: #ffffff;
+
       }
       .input-container input::placeholder {
         color: white;
@@ -417,6 +419,11 @@
             background-color: red;
           }
 
+
+          a:hover{
+            color: red;
+          }
+
           .review-section {
             background-color: #121212;
             padding: 50px;
@@ -620,7 +627,7 @@
                     padding: 10px;
                   }
 
-                  /* Modal */
+                  /* -- Modal -- */
                   .modal {
                     display: none;
                     position: fixed;
@@ -633,7 +640,7 @@
                   }
 
                   .modal-content {
-                    background-color: white;
+                    background-color: #000000;
                     padding: 30px;
                     border-radius: 10px;
                     max-width: 500px;
@@ -647,3 +654,19 @@
                     color: white;
                     cursor: pointer;
                   }
+                  .description1 {
+                          font-size: 18px;
+                          color: #aaa;
+                          margin-top: 10px;
+                          max-width: 500px;
+                          padding: 20px;
+
+                        }
+.geforce {
+    margin-top: 25px;
+    padding: 20px;
+
+}
+.boxEsq {
+    padding: 20px;
+}
