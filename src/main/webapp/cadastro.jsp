@@ -14,7 +14,7 @@
     <div class="login">
         CADASTRO
     </div>
-    <form action="/create-usuario" method="post" class="formulario">
+    <form action="/create-usuario" method="post" class="formulario" enctype="multipart/form-data>
 
 <div class="input-container">
             <input type="hidden" name="id" value="${param.id}">
@@ -32,6 +32,10 @@
 
                  <label for="endereco"></label>
                  <input type="text" name="endereco" id="endereco" value="${param.endereco}" placeholder=" Endereço "/>
+
+                 <label for="fotoPerfil">Foto de Perfil</label>
+                 <input type="file" name="fotoPerfil" id="fotoPerfil" accept="image/*">
+
         </div>
 
 
