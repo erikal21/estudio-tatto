@@ -47,7 +47,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-top: 100px;
+            margin-top: 200px;
         }
 
         .login {

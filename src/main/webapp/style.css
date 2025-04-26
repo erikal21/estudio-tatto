@@ -145,8 +145,24 @@
         text-decoration: none;
       }
       .container2 {
+<<<<<<< HEAD
 
 
+=======
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+      }
+      .metade-esquerda {
+        width: 50%;
+        height: 100%;
+        background-color: black;
+      }
+      .metade-direita {
+        width: 50%;
+        height: 100%;
+        background-color: black;
+>>>>>>> 33136b89d80e703b609d98af828771ff42f5a6b4
       }
 
       .form {
@@ -652,6 +668,7 @@
                           padding: 20px;
 
                         }
+<<<<<<< HEAD
 
 .container2 {
   position: relative;
@@ -745,3 +762,13 @@
               margin-top: 10px;
               max-width: 500px;
       }
+=======
+.geforce {
+    margin-top: 25px;
+    padding: 20px;
+
+}
+.boxEsq {
+    padding: 20px;
+}
+>>>>>>> 33136b89d80e703b609d98af828771ff42f5a6b4

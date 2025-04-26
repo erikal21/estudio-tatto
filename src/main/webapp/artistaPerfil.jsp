@@ -1,134 +1,101 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>Perfil do Usuário</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Perfil do Artista</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f3f3f3;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 400px;
-        }
-        .container h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .form-group button {
-            width: 100%;
-            padding: 10px;
-            background-color: #310c77;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .form-group button:hover {
-            background-color: #4a139f;
-        }
-        .error {
-            color: red;
-            font-size: 12px;
-        }
-        .back-icon {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            text-decoration: none;
-            font-size: 24px;
-            color: #310c77;
-            font-weight: bold;
-        }
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: none; /* Impede redimensionamento */
+            font-family: 'Oswald', sans-serif;
+            color: black;
         }
 
-        input[type="file"] {
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: white;
+            margin: 50px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #621AD2;
+            margin-bottom: 20px;
+        }
+
+        .formulario {
+            display: flex;
+            flex-direction: column;
             width: 100%;
+            gap: 20px;
+        }
+
+        input, textarea, button {
+            font-family: 'Oswald', sans-serif;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        button {
+            background-color: #621AD2;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 18px;
+        }
+
+        button:hover {
+            background-color: #4a139f;
+        }
+
+        .back-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            font-size: 24px;
+            color: #621AD2;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-
- <div class="container">
-     <a href="index.html" class="back-icon">
-         &#x21A9;
-     </a>
-     <h2>Perfil do Artista</h2>
-     <form method="post" action="UpdateProfileServlet">
-         <div class="form-group">
-             <label for="name">Nome</label>
-             <input type="text" id="name" name="name" value="<%= request.getAttribute("name") != null ? request.getAttribute("name") : "" %>" required>
-         </div>
-         <div class="form-group">
-             <label for="email">E-mail</label>
-             <input type="email" id="email" name="email" value="<%= request.getAttribute("email") != null ? request.getAttribute("email") : "" %>" required>
-             <% if (request.getAttribute("emailError") != null) { %>
-                 <div class="error"><%= request.getAttribute("emailError") %></div>
-             <% } %>
-         </div>
-         <div class="form-group">
-             <label for="password">Senha</label>
-             <input type="password" id="password" name="password" required>
-         </div>
-         <div class="form-group">
-             <label for="phone">Telefone (opcional)</label>
-             <input type="tel" id="phone" name="phone" value="<%= request.getAttribute("phone") != null ? request.getAttribute("phone") : "" %>">
-         </div>
-         <div class="form-group">
-             <label for="address">Endereço (opcional)</label>
-             <input type="text" id="address" name="address" value="<%= request.getAttribute("address") != null ? request.getAttribute("address") : "" %>">
-         </div>
-         <div class="form-group">
-             <label for="profilePhoto">Foto de Perfil</label>
-             <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*">
-         </div>
-         <div class="form-group">
-             <label for="artistDescription">Apresentação profissional</label>
-             <textarea id="artistDescription" name="artistDescription" placeholder="Descrição do artista" rows="5"></textarea>
-         </div>
-         <div class="form-group">
-             <label for="profilePhotos">Artes</label>
-             <input type="file" id="profilePhotos" name="profilePhotos" accept="image/*" multiple>
-         </div>
-         <div class="form-group">
-             <button type="submit">Salvar Alterações</button>
-         </div>
-     </form>
- </div>
-
+<a href="home.jsp" class="back-icon">&#x21A9;</a>
+<div class="container">
+    <h1>Perfil do Artista</h1>
+    <form method="post" action="UpdateArtistProfileServlet" class="formulario" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="${param.id}">
+        <input type="text" name="nome" id="nome" value="${param.nome}" required placeholder="Nome">
+        <input type="email" name="email" id="email" value="${param.email}" required placeholder="E-mail">
+        <input type="password" name="senha" id="senha" value="${param.senha}" required placeholder="Senha">
+        <textarea name="descricao" id="descricao" placeholder="Descrição do Artista" required>${param.descricao}</textarea>
+        <label for="profilePhoto">Foto de Perfil</label>
+        <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*">
+        <label for="artImages">Imagens das Artes</label>
+        <input type="file" id="artImages" name="artImages" accept="image/*" multiple>
+        <button type="submit">Salvar Alterações</button>
+    </form>
+</div>
 </body>
 </html>
