@@ -144,10 +144,53 @@
       <input type="email" name="email" id="email" value="${param.email}" required placeholder="Email"/>
       <input type="password" name="senha" id="senha" value="${param.senha}" required placeholder="Senha"/>
     </div>
+<<<<<<< HEAD
     <div class="button-container">
       <button type="submit">CADASTRAR</button>
     </div>
   </form>
+=======
+    <form action="/create-usuario" method="post" class="formulario" enctype="multipart/form-data>
+
+<div class="input-container">
+            <input type="hidden" name="id" value="${param.id}">
+         <input type="text" name="nome" id="nome" value="${param.nome}" required placeholder="    Nome "/>
+         <label for="nome"></label>
+
+                 <label for="email"></label>
+                 <input type="email" name="email" id="email" value="${param.email}" required placeholder=" Email "/>
+
+                 <label for="senha"></label>
+                 <input type="password" name="senha" id="senha" value="${param.senha}" required placeholder=" Senha "/>
+
+                 <label for="telefone"></label>
+                 <input type="text" name="telefone" id="telefone" value="${param.telefone}" placeholder="Telefone"/>
+
+                 <label for="endereco"></label>
+                 <input type="text" name="endereco" id="endereco" value="${param.endereco}" placeholder=" Endereço "/>
+
+                 <label for="tipo_usuario">Tipo de usuário:</label>
+                 <select name="tipo_usuario" id="tipo_usuario" required>
+                <option value="usuario" ${param.tipo_usuario == 'usuario' ? 'selected' : ''}>Usuário</option>
+                <option value="tatuador" ${param.tipo_usuario == 'tatuador' ? 'selected' : ''}>Tatuador</option>
+                <option value="admin" ${param.tipo_usuario == 'admin' ? 'selected' : ''}>Admin</option>
+                </select>
+
+
+                 <!-- <label for="fotoPerfil">Foto de Perfil</label>
+                 <input type="file" name="fotoPerfil" id="fotoPerfil" accept="image/*"> -->
+
+        </div>
+
+
+
+
+
+        <div class="button-container">
+                    <button>Cadastrar</button>
+                </div>
+    </form>
+>>>>>>> a6d846a59a303e87e0b884dac46d5584b8ec5b78
 </div>
 </body>
 </html>
