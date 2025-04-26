@@ -33,8 +33,16 @@
                  <label for="endereco"></label>
                  <input type="text" name="endereco" id="endereco" value="${param.endereco}" placeholder=" Endereço "/>
 
-                 <label for="fotoPerfil">Foto de Perfil</label>
-                 <input type="file" name="fotoPerfil" id="fotoPerfil" accept="image/*">
+                 <label for="tipo_usuario">Tipo de usuário:</label>
+                 <select name="tipo_usuario" id="tipo_usuario" required>
+                <option value="usuario" ${param.tipo_usuario == 'usuario' ? 'selected' : ''}>Usuário</option>
+                <option value="tatuador" ${param.tipo_usuario == 'tatuador' ? 'selected' : ''}>Tatuador</option>
+                <option value="admin" ${param.tipo_usuario == 'admin' ? 'selected' : ''}>Admin</option>
+                </select>
+
+
+                 <!-- <label for="fotoPerfil">Foto de Perfil</label>
+                 <input type="file" name="fotoPerfil" id="fotoPerfil" accept="image/*"> -->
 
         </div>
 

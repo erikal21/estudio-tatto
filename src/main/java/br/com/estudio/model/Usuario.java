@@ -9,6 +9,7 @@ public class Usuario {
     private String telefone;
     private String endereco;
     private String tipoUsuario;
+    private String fotoPerfil;
 
     public Usuario(String nome, String email, String senha, String telefone, String endereco, String tipoUsuario) {
 
@@ -87,4 +88,13 @@ public class Usuario {
     public void setId(String id) {
         this.id = id;
     }
+
+    public String getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(String fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
+    }
+
 }
