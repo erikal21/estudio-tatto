@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cadastro</title>
+  <title>Login</title>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
 
   <style>
@@ -17,7 +17,6 @@
     }
 
     header {
-      display: flex;
       justify-content: center;
     }
 
@@ -34,7 +33,6 @@
       justify-content: center;
       list-style: none;
       padding: 0;
-      margin: 0;
     }
 
     nav ul li {
@@ -52,6 +50,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
+
       padding-top: 140px;
     }
 
@@ -121,6 +120,7 @@
   </style>
 </head>
 <body>
+
 <header>
   <nav>
     <ul>
@@ -137,17 +137,22 @@
 <div class="container">
   <div class="login">CADASTRO</div>
 
-  <form action="/create-usuario" method="post" class="formulario" enctype="multipart/form-data">
+  <form action="create-estudio" method="post" class="formulario">
     <div class="input-container">
       <input type="hidden" name="id" value="${param.id}">
-      <input type="text" name="nome" id="nome" value="${param.nome}" required placeholder="Nome"/>
-      <input type="email" name="email" id="email" value="${param.email}" required placeholder="Email"/>
-      <input type="password" name="senha" id="senha" value="${param.senha}" required placeholder="Senha"/>
+      <input type="text" name="nome" id="nome" value="${param.nome}" required placeholder="Nome">
+      <input type="email" name="email" id="email" value="${param.email}" required placeholder="E-mail">
+      <input type="password" name="senha" id="senha" value="${param.senha}" required placeholder="Senha">
+      <input type="text" name="telefone" id="telefone" value="${param.telefone}" placeholder="Telefone">
+      <input type="text" name="endereco" id="endereco" value="${param.endereco}" placeholder="Endereço">
     </div>
+
     <div class="button-container">
       <button type="submit">CADASTRAR</button>
     </div>
+
   </form>
 </div>
+
 </body>
 </html>
