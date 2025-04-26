@@ -20,7 +20,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 21px;
             background-color: white;
             margin: 50px auto;
             border-radius: 8px;
