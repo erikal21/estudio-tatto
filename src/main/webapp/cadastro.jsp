@@ -137,17 +137,28 @@
 <div class="container">
   <div class="login">CADASTRO</div>
 
-  <form action="/create-usuario" method="post" class="formulario" enctype="multipart/form-data">
-    <div class="input-container">
-      <input type="hidden" name="id" value="${param.id}">
-      <input type="text" name="nome" id="nome" value="${param.nome}" required placeholder="Nome"/>
-      <input type="email" name="email" id="email" value="${param.email}" required placeholder="Email"/>
-      <input type="password" name="senha" id="senha" value="${param.senha}" required placeholder="Senha"/>
-    </div>
-    <div class="button-container">
-      <button type="submit">CADASTRAR</button>
-    </div>
-    </form>
+ <form action="/create-usuario" method="post" class="formulario" enctype="multipart/form-data">
+   <div class="input-container">
+     <input type="hidden" name="id" value="${param.id}">
+
+     <input type="text" name="nome" id="nome" value="${param.nome}" required placeholder="Nome" />
+     <input type="email" name="email" id="email" value="${param.email}" required placeholder="Email" />
+     <input type="password" name="senha" id="senha" value="${param.senha}" required placeholder="Senha" />
+     <input type="text" name="telefone" id="telefone" value="${param.telefone}" placeholder="Telefone" />
+     <input type="text" name="endereco" id="endereco" value="${param.endereco}" placeholder="Endereço" />
+
+     <select name="tipo_usuario" id="tipo_usuario" required>
+       <option value="">Selecione o tipo de usuário</option>
+       <option value="usuario" ${param.tipo_usuario == 'usuario' ? 'selected' : ''}>Usuário</option>
+       <option value="tatuador" ${param.tipo_usuario == 'tatuador' ? 'selected' : ''}>Tatuador</option>
+       <option value="admin" ${param.tipo_usuario == 'admin' ? 'selected' : ''}>Admin</option>
+     </select>
+   </div>
+
+   <div class="button-container">
+     <button type="submit">CADASTRAR</button>
+   </div>
+ </form>
 </div>
 </body>
 </html>
