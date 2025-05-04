@@ -31,8 +31,14 @@ public class Usuario {
         this.endereco = endereco;
         this.tipoUsuario = tipoUsuario;
     }
+    
+    public Usuario(String email, String senha) {
+            this.email= email;
+            this.senha= senha;
+    }
 
     // Getters e Setters
+
     public String getNome() {
         return nome;
     }

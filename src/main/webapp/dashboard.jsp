@@ -51,6 +51,16 @@
             color: black;
         }
 
+        .message {
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border: 2px solid red;
+            color: red;
+            font-size: 18px;
+            max-width: 600px;
+        }
+
         h1 {
             text-align: center;
             font-size: 48px;
@@ -125,11 +135,17 @@
 
 <header>
     <div class="logo">StudioTatto</div>
-    <div class="welcome">Bem-vindo, ${usuarioLogado.nome}</div>
-    <form action="/logout" method="post">
-        <button class="logout-button" type="submit">Logout</button>
-    </form>
+    <c:if test="${not empty loggedUser}">
+        <div class="welcome">Bem-vindo, ${loggedUser}</div>
+        <form action="/logout" method="get">
+            <button class="logout-button" type="submit">Logout</button>
+        </form>
+    </c:if>
 </header>
+
+<c:if test="${not empty message}">
+    <div class="message">${message}</div>
+</c:if>
 
 <h1>Perfil</h1>
 
@@ -141,7 +157,9 @@
         <th>Telefone</th>
         <th>Endereço</th>
         <th>Tipo de Usuário</th>
-        <th>Ações</th>
+    <c:if test="${not empty loggedUser}">
+            <th>Ações</th>
+        </c:if>
     </tr>
 
     <c:forEach var="usuario" items="${infoUsuarios}">
@@ -154,16 +172,18 @@
             <td>${usuario.telefone}</td>
             <td>${usuario.endereco}</td>
             <td>${usuario.tipoUsuario}</td>
-            <td class="actions">
-                <form action="/delete-usuario" method="post">
-                    <input type="hidden" name="id" value="${usuario.id}">
-                    <button type="submit">Delete</button>
-                </form>
-                <span>|</span>
-                <a href="cadastro.jsp?id=${usuario.id}&nome=${usuario.nome}&email=${usuario.email}&senha=${usuario.senha}&telefone=${usuario.telefone}&endereco=${usuario.endereco}&tipo_usuario=${usuario.tipoUsuario}">
-                    Update
-                </a>
-            </td>
+            <c:if test="${not empty loggedUser}">
+                <td class="actions">
+                    <form action="/delete-usuario" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="${usuario.id}">
+                        <button type="submit">Delete</button>
+                    </form>
+                    <span>|</span>
+                    <a href="cadastro.jsp?id=${usuario.id}&nome=${usuario.nome}&email=${usuario.email}&senha=${usuario.senha}&telefone=${usuario.telefone}&endereco=${usuario.endereco}&tipo_usuario=${usuario.tipoUsuario}">
+                        Update
+                    </a>
+                </td>
+            </c:if>
         </tr>
     </c:forEach>
 </table>
