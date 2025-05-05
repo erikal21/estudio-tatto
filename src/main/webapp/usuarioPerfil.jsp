@@ -3,7 +3,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Perfil do Artista</title>
+    <title>Perfil do Usuário</title>
     <style>
         body {
             background-color: #f0f0f0;
@@ -29,20 +29,13 @@
 
         input[type="text"],
         input[type="email"],
-        input[type="password"],
-        textarea,
-        input[type="file"] {
+        input[type="password"] {
             width: 100%;
             padding: 10px;
             border: 1px solid #aaa;
             border-radius: 5px;
             font-size: 14px;
-            margin-bottom: 15px; /* Espaçamento entre os inputs */
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
+            margin-bottom: 15px;
         }
 
         .button-container {
@@ -79,14 +72,41 @@
             margin-bottom: 5px;
         }
 
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: #444;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 2px solid #444;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #444;
+            color: white;
+        }
+
+        .back-button i {
+            margin-right: 8px;
+        }
     </style>
+
+    <!-- Ícone do botão voltar (via Font Awesome CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
 <div class="container">
-    <h2>Perfil do Artista</h2>
+    <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i>Voltar para Home</a>
 
-    <form action="/atualizar-perfil-artista" method="post" enctype="multipart/form-data">
+    <h2>Perfil do Usuário</h2>
+
+    <form action="/atualizar-perfil-usuario" method="post">
         <input type="hidden" name="id" value="${param.id}">
 
         <input type="text" name="nome" id="nome" value="${param.nome}" required placeholder="Nome">
@@ -94,15 +114,6 @@
         <input type="password" name="senha" id="senha" value="${param.senha}" required placeholder="Senha">
         <input type="text" name="telefone" id="telefone" value="${param.telefone}" placeholder="Telefone">
         <input type="text" name="endereco" id="endereco" value="${param.endereco}" placeholder="Endereço">
-
-        <textarea name="descricao" id="descricao" placeholder="Fale um pouco sobre você">${param.descricao}</textarea>
-
-        <!-- Label apenas para foto de perfil e imagens -->
-        <label for="fotoPerfil">Foto de Perfil:</label>
-        <input type="file" name="fotoPerfil" id="fotoPerfil" accept="image/*">
-
-        <label for="trabalhos">Imagens dos seus Trabalhos:</label>
-        <input type="file" name="trabalhos" id="trabalhos" accept="image/*" multiple>
 
         <div class="button-container">
             <button type="submit">Salvar Alterações</button>

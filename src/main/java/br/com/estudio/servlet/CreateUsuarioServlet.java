@@ -4,14 +4,15 @@ import br.com.estudio.dao.UsuarioDAO;
 import br.com.estudio.model.Usuario;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
 @WebServlet("/create-usuario")
+@MultipartConfig // <- Adiciona isso aqui
 public class CreateUsuarioServlet extends HttpServlet {
 
     @Override
@@ -31,11 +32,8 @@ public class CreateUsuarioServlet extends HttpServlet {
         Usuario usuario = new Usuario(usuarioId, nome, email, senha, telefone, endereco, tipoUsuario);
 
         if (usuarioId == null || usuarioId.isBlank()) {
-
             usuarioDAO.createUser(usuario);
-
         } else {
-
             usuarioDAO.updateUsuario(usuario);
         }
 
