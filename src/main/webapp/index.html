@@ -3,24 +3,21 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
     <title>Landingpage</title>
-
-    <link  href="@import url('https://fonts.cdnfonts.com/css/annabelle');" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.cdnfonts.com/css/annabelle" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 <header>
     <nav>
         <ul>
-            <li><a href="">Home </a></li>
-            <li><a href="">Sobre </a></li>
-            <li><a href="">Loja </a></li>
-            <li><a href="">Artistas </a></li>
-            <li><a href="">Contato </a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Sobre</a></li>
+            <li><a href="">Loja</a></li>
+            <li><a href="">Artistas</a></li>
+            <li><a href="">Contato</a></li>
             <li><a href="login.jsp">👤</a></li>
         </ul>
     </nav>
@@ -54,231 +51,141 @@
     </div>
 </section>
 
-<!-- Artistas -->
-<!--<section id="artistas" class="section-container">-->
-<!--    <h2>Artistas</h2>-->
-<!--    <div class="container-art">-->
-<!--        <div class="card-wrapper">-->
-<!--            <div class="card">-->
-<!--                <img src="artista1.jpg" alt="Artista 1"/>-->
-<!--            </div>-->
-<!--            <h3 class="card-title">Artista 1</h3>-->
-<!--            <p class="card-description">Especialista em realismo.</p>-->
-<!--            <button class="button_art" onclick="openModal('modal1')">-->
-<!--                Ver galeria-->
-<!--            </button>-->
-<!--        </div>-->
-<!--        <div class="card-wrapper">-->
-<!--            <div class="card">-->
-<!--                <img src="artista2.jpg" alt="Artista 2"/>-->
-<!--            </div>-->
-<!--            <h3 class="card-title">Artista 2</h3>-->
-<!--            <p class="card-description">Especialista em old school.</p>-->
-<!--            <button class="button_art" onclick="openModal('modal2')">-->
-<!--                Ver galeria-->
-<!--            </button>-->
-<!--        </div>-->
-<!--        <div class="card-wrapper">-->
-<!--            <div class="card">-->
-<!--                <img src="artista3.jpg" alt="Artista 3"/>-->
-<!--            </div>-->
-<!--            <h3 class="card-title">Artista 3</h3>-->
-<!--            <p class="card-description">Especialista em aquarela.</p>-->
-<!--            <button class="button_art" onclick="openModal('modal3')">-->
-<!--                Ver galeria-->
-<!--            </button>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-
-<!--&lt;!&ndash; Reviews &ndash;&gt;-->
-<!--<section class="review-section section-container" id="reviews">-->
-<!--    <h2>Reviews</h2>-->
-<!--    <div class="container-art">-->
-<!--        <div class="review-card">-->
-<!--            Ótima experiência!-->
-<!--            <div class="author">- João Silva</div>-->
-<!--        </div>-->
-<!--        <div class="review-card">-->
-<!--            Muito profissional e talentoso!-->
-<!--            <div class="author">- Maria Santos</div>-->
-<!--        </div>-->
-<!--        <div class="review-card">-->
-<!--            Voltarei para mais tatuagens!-->
-<!--            <div class="author">- Carlos Mendes</div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-
 <!-- Seção Artistas -->
-<!-- Artistas -->
 <section id="artistas" class="section">
-    <h2>Artistas</h2>
-    <div class="carousel-container">
-        <button class="prev" onclick="scrollCarousel('artist-carousel', -1)">❮</button>
-        <div class="carousel" id="artist-carousel">
-            <!-- Card 1 exemplo -->
-            <div class="card">
-                <h3>João Tinta</h3>
-                <p>Especialista em realismo e sombreamento.</p>
-                <button class="gallery-btn" onclick="openModal('João Tinta')">Ver Galeria</button>
-            </div>
-            <!-- Adicione mais cards conforme cadastro -->
+    <div class="container">
+        <div class="header">
+            <h1>ARTISTAS</h1>
         </div>
-        <button class="next" onclick="scrollCarousel('artist-carousel', 1)">❯</button>
+        <div class="carousel">
+            <div class="artists" id="artists">
+                <div class="artist">
+                    <div class="artist-image"></div>
+                    <h2>João Tinta</h2>
+                    <p>Especialista em realismo e sombreamento.</p>
+                    <a href="#" onclick="openModal('modal1')">VER GALERIA</a>
+                </div>
+                <div class="artist">
+                    <div class="artist-image"></div>
+                    <h2>Artista 2</h2>
+                    <p>Especialista em old school.</p>
+                    <a href="#" onclick="openModal('modal2')">VER GALERIA</a>
+                </div>
+                <div class="artist">
+                    <div class="artist-image"></div>
+                    <h2>Artista 3</h2>
+                    <p>Especialista em aquarela.</p>
+                    <a href="#" onclick="openModal('modal3')">VER GALERIA</a>
+                </div>
+            </div>
+            <div class="carousel-buttons">
+                <button class="carousel-button" onclick="prevSlide('artists')">❮</button>
+                <button class="carousel-button" onclick="nextSlide('artists')">❯</button>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- Reviews -->
+<!-- Seção Reviews -->
 <section id="reviews" class="section">
-    <h2>Reviews</h2>
-    <div class="carousel-container">
-        <button class="prev" onclick="scrollCarousel('review-carousel', -1)">❮</button>
-        <div class="carousel" id="review-carousel">
-            <div class="card review">
-                <p>"Ótimo atendimento e trabalho impecável!"</p>
-                <span>– Carla M.</span>
+    <div class="container">
+        <div class="header">
+            <h1>REVIEWS</h1>
+        </div>
+        <div class="review-container">
+            <div class="review-card">
+                <p>“Ótimo atendimento e trabalho impecável!”</p>
+                <h3>Carla M.</h3>
             </div>
-            <!-- Adicione mais reviews conforme necessário -->
-        </div>
-        <button class="next" onclick="scrollCarousel('review-carousel', 1)">❯</button>
-    </div>
-</section>
-
-<!-- Modal -->
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h3 id="modalTitle"></h3>
-        <p>Galeria do artista. (Imagens ou textos personalizados)</p>
-    </div>
-</div>
-
-
-<!-- Serviços -->
-<section id="servicos" class="section-container">
-    <h2>Serviços</h2>
-    <div class="container-art">
-        <div class="service-card">
-            <h3>Tatuagem Blackwork</h3>
-            <p>Estilo monocromático com uso intenso de preto.</p>
-        </div>
-        <div class="service-card">
-            <h3>Tatuagem Colorida</h3>
-            <p>Design vibrante e colorido, com grande detalhamento.</p>
-        </div>
-        <div class="service-card">
-            <h3>Tatuagem Minimalista</h3>
-            <p>
-                Linhas finas e desenhos sutis, perfeitos para traços delicados.
-            </p>
-        </div>
-        <div class="service-card">
-            <h3>Tatuagem Tribal</h3>
-            <p>Design geométrico inspirado em culturas antigas.</p>
+            <div class="review-card">
+                <p>“Ótima experiência!”</p>
+                <h3>João Silva</h3>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- MODAIS -->
-
-<div id="modal1" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal1')">&times;</span>
-        <h2>Artista 1</h2>
-        <p>Estilo: Realismo</p>
-        <p>Localização: São Paulo, SP</p>
-        <img src="portfolio1.jpg" alt="Portfólio Artista 1"/>
-    </div>
-</div>
-
-<div id="modal2" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal2')">&times;</span>
-        <h2>Artista 2</h2>
-        <p>Estilo: Old School</p>
-        <p>Localização: Rio de Janeiro, RJ</p>
-        <img src="portfolio2.jpg" alt="Portfólio Artista 2"/>
-    </div>
-</div>
-
-<div id="modal3" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal3')">&times;</span>
-        <h2>Artista 3</h2>
-        <p>Estilo: Aquarela</p>
-        <p>Localização: Belo Horizonte, MG</p>
-        <img src="portfolio3.jpg" alt="Portfólio Artista 3"/>
-    </div>
-</div>
-
-<script>
-    function openModal(id) {
-      document.getElementById(id).style.display = "flex";
-    }
-
-    function closeModal(id) {
-      document.getElementById(id).style.display = "none";
-    }
-</script>
-</body>
-</html>
-
-<div class="container3">
-    <div class="faq">FAQ</div>
-    <div class="principais">PRINCIPAIS</div>
-    <div class="perguntas">PERGUNTAS</div>
-
-    <div class="container4">
-        <div class="column">
-            <div class="input-faq">
-                <input type="text" placeholder="Digite sua pergunta"/>
-                <div class="item">1</div>
-                <button class="button">+</button>
-            </div>
+<!-- Seção Serviços -->
+<section id="servicos" class="section">
+    <div class="container">
+        <div class="header">
+            <h1>SERVIÇOS</h1>
         </div>
-        <div class="column1">
-            <div class="input-faq1">
-                <input type="text" placeholder="Digite sua pergunta"/>
-                <div class="item">1</div>
-                <button class="button">-</button>
+        <div class="service-container">
+            <div class="service-card">
+                <h2>TATUAGENS</h2>
+                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. text ever since the 1500s,</p>
+            </div>
+            <div class="service-card">
+                <h2>TATUAGENS</h2>
+                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. text ever since the 1500s,</p>
+            </div>
+            <div class="service-card">
+                <h2>TATUAGENS</h2>
+                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. text ever since the 1500s,</p>
+            </div>
+            <div class="service-card">
+                <h2>TATUAGENS</h2>
+                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. text ever since the 1500s,</p>
             </div>
         </div>
     </div>
+</section>
 
-    <div class="description">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. It has been the industry's standard dummy text ever since the
-        1500s.
+<!-- Seção FAQ -->
+<section id="faq-section">
+    <div class="faq-container">
+        <div class="faq-header">
+            <div class="faq">FAQ</div>
+            <div class="principais">PRINCIPAIS</div>
+            <div class="perguntas">PERGUNTAS</div>
+        </div>
+        <div class="faq-items">
+            <div class="faq-item">
+                <div class="question">QUANTO TEMPO LEVA PARA FAZER UMA TATUAGEM?</div>
+                <div class="number">01</div>
+                <button class="faq-button">+</button>
+                <div class="answer">
+                    O tempo varia dependendo do tamanho e complexidade da tatuagem. Uma tatuagem pequena pode levar cerca de 1 hora, enquanto designs maiores podem levar várias sessões de 3 a 5 horas cada.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="question">QUAIS SÃO OS CUIDADOS APÓS FAZER UMA TATUAGEM?</div>
+                <div class="number">02</div>
+                <button class="faq-button">-</button>
+                <div class="answer">
+                    Mantenha a tatuagem limpa, aplique uma pomada cicatrizante recomendada pelo tatuador, evite exposição ao sol e não coce ou retire as casquinhas durante a cicatrização, que leva cerca de 2 a 4 semanas.
+                </div>
+            </div>
+        </div>
+        <div class="faq-description">
+            Lorem ipsum is simply dummy text of the printing and typesetting industry, text ever since the 1500s, when an unknown printer
+        </div>
     </div>
-</div>
+</section>
 
 <div class="container2">
     <div class="metade-esquerda">
         <div class="boxEsq">
             <div class="contato">TRABALHE</div>
             <div class="conosco">CONOSCO</div>
-</div>
+        </div>
         <div class="description1">
             Somos um estúdio de tatuagem que vai além da tinta na pele, aqui respiramos arte, criatividade e autenticidade todos os dias. Nosso espaço é moderno, acolhedor e focado em proporcionar a melhor experiência tanto para os nossos clientes quanto para os profissionais que trabalham conosco.
             Estamos em busca de tatuadores(as) talentosos, apaixonados pela arte e comprometidos com o atendimento de qualidade. Seja você iniciante ou experiente, aqui você terá liberdade para criar, desenvolver seu estilo e crescer junto com a gente.
             Você é um artista e busca um espaço onde sua arte seja valorizada?
-<div class="geforce">
-    <a href="artistaCadastro.jsp">Então venha fazer parte do nosso time!</a>
-
-</div>
-
+            <div class="geforce">
+                <a href="artistaCadastro.jsp">Então venha fazer parte do nosso time!</a>
+            </div>
         </div>
-</div>
+    </div>
     <div class="metade-direita">
         <div class="form">FORM</div>
-
         <div class="input-container">
             <input type="text" placeholder="Digite sua dúvida"/>
         </div>
         <div class="button-container">
             <button>BOTÃO DE CONTATO</button>
-        </div>
         </div>
     </div>
 </div>
@@ -287,7 +194,6 @@
     <div class="contato">CONTATO</div>
     <div class="fale">FALE</div>
     <div class="conosco">CONOSCO</div>
-
     <div class="info">
         <div>
             <p>
@@ -298,10 +204,9 @@
             <p><strong>TELEFONE</strong><br/>(11) 9999-9999</p>
         </div>
         <div>
-            <p><strong>EMAIL</strong><br/>studdio.tatto@gmail.com</p>
+            <p><strong>EMAIL</strong><br/><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2d1d6d7c6c6cbcd8cd6c3d6d6cde2c5cfc3cbce8cc1cdcf">[email protected]</a></p>
         </div>
     </div>
-
     <div class="social">
         <p>
             <a href="https://www.instagram.com/">INSTAGRAM</a>
@@ -310,13 +215,61 @@
             <br/>
             Siga para atualizações e inspirações
         </p>
-
-
-
     </div>
 </div>
-</body>
+
+<script>
+    function openModal(id) {
+        document.getElementById(id).style.display = "flex";
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).style.display = "none";
+    }
+
+    let carouselIndices = {
+        'artists': 0
+    };
+
+    function updateCarousel(carouselId) {
+        const carousel = document.getElementById(carouselId);
+        const items = carousel.querySelectorAll('.artist');
+        const totalItems = items.length;
+        const slideWidth = 100 / 3; // Cada item ocupa 33.33% do carrossel
+        const maxIndex = Math.max(0, totalItems - 3); // Mostra 3 itens por vez
+        if (carouselIndices[carouselId] > maxIndex) carouselIndices[carouselId] = maxIndex;
+        if (carouselIndices[carouselId] < 0) carouselIndices[carouselId] = 0;
+        carousel.style.transform = `translateX(-${carouselIndices[carouselId] * slideWidth}%)`;
+    }
+
+    function nextSlide(carouselId) {
+        carouselIndices[carouselId]++;
+        updateCarousel(carouselId);
+    }
+
+    function prevSlide(carouselId) {
+        carouselIndices[carouselId]--;
+        updateCarousel(carouselId);
+    }
+
+    // Toggle FAQ answers
+    document.querySelectorAll('.faq-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const faqItem = button.parentElement;
+            const answer = faqItem.querySelector('.answer');
+            const isHidden = answer.style.display === 'none' || answer.style.display === '';
+
+            if (isHidden) {
+                answer.style.display = 'block';
+                button.textContent = '−';
+            } else {
+                answer.style.display = 'none';
+                button.textContent = '+';
+            }
+        });
+    });
+</script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="./script.js"></script>
+</body>
 </html>
-
-

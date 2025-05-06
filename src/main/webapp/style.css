@@ -1,672 +1,654 @@
-        body {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: "Oswald", sans-serif;
     background-color: #121212;
     color: white;
     margin: 0;
     padding: 0;
+}
+
+header {
+    justify-content: center;
+}
+
+nav {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("img/tattoo1.jpg") no-repeat center center/cover;
+    filter: brightness(24%);
+    z-index: -1;
+    opacity: 0.4;
+}
+
+.hero h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero span {
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+}
+
+#sobre {
+    padding: 50px;
+    text-align: left;
+}
+
+#sobre h2 {
+    font-size: 100px;
+    margin-bottom: 30px;
+    color: #fff;
+    opacity: 0.5;
+}
+
+#sobre p {
+    font-size: 24px;
+    max-width: 800px;
+}
+
+.fotosTattoo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.fotosTattoo img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.container {
+    padding: 50px;
+    background-color: #621ad2;
+}
+
+.container-art {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    background-color: #121212;
+}
+
+.contato {
+    font-family: "Oswald", sans-serif;
+    font-size: 100px;
+    text-transform: uppercase;
+    color: #310c77;
+    padding-right: 500px;
+    margin-bottom: -20px;
+}
+
+.fale {
+    font-size: 70px;
+    font-family: "Oswald", sans-serif;
+    padding-right: 250px;
+    margin-top: -20px;
+    margin-bottom: -10px;
+}
+
+.conosco {
+    font-size: 80px;
+    font-family: "Oswald", sans-serif;
+    color: #310c77;
+    padding-left: 100px;
+    padding-left: 0;
+    margin-top: -20px;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 30px;
+}
+
+.info div {
+    text-align: left;
+}
+
+.social {
+    margin-top: 50px;
+}
+
+.social a {
+    color: white;
+    font-weight: bold;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.container2 {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.metade-esquerda {
+    width: 50%;
+    height: 100%;
     background-color: black;
-  }
+}
 
-      header {
-        justify-content: center;
-      }
+.metade-direita {
+    width: 50%;
+    height: 100%;
+    background-color: black;
+}
 
-      nav {
-        position: absolute;
-        top: 20px;
-        width: 100%;
-        text-align: center;
-        z-index: 10;
-      }
-      nav ul {
-        display: flex;
-        justify-content: center;
-        list-style: none;
-        padding: 0;
-      }
-      nav ul li {
-        margin: 0 15px;
-      }
-      nav ul li a {
-        color: white;
-        text-decoration: none;
-        font-size: 18px;
-      }
-      .hero {
-        position: relative;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 20px;
-        overflow: hidden;
-      }
+.form {
+    font-family: "Oswald", sans-serif;
+    font-size: 100px;
+    text-transform: uppercase;
+    color: #d9d9d9;
+    padding: 25px;
+}
 
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url("img/tattoo1.jpg") no-repeat center center/cover;
-        filter: brightness(24%);
-        z-index: -1;
-        opacity: 0.4;
-      }
-      .hero h1 {
-        font-family: 'Dancing Script', cursive;
-        font-size: 50px;
-        font-weight: bold;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      }
-      .hero span {
-        font-style: 'Dancing Script', cursive;
-        font-size: 40px;
-      }
-      #sobre {
-        padding: 50px;
-        text-align: left;
-      }
-      #sobre h2 {
-        font-size: 100px;
-        margin-bottom: 30px;
-        color: #fff;
-        opacity: 0.5;
-      }
-      #sobre p {
-        font-size: 24px;
-        max-width: 800px;
-      }
-      .fotosTattoo {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        margin-top: 30px;
-      }
-      .fotosTattoo img {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-      }
+.input-container {
+    margin-top: 100px;
+}
 
-      .container {
-        padding: 50px;
-        background-color: #621ad2;
-      }
+.input-container input {
+    width: 80%;
+    max-width: 400px;
+    outline: none;
+    padding: 10px;
+    border: 2px solid red;
+    background-color: black;
+    font-size: 16px;
+    text-align: center;
+    color: #ffffff;
+}
 
-      .container-art{
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-        background-color: #121212;
-      }
-      .contato {
-        font-family: "Oswald", sans-serif;
-        font-size: 100px;
-        text-transform: uppercase;
-        color: #310c77;
-        padding-right: 500px;
-        margin-bottom: -20px;
-      }
-      .fale {
-        font-size: 70px;
-        font-family: "Oswald", sans-serif;
-        padding-right: 250px;
-        margin-top: -20px;
-        margin-bottom: -10px;
-      }
-      .conosco {
-        font-size: 80px;
-        font-family: "Oswald", sans-serif;
-        color: #310c77;
-        padding-left: 100px;
-        padding-left: 0;
-        margin-top: -20px;
-      }
-      .info {
-        display: flex;
-        justify-content: center;
-        gap: 50px;
-        margin-top: 30px;
-      }
-      .info div {
-        text-align: left;
-      }
-      .social {
-        margin-top: 50px;
-      }
-      .social a {
-        color: white;
-        font-weight: bold;
-        margin: 0 10px;
-        text-decoration: none;
-      }
-      .container2 {
-        display: flex;
-        width: 100vw;
-        height: 100vh;
-      }
-      .metade-esquerda {
-        width: 50%;
-        height: 100%;
-        background-color: black;
-      }
-      .metade-direita {
-        width: 50%;
-        height: 100%;
-        background-color: black;
-      }
-      .form {
-        font-family: "Oswald", sans-serif;
-        font-size: 100px;
-        text-transform: uppercase;
-        color: #d9d9d9;
-        padding: 25px;
-      }
-      .input-container {
-        margin-top: 100px;
-      }
-      .input-container input {
-        width: 80%;
-        max-width: 400px;
-        outline: none;
-        padding: 10px;
-        border: 2px solid red;
-        background-color: black;
-        font-size: 16px;
-        text-align: center;
-        color: #ffffff;
+.input-container input::placeholder {
+    color: white;
+    opacity: 0.7;
+}
 
-      }
-      .input-container input::placeholder {
-        color: white;
-        opacity: 0.7;
-      }
+.button-container {
+    margin-top: 30px;
+}
 
-      .button-container {
-        margin-top: 30px;
-      }
-      .button-container button {
-        width: 80%;
-        max-width: 330px;
-        padding: 10px;
-        border: 2px solid red;
-        background-color: black;
-        font-size: 16px;
-        text-align: center;
-        color: #ffffff;
-        font-size: 15px;
-        font-family: "Oswald", sans-serif;
-      }
-      .container3 {
-        background-color: black;
+.button-container button {
+    width: 80%;
+    max-width: 330px;
+    padding: 10px;
+    border: 2px solid red;
+    background-color: black;
+    font-size: 16px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 15px;
+    font-family: "Oswald", sans-serif;
+}
 
-        width: 100vw;
-        height: 100vh;
-      }
-      .faq {
-        font-family: "Oswald", sans-serif;
-        font-size: 100px;
-        text-transform: uppercase;
-        color: #d9d9d9;
-        padding-right: 900px;
-      }
-      .principais {
-        font-size: 70px;
-        font-family: "Oswald", sans-serif;
-        padding-right: 250px;
-        margin-top: -20px;
-        margin-bottom: -10px;
-      }
-      .perguntas {
-        font-size: 80px;
-        font-family: "Oswald", sans-serif;
-        color: #310c77;
-        padding-left: 100px;
-        padding-left: 0;
-        margin-top: -20px;
-      }
-      .button {
-        width: 50px;
-        height: 50px;
-        font-size: 30px;
-        font-weight: bold;
-        color: #310c77;
-        background-color: transparent;
-        border: 2px solid red;
-        cursor: pointer;
-        justify-content: center;
-        align-items: center;
-        transition: 0.3s;
-      }
+section {
+    padding: 50px;
+}
 
-      .button:hover {
-        background-color: red;
-        color: white;
-      }
+a:hover {
+    color: red;
+}
 
-      .lista {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: column;
-      }
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
 
-      .lista1 {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .title {
-        font-size: 22px;
-        font-weight: bold;
-      }
+.modal-content {
+    background-color: #000000;
+    padding: 30px;
+    border: 2px solid red;
+    width: 90%;
+    max-width: 700px;
+    border-radius: 12px;
+    color: white;
+    box-shadow: 0 0 20px red;
+    position: relative;
+    text-align: center;
+    animation: fadeIn 0.4s ease-in-out;
+}
 
-      .subtitle {
-        color: #621ad2;
-        font-size: 18px;
-        margin-top: 10px;
-      }
-      .description {
-        font-size: 14px;
-        color: #aaa;
-        margin-top: 10px;
-        max-width: 500px;
-      }
+.modal-content h2 {
+    color: white;
+    opacity: 0.5;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
 
-      .number {
-        color: #621ad2;
-        font-size: 14px;
-      }
+.modal-content p {
+    font-size: 16px;
+    color: #aaa;
+    margin: 5px 0;
+}
 
-      .container4 {
-        padding-left: 300px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
+.modal-content img {
+    margin-top: 15px;
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #621ad2;
+    border-radius: 8px;
+}
 
-      .column {
-        flex: 1;
-        max-width: 50%;
-        box-sizing: border-box;
-      }
-      .column1 {
-        flex: 1;
-        max-width: 50%;
-        box-sizing: border-box;
-      }
-      .item {
-        color: #621ad2;
-        font-family: "Oswald", sans-serif;
-        font-size: 15px;
-      }
-      .input-faq {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px;
-        margin: 4px 0;
-      }
-      .input-faq {
-        margin-top: 100px;
-      }
-      .input-faq input {
-        width: 100%;
-        max-width: 400px;
-        outline: none;
-        padding: 10px;
-        border: 2px solid rgb(0, 0, 0);
-        background-color: black;
-        font-size: 20px;
-        text-align: center;
-        color: #ffffff;
-      }
-      .input-faq input::placeholder {
-        color: white;
-        opacity: 0.7;
-      }
+.close {
+    color: white;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
 
-      .input-faq1 {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px;
-        margin: 4px 0;
-      }
-      .input-faq1 {
-        margin-top: 100px;
-      }
-      .input-faq1 input {
-        width: 100%;
-        max-width: 400px;
-        outline: none;
-        padding: 10px;
-        border: 2px solid rgb(0, 0, 0);
-        background-color: black;
-        font-size: 20px;
-        text-align: center;
-        color: #ffffff;
-      }
-      .input-faq1 input::placeholder {
-        color: #621ad2;
-        opacity: 0.7;
-      }
-  section {
-            padding: 50px;
-          }
+.close:hover,
+.close:focus {
+    color: red;
+    text-decoration: none;
+}
 
-          .section-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
-          h2 {
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-align: center;
-            color: #310c77;
-          }
+.description1 {
+    font-size: 18px;
+    color: #aaa;
+    margin-top: 10px;
+    max-width: 500px;
+    padding: 20px;
+}
 
-          .container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-          }
-
-          .card-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-          }
-
-          .card {
-            background-color: #000000;
-            padding: 20px;
-            width: 250px;
-          }
-
-          .card img {
-            width: 100%;
-            height: auto;
-          }
-
-          .card-title,
-          .card-description {
-            margin-top: 10px;
-            font-weight: bold;
-            text-align: center;
-          }
-
-          .button {
-            background-color: rgb(0, 0, 0);
-            color: white;
-            padding: 10px;
-            border: 2px solid red;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background-color 0.3s;
-          }
-
-          .button:hover {
-            background-color: red;
-          }
-
-
-          a:hover{
-            color: red;
-          }
-
-          .review-section {
-            background-color: #121212;
-            padding: 50px;
-          }
-
-          .review-card {
-            background-color: #000000;
-            padding: 20px;
-            border: 4px solid red;
-            position: relative;
-            color: white;
-          }
-
-          .review-card::before {
-            content: "“";
-            font-size: 48px;
-            color: red;
-            display: block;
-            text-align: left;
-          }
-
-          .review-card .author {
-            margin-top: 10px;
-            border-top: 2px solid red;
-            padding-top: 5px;
-            font-size: 14px;
-            text-align: left;
-            font-weight: bold;
-          }
-
-          .service-card {
-            background-color: #000000;
-            padding: 20px;
-            border-top: 4px solid red;
-            border-bottom: 4px solid red;
-            text-align: center;
-            color: #d9d9d9;
-          }
-
-          /* MODAL */
-          .modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-          }
-
-          .modal-content {
-            background-color: #000000;
-            padding: 30px;
-            border: 2px solid red;
-            width: 90%;
-            max-width: 700px;
-            border-radius: 12px;
-            color: white;
-            box-shadow: 0 0 20px red;
-            position: relative;
-            text-align: center;
-            animation: fadeIn 0.4s ease-in-out;
-          }
-
-          .modal-content h2 {
-            color: white;
-            opacity: 0.5;
-            font-size: 32px;
-            margin-bottom: 10px;
-          }
-
-          .modal-content p {
-            font-size: 16px;
-            color: #aaa;
-            margin: 5px 0;
-          }
-
-          .modal-content img {
-            margin-top: 15px;
-            max-width: 100%;
-            height: auto;
-            border: 2px solid #621ad2;
-            border-radius: 8px;
-
-          }
-
-          .close {
-            color: white;
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s;
-          }
-
-          .close:hover,
-          .close:focus {
-            color: red;
-            text-decoration: none;
-          }
-
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-              transform: scale(0.9);
-            }
-            to {
-              opacity: 1;
-              transform: scale(1);
-            }
-          }
-
-          #artistas h2{
-                  font-size: 100px;
-                  margin-bottom: 30px;
-                  color: #fff;
-                  opacity: 0.5;
-          }
-
-          #reviews h2{
-                  font-size: 100px;
-                  margin-bottom: 30px;
-                  color: #fff;
-                  opacity: 0.5;
-          }
-
-          #servicos h2{
-                  font-size: 100px;
-                  margin-bottom: 30px;
-                  color: #fff;
-                  opacity: 0.5;
-          }
-
-                  .button_art {
-                    font-family: "Oswald", sans-serif;
-                    background-color: rgb(0, 0, 0);
-                    color: white;
-                    padding: 10px;
-                    border: 2px solid red;
-                    cursor: pointer;
-                    margin-top: 10px;
-                    transition: background-color 0.3s;
-                  }
-
-                  .button_art:hover {
-                    background-color: red;
-                  }
-
-                  .section {
-                    text-align: center;
-                    margin: 50px 0;
-                  }
-
-                  .carousel-container {
-                    position: relative;
-                    width: 100%;
-                    overflow: hidden;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  }
-
-                  .carousel {
-                    display: flex;
-                    overflow-x: auto;
-                    scroll-behavior: smooth;
-                    gap: 20px;
-                    padding: 20px;
-                    max-width: 90%;
-                  }
-
-                  .card {
-                    min-width: 250px;
-                    background-color: #111;
-                    color: white;
-                    padding: 20px;
-                    border-radius: 10px;
-                    text-align: center;
-                    flex-shrink: 0;
-                    border-top: 2px solid red;
-                    border-bottom: 2px solid red;
-                  }
-
-                  .review {
-                    background-color: #222;
-                  }
-
-                  button.prev,
-                  button.next {
-                    background-color: transparent;
-                    color: white;
-                    border: none;
-                    font-size: 30px;
-                    cursor: pointer;
-                    padding: 10px;
-                  }
-
-                  /* -- Modal -- */
-                  .modal {
-                    display: none;
-                    position: fixed;
-                    z-index: 999;
-                    left: 0; top: 0;
-                    width: 100%; height: 100%;
-                    background: rgba(0,0,0,0.8);
-                    justify-content: center;
-                    align-items: center;
-                  }
-
-                  .modal-content {
-                    background-color: #000000;
-                    padding: 30px;
-                    border-radius: 10px;
-                    max-width: 500px;
-                    text-align: center;
-                  }
-
-                  .modal .close {
-                    position: absolute;
-                    top: 20px; right: 30px;
-                    font-size: 30px;
-                    color: white;
-                    cursor: pointer;
-                  }
-                  .description1 {
-                          font-size: 18px;
-                          color: #aaa;
-                          margin-top: 10px;
-                          max-width: 500px;
-                          padding: 20px;
-
-                        }
 .geforce {
     margin-top: 25px;
     padding: 20px;
-
 }
+
 .boxEsq {
     padding: 20px;
+}
+
+/* Section and Carousel Styles */
+.section {
+    background-color: #121212;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #121212;
+}
+
+.header {
+    margin-bottom: 60px;
+}
+
+.header h1 {
+    font-size: 80px;
+    font-weight: bold;
+    color: #4d4d4d;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.artists {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.artist {
+    flex: 0 0 33.33%;
+    padding: 0 15px;
+    text-align: left;
+}
+
+.artist-image {
+    width: 100%;
+    height: 350px;
+    background-color: #d3d3d3;
+    margin-bottom: 20px;
+}
+
+.artist h2 {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.artist p {
+    font-size: 14px;
+    line-height: 1.2;
+    color: #b3b3b3;
+    margin-bottom: 20px;
+}
+
+.artist a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 1px solid #fff;
+    padding: 8px 15px;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.artist a:hover {
+    background-color: #fff;
+    color: #121212;
+}
+
+.carousel-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.carousel-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carousel-button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Reviews Section Styles */
+.review-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.review-card {
+    background-color: #121212;
+    border: 2px solid #ff0000;
+    padding: 40px 30px;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    text-align: left;
+}
+
+.review-card p {
+    font-size: 16px;
+    color: #b3b3b3;
+    line-height: 1.6;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+}
+
+.review-card p::before {
+    content: "❝";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #ff0000;
+    font-size: 24px;
+}
+
+.review-card p::after {
+    content: "❞";
+    color: #ff0000;
+    font-size: 24px;
+}
+
+.review-card h3 {
+    font-size: 18px;
+    color: #fff;
+    font-weight: normal;
+}
+
+/* Services Section Styles */
+.service-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background-color: #121212;
+    border: 2px solid #ff0000;
+    padding: 20px;
+    text-align: left;
+}
+
+.service-card h2 {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #b3b3b3;
+}
+
+/* FAQ Section Styles */
+#faq-section {
+    padding: 100px 0;
+    background-color: #000000;
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+.faq-header {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.faq {
+    font-family: "Oswald", sans-serif;
+    font-size: 100px;
+    text-transform: uppercase;
+    color: #d9d9d9;
+    display: block;
+    padding-right: 900px;
+    margin-bottom: -40px;
+}
+
+.principais {
+    font-family: "Oswald", sans-serif;
+    font-size: 70px;
+    text-transform: uppercase;
+    color: #ffffff;
+    display: block;
+    margin-left: 200px;
+    margin-top: -40px;
+    margin-bottom: -30px;
+}
+
+.perguntas {
+    font-family: "Oswald", sans-serif;
+    font-size: 80px;
+    text-transform: uppercase;
+    color: #310c77;
+    display: block;
+    margin-left: 300px;
+    margin-top: -40px;
+}
+
+.faq-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-left: 300px;
+}
+
+.faq-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 800px;
+    flex-wrap: wrap;
+}
+
+.question {
+    font-family: "Oswald", sans-serif;
+    font-size: 24px;
+    color: #310c77;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), -2px -2px 4px rgba(49, 12, 119, 0.5);
+    line-height: 1.2;
+    flex: 1;
+    word-break: break-word;
+}
+
+.number {
+    font-family: "Oswald", sans-serif;
+    font-size: 15px;
+    color: #ffffff;
+    min-width: 30px;
+    text-align: right;
+}
+
+.faq-button {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #310c77;
+    background-color: transparent;
+    border: 2px solid red;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.faq-button:hover {
+    background-color: red;
+    color: white;
+}
+
+.answer {
+    display: none;
+    font-size: 14px;
+    color: #aaa;
+    padding-left: 20px;
+    width: 100%;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+.faq-description {
+    font-size: 14px;
+    color: #aaa;
+    max-width: 500px;
+    margin-top: 20px;
+    padding-left: 300px;
+}
+
+/* Add a subtle glitch effect to the background */
+#faq-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(49, 12, 119, 0.1) 25%, transparent 25%, transparent 75%, rgba(49, 12, 119, 0.1) 75%, rgba(49, 12, 119, 0.1)),
+                linear-gradient(45deg, rgba(49, 12, 119, 0.1) 25%, transparent 25%, transparent 75%, rgba(49, 12, 119, 0.1) 75%, rgba(49, 12, 119, 0.1));
+    background-size: 20px 20px;
+    opacity: 0.1;
+    z-index: -1;
 }
