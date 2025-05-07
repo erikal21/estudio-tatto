@@ -8,6 +8,7 @@ CREATE TABLE usuario (
     senha VARCHAR(255) NOT NULL,
     telefone VARCHAR(15),
     endereco TEXT,
+    imagemPerfil VARCHAR(255),
     tipo_usuario ENUM('admin', 'tatuador', 'usuario') NOT NULL
 );
 
@@ -80,3 +81,12 @@ INSERT INTO usuario_estilo (id_usuario, id_estilo) VALUES
 INSERT INTO usuario_estilo (id_usuario, id_estilo) VALUES
 (6, 4),
 (6, 5);
+
+CREATE TABLE portfolio_imagem (
+    id_imagem INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario INT NOT NULL,
+    caminho_imagem VARCHAR(255) NOT NULL,
+    legenda TEXT,
+    data_upload TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE
+);

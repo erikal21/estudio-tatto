@@ -1,7 +1,7 @@
 package br.com.estudio.dao;
 import br.com.estudio.config.ConnectionPoolConfig;
 import br.com.estudio.model.Usuario;
-import java.sql.DriverManager;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +14,7 @@ public class UsuarioDAO {
 
     public void createUser(Usuario usuario) {
 
-        String SQL = "INSERT INTO USUARIO (nome, email, senha, telefone, endereco, tipo_usuario) VALUES (?, ?, ?, ?, ?, ?)";
+        String SQL = "INSERT INTO USUARIO (nome, email, senha, telefone, endereco, tipo_usuario, imagemPerfil) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try {
 
@@ -28,6 +28,7 @@ public class UsuarioDAO {
             preparedStatement.setString(4, usuario.getTelefone());
             preparedStatement.setString(5, usuario.getEndereco());
             preparedStatement.setString(6, usuario.getTipoUsuario()); // Dentro do BD os usuários são "admin", tatuador e usuario(usuário normal/regular)
+            preparedStatement.setString(7, usuario.getImagemPerfil()); // campo para imagens de perfil do usuário
 
             preparedStatement.execute();
 
@@ -37,6 +38,7 @@ public class UsuarioDAO {
 
         } catch (Exception e) {
             System.out.println("Error in connection: " + e.getMessage());
+            System.out.println("Error: "+ e.getMessage());
         }
     }
     //Método select para selecionar dentro do BD as informações(OBS: No momento ele apenas seleciona TUDO, necessário alteração)
@@ -61,8 +63,9 @@ public class UsuarioDAO {
                 String usuarioTelefone = resultSet.getString("telefone");
                 String usuarioEndereco = resultSet.getString("endereco");
                 String usuarioTipoUsuario = resultSet.getString("tipo_usuario");
+                String imagemPerfil = resultSet.getString("imagemPerfil");
 
-                Usuario usuario = new Usuario(usuarioID,usuarioNome,usuarioEmail, usuarioSenha, usuarioTelefone, usuarioEndereco, usuarioTipoUsuario);
+                Usuario usuario = new Usuario();
 
 
                 usuarios.add(usuario);
@@ -78,11 +81,14 @@ public class UsuarioDAO {
         } catch (Exception e) {
 
             System.out.println("fail in database connection: " + e.getMessage());
+            System.out.println("Error"+ e.getMessage());
 
             return Collections.emptyList();
 
         }
     }
+
+    //Método delete para deletar usuários dentro do BD
 
     public void deleteUsuarioById(String idUsuario) {
 
@@ -104,9 +110,11 @@ public class UsuarioDAO {
         }
     }
 
+    //Método UPDATE para atualizar usuarios dentro do BD
+
     public void updateUsuario(Usuario usuario) {
 
-        String SQL = "UPDATE USUARIO SET nome = ?, email = ?, senha = ?, telefone = ?, endereco = ?, tipo_usuario = ? WHERE ID_USUARIO = ?";
+        String SQL = "UPDATE USUARIO SET nome = ?, email = ?, senha = ?, telefone = ?, endereco = ?,  imagemPerfil = ?, tipo_usuario WHERE ID_USUARIO = ?";
 
         try {
 
@@ -119,8 +127,9 @@ public class UsuarioDAO {
             preparedStatement.setString(3, usuario.getSenha());
             preparedStatement.setString(4, usuario.getTelefone());
             preparedStatement.setString(5, usuario.getEndereco());
-            preparedStatement.setString(6, usuario.getTipoUsuario());
-            preparedStatement.setString(7, usuario.getId());
+            preparedStatement.setString(6, usuario.getImagemPerfil());
+            preparedStatement.setString(7, usuario.getTipoUsuario());
+            preparedStatement.setString(8, usuario.getId());
 
             preparedStatement.executeUpdate();
 
