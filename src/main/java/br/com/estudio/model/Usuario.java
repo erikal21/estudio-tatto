@@ -21,7 +21,7 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public Usuario(String id, String nome, String email, String senha, String telefone, String endereco, String tipoUsuario) {
+    public Usuario(String id, String nome, String email, String senha, String telefone, String endereco, String imagemPerfil, String tipoUsuario) {
 
         this.id= id;
         this.nome = nome;
@@ -109,7 +109,7 @@ public class Usuario {
         return imagemPerfil;
     }
 
-    public void setImagemPerfil(String imagem_perfil) {
+    public void setImagemPerfil(String imagemPerfil) {
         this.imagemPerfil = imagemPerfil;
     }
 }

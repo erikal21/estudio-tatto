@@ -165,7 +165,7 @@
     <c:forEach var="usuario" items="${infoUsuarios}">
         <tr>
             <td>
-                <img src="${usuario.fotoPerfil != null ? usuario.fotoPerfil : 'imagens/default-user.png'}" class="profile-pic" alt="Foto do usuário">
+                <img src="${usuario.imagemPerfil != null ? usuario.imagemPerfil : 'imagens/default-user.png'}" class="profile-pic" alt="Foto do usuário">
             </td>
             <td>${usuario.nome}</td>
             <td>${usuario.email}</td>
