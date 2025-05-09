@@ -14,7 +14,7 @@ public class UsuarioDAO {
 
     public void createUser(Usuario usuario) {
 
-        String SQL = "INSERT INTO USUARIO (nome, email, senha, telefone, endereco, tipo_usuario, imagemPerfil) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String SQL = "INSERT INTO USUARIO (nome, email, senha, telefone, endereco, TIPO_USUARIO, IMAGEMPERFIL) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try {
 
@@ -114,7 +114,7 @@ public class UsuarioDAO {
 
     public void updateUsuario(Usuario usuario) {
 
-        String SQL = "UPDATE USUARIO SET nome = ?, email = ?, senha = ?, telefone = ?, endereco = ?,  imagemPerfil = ?, tipo_usuario WHERE ID_USUARIO = ?";
+        String SQL = "UPDATE USUARIO SET nome = ?, email = ?, senha = ?, telefone = ?, endereco = ?,  imagemPerfil = ?, tipo_usuario= ?, WHERE ID_USUARIO = ?";
 
         try {
 

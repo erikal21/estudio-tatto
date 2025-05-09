@@ -30,6 +30,7 @@ public class Usuario {
         this.telefone = telefone;
         this.endereco = endereco;
         this.tipoUsuario = tipoUsuario;
+        this.imagemPerfil = imagemPerfil;
     }
     
     public Usuario(String email, String senha) {
@@ -38,14 +39,7 @@ public class Usuario {
     }
 
     public Usuario() {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.telefone = telefone;
-        this.endereco = endereco;
-        this.tipoUsuario = tipoUsuario;
-        this.imagemPerfil = imagemPerfil;
+
     }
     // Getters e Setters
 

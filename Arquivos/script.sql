@@ -48,6 +48,7 @@ INSERT INTO estilo_arte (nome) VALUES
 ('NewSchool'),
 ('Realismo');
 
+
 INSERT INTO usuario (nome, email, senha, telefone, endereco, tipo_usuario) VALUES
 ('Admin', 'admin@admin', '123', '11111111111', 'Rua Admin, 1', 'admin'),
 ('Carlos Tattoo', 'carlos@tattoo.com', '111', '11977777777', 'Av. Artística, 789', 'tatuador'),
