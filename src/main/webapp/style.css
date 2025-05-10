@@ -12,6 +12,12 @@ body {
     padding: 0;
 }
 
+.wrapper {
+    min-height: 100vh;
+    padding-bottom: 40px; /* Reduced to bring footer closer */
+    position: relative;
+}
+
 header {
     justify-content: center;
 }
@@ -109,7 +115,22 @@ nav ul li a {
 
 .container {
     padding: 50px;
-    background-color: #621ad2;
+    background-color: #121212; /* Default background for all containers */
+}
+
+.footer-container {
+    background-color: #621ad2; /* Purple background for footer */
+    padding: 20px 50px;
+    min-height: 250px; /* Changed to min-height to allow growth */
+    height: auto; /* Allow container to expand with content */
+    clear: both;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: auto; /* Ensure content doesn’t escape bounds */
 }
 
 .container-art {
@@ -140,25 +161,57 @@ nav ul li a {
 .conosco {
     font-size: 80px;
     font-family: "Oswald", sans-serif;
-    color: #310c77;
-    padding-left: 100px;
+    color: #ffffff;
     padding-left: 0;
     margin-top: -20px;
+}
+
+/* Styling for metada-direita */
+.metade-direita .contato {
+    font-family: "Oswald", sans-serif;
+    font-size: 100px; /* Restored original size */
+    text-transform: uppercase;
+    color: #310c77; /* Purple for TRABALHE */
+    padding-right: 0;
+    margin-bottom: -20px;
+    text-align: center;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+.metade-direita .conosco {
+    font-family: "Oswald", sans-serif;
+    font-size: 80px; /* Restored original size */
+    text-transform: uppercase;
+    color: #ffffff; /* White for CONOSCO */
+    padding-left: 0;
+    margin-top: -20px;
+    text-align: center;
+    white-space: nowrap; /* Prevent wrapping */
 }
 
 .info {
     display: flex;
     justify-content: center;
-    gap: 50px;
-    margin-top: 30px;
+    gap: 30px; /* Reduced gap to fit content better */
+    margin-top: 5px; /* Further reduced margin */
 }
 
 .info div {
     text-align: left;
 }
 
+.email-social {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .social {
-    margin-top: 50px;
+    margin-top: 0; /* Remove margin since it’s now nested */
+}
+
+.social p {
+    margin: 0; /* Remove default margin from p */
 }
 
 .social a {
@@ -171,65 +224,119 @@ nav ul li a {
 .container2 {
     display: flex;
     width: 100vw;
-    height: 100vh;
+    height: auto; /* Dynamic height based on content */
+    min-height: 50vh; /* Minimum height to ensure visibility */
+    padding-bottom: 20px; /* Reduced to bring footer closer */
 }
 
 .metade-esquerda {
     width: 50%;
-    height: 100%;
+    height: auto; /* Allow dynamic height */
+    max-height: 800px; /* Limit total height */
     background-color: black;
+    position: relative;
+    overflow: hidden; /* Ensure gradient stays within bounds */
+    display: flex;
+    flex-direction: column;
+}
+
+.metade-esquerda::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+    z-index: 1;
+}
+
+.metade-esquerda::after {
+    content: "";
+    position: absolute;
+    top: 50%; /* Position at midpoint between two images */
+    left: 0;
+    width: 100%;
+    height: 20%; /* Gradient height */
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8), transparent);
+    z-index: 1;
+    transform: translateY(-50%); /* Center the gradient */
+}
+
+/* Stack and size images */
+.metade-esquerda .tattoo-image {
+    width: 100%;
+    height: 50%; /* Each image takes half the container height */
+    object-fit: cover;
+    filter: brightness(70%);
+}
+
+.metade-esquerda .tattoo-image:nth-child(2) {
+    margin-top: 0; /* Remove any default margin */
 }
 
 .metade-direita {
     width: 50%;
     height: 100%;
     background-color: black;
+    padding: 40px 30px; /* Increased horizontal padding for better fit */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 100%; /* Contain content */
 }
 
-.form {
-    font-family: "Oswald", sans-serif;
-    font-size: 100px;
-    text-transform: uppercase;
-    color: #d9d9d9;
-    padding: 25px;
-}
-
-.input-container {
-    margin-top: 100px;
-}
-
-.input-container input {
-    width: 80%;
-    max-width: 400px;
-    outline: none;
-    padding: 10px;
-    border: 2px solid red;
-    background-color: black;
-    font-size: 16px;
+.boxEsq {
+    padding: 20px;
     text-align: center;
-    color: #ffffff;
+    width: 100%;
 }
 
-.input-container input::placeholder {
-    color: white;
-    opacity: 0.7;
-}
-
-.button-container {
-    margin-top: 30px;
-}
-
-.button-container button {
-    width: 80%;
-    max-width: 330px;
-    padding: 10px;
-    border: 2px solid red;
-    background-color: black;
+.description1 {
     font-size: 16px;
+    color: #aaa;
+    margin-top: 15px;
+    max-width: 500px;
+    padding: 10px;
     text-align: center;
-    color: #ffffff;
-    font-size: 15px;
+}
+
+.join-link {
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px; /* Ensure space at the bottom */
+}
+
+.join-link a {
     font-family: "Oswald", sans-serif;
+    font-size: 20px;
+    color: #ffffff;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.join-link a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #ff0000;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.join-link a:hover::after {
+    width: 100%;
+}
+
+.join-link a:hover {
+    color: #ff0000;
 }
 
 section {
@@ -318,20 +425,8 @@ a:hover {
     }
 }
 
-.description1 {
-    font-size: 18px;
-    color: #aaa;
-    margin-top: 10px;
-    max-width: 500px;
-    padding: 20px;
-}
-
 .geforce {
     margin-top: 25px;
-    padding: 20px;
-}
-
-.boxEsq {
     padding: 20px;
 }
 
@@ -344,7 +439,7 @@ a:hover {
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
-    background-color: #121212;
+    background-color: #121212; /* Default for all sections */
 }
 
 .header {
@@ -608,11 +703,12 @@ a:hover {
     color: #310c77;
     background-color: transparent;
     border: 2px solid red;
-    cursor: pointer;
+    cursor: pointer; /* Ensure cursor indicates clickable */
     display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.3s;
+    z-index: 2; /* Ensure button is above other elements */
 }
 
 .faq-button:hover {
@@ -621,7 +717,7 @@ a:hover {
 }
 
 .answer {
-    display: none;
+    display: none; /* Ensure answers start hidden */
     font-size: 14px;
     color: #aaa;
     padding-left: 20px;
@@ -651,4 +747,29 @@ a:hover {
     background-size: 20px 20px;
     opacity: 0.1;
     z-index: -1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .metade-direita .contato {
+        font-size: 70px; /* Smaller font on mobile */
+    }
+    .metade-direita .conosco {
+        font-size: 60px;
+    }
+    .container2 {
+        min-height: 40vh;
+        padding-bottom: 20px; /* Adjusted for mobile */
+    }
+    .footer-container {
+        min-height: 200px; /* Adjusted for mobile */
+        padding: 10px 20px; /* Reduced padding for mobile */
+    }
+    .info {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .email-social {
+        align-items: center; /* Center content on mobile */
+    }
 }
