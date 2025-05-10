@@ -9,7 +9,7 @@ public class Usuario {
     private String telefone;
     private String endereco;
     private String tipoUsuario;
-    private String fotoPerfil;
+    private String imagemPerfil;
 
     public Usuario(String nome, String email, String senha, String telefone, String endereco, String tipoUsuario) {
 
@@ -37,6 +37,16 @@ public class Usuario {
             this.senha= senha;
     }
 
+    public Usuario() {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.tipoUsuario = tipoUsuario;
+        this.imagemPerfil = imagemPerfil;
+    }
     // Getters e Setters
 
     public String getNome() {
@@ -95,12 +105,11 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getFotoPerfil() {
-        return fotoPerfil;
+    public String getImagemPerfil() {
+        return imagemPerfil;
     }
 
-    public void setFotoPerfil(String fotoPerfil) {
-        this.fotoPerfil = fotoPerfil;
+    public void setImagemPerfil(String imagem_perfil) {
+        this.imagemPerfil = imagemPerfil;
     }
-
 }
