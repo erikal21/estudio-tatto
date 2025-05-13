@@ -115,14 +115,14 @@ nav ul li a {
 
 .container {
     padding: 50px;
-    background-color: #121212;
+    background-color: #121212; /* Default background for all containers */
 }
 
 .footer-container {
-    background-color: #621ad2;
+    background-color: #621ad2; /* Purple background for footer */
     padding: 20px 50px;
-    min-height: 250px;
-    height: auto;
+    min-height: 250px; /* Changed to min-height to allow growth */
+    height: auto; /* Allow container to expand with content */
     clear: both;
     width: 100%;
     position: relative;
@@ -130,7 +130,7 @@ nav ul li a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: auto;
+    overflow: auto; /* Ensure content doesn’t escape bounds */
 }
 
 .container-art {
@@ -180,20 +180,20 @@ nav ul li a {
 
 .metade-direita .conosco {
     font-family: "Oswald", sans-serif;
-    font-size: 80px;
+    font-size: 80px; /* Restored original size */
     text-transform: uppercase;
-    color: #ffffff;
+    color: #ffffff; /* White for CONOSCO */
     padding-left: 0;
     margin-top: -20px;
     text-align: center;
-    white-space: nowrap;
+    white-space: nowrap; /* Prevent wrapping */
 }
 
 .info {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin-top: 5px;
+    gap: 30px; /* Reduced gap to fit content better */
+    margin-top: 5px; /* Further reduced margin */
 }
 
 .info div {
@@ -207,11 +207,11 @@ nav ul li a {
 }
 
 .social {
-    margin-top: 0;
+    margin-top: 0; /* Remove margin since it’s now nested */
 }
 
 .social p {
-    margin: 0;
+    margin: 0; /* Remove default margin from p */
 }
 
 .social a {
@@ -224,18 +224,18 @@ nav ul li a {
 .container2 {
     display: flex;
     width: 100vw;
-    height: auto;
-    min-height: 50vh;
-    padding-bottom: 20px;
+    height: auto; /* Dynamic height based on content */
+    min-height: 50vh; /* Minimum height to ensure visibility */
+    padding-bottom: 20px; /* Reduced to bring footer closer */
 }
 
 .metade-esquerda {
     width: 50%;
-    height: auto;
-    max-height: 800px;
+    height: auto; /* Allow dynamic height */
+    max-height: 800px; /* Limit total height */
     background-color: black;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Ensure gradient stays within bounds */
     display: flex;
     flex-direction: column;
 }
@@ -254,37 +254,37 @@ nav ul li a {
 .metade-esquerda::after {
     content: "";
     position: absolute;
-    top: 50%;
+    top: 50%; /* Position at midpoint between two images */
     left: 0;
     width: 100%;
-    height: 20%;
+    height: 20%; /* Gradient height */
     background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8), transparent);
     z-index: 1;
-    transform: translateY(-50%);
+    transform: translateY(-50%); /* Center the gradient */
 }
 
 /* Stack and size images */
 .metade-esquerda .tattoo-image {
     width: 100%;
-    height: 50%;
+    height: 50%; /* Each image takes half the container height */
     object-fit: cover;
     filter: brightness(70%);
 }
 
 .metade-esquerda .tattoo-image:nth-child(2) {
-    margin-top: 0;
+    margin-top: 0; /* Remove any default margin */
 }
 
 .metade-direita {
     width: 50%;
     height: 100%;
     background-color: black;
-    padding: 40px 30px;
+    padding: 40px 30px; /* Increased horizontal padding for better fit */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-height: 100%;
+    max-height: 100%; /* Contain content */
 }
 
 .boxEsq {
@@ -306,7 +306,7 @@ nav ul li a {
     margin-top: 20px;
     text-align: center;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Ensure space at the bottom */
 }
 
 .join-link a {
@@ -439,7 +439,7 @@ a:hover {
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
-    background-color: #121212;
+    background-color: #121212; /* Default for all sections */
 }
 
 .header {
@@ -708,7 +708,7 @@ a:hover {
     justify-content: center;
     align-items: center;
     transition: 0.3s;
-    z-index: 2;
+    z-index: 2; /* Ensure button is above other elements */
 }
 
 .faq-button:hover {
@@ -759,17 +759,17 @@ a:hover {
     }
     .container2 {
         min-height: 40vh;
-        padding-bottom: 20px;
+        padding-bottom: 20px; /* Adjusted for mobile */
     }
     .footer-container {
-        min-height: 200px;
-        padding: 10px 20px;
+        min-height: 200px; /* Adjusted for mobile */
+        padding: 10px 20px; /* Reduced padding for mobile */
     }
     .info {
         flex-direction: column;
         gap: 10px;
     }
     .email-social {
-        align-items: center;
+        align-items: center; /* Center content on mobile */
     }
 }
