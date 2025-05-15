@@ -107,11 +107,12 @@
 
     <form action="/create-usuario" method="post" class="formulario" enctype="multipart/form-data">
 
-<div class="input-container">
+            <div class="input-container">
             <input type="hidden" name="id" value="${param.id}">
 
-         <input type="text" name="nome" id="nome" value="${param.nome}" required placeholder="    Nome "/>
-         <label for="nome"></label>
+
+                <label for="nome"></label>
+                <input type="text" name="nome" id="nome" value="${param.nome}" required placeholder=" Nome "/>
 
                  <label for="email"></label>
                  <input type="email" name="email" id="email" value="${param.email}" required placeholder=" Email "/>
@@ -124,6 +125,10 @@
 
                  <label for="endereco"></label>
                  <input type="text" name="endereco" id="endereco" value="${param.endereco}" placeholder=" Endereço "/>
+
+                 <label for="imagemPerfil">Imagem de perfil</label>
+                 <input type="file" name="imagemPerfil" id="imagemPerfil"/>
+
 
                  <label for="tipo_usuario">Tipo de usuário:</label>
                  <select name="tipo_usuario" id="tipo_usuario" required>

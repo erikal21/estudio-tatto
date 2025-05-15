@@ -22,23 +22,26 @@ import java.util.Map;
 import static org.apache.commons.fileupload.servlet.ServletFileUpload.isMultipartContent;
 
 @WebServlet("/create-usuario")
-@MultipartConfig // <- Adiciona isso aqui
+@MultipartConfig
 public class CreateUsuarioServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String usuarioId = req.getParameter("id");
-        String nome = req.getParameter("nome");
-        String email = req.getParameter("email");
-        String senha = req.getParameter("senha");
-        String telefone = req.getParameter("telefone");
-        String endereco = req.getParameter("endereco");
-        String tipoUsuario = req.getParameter("tipo_usuario");
+        Map<String, String>  parameters uploadImage(req);
+
+        String usuarioId = parameters.get("id");
+        String nome = parameters.get("nome");
+        String email = parameters.get("email");
+        String senha = parameters.get("senha");
+        String telefone = parameters.get("telefone");
+        String endereco = parameters.get("endereco");
+        String imagemPerfil= parameters.get("imagemPerfil")
+        String tipoUsuario = parameters.get("tipo_usuario");
 
         UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-        Usuario usuario = new Usuario(usuarioId, nome, email, senha, telefone, endereco, tipoUsuario);
+        Usuario usuario = new Usuario(usuarioId, nome, email, senha, telefone, endereco, imagemPerfil ,tipoUsuario);
 
         if (usuarioId == null || usuarioId.isBlank()) {
             usuarioDAO.createUser(usuario);
@@ -58,7 +61,7 @@ public class CreateUsuarioServlet extends HttpServlet {
         } else {
 
             String fileName = processUploadedFile(item);
-            requestParameters.put("image", "img/".concat(fileName));
+            requestParameters.put("imagemPerfil", "img/".concat(fileName));
 
         }
     }

@@ -14,7 +14,7 @@ public class UsuarioDAO {
 
     public void createUser(Usuario usuario) {
 
-        String SQL = "INSERT INTO USUARIO (nome, email, senha, telefone, endereco, tipo_usuario, imagemPerfil) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String SQL = "INSERT INTO USUARIO (nome, email, senha, telefone, endereco, imagemPerfil, tipo_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try {
 
@@ -27,8 +27,8 @@ public class UsuarioDAO {
             preparedStatement.setString(3, usuario.getSenha());
             preparedStatement.setString(4, usuario.getTelefone());
             preparedStatement.setString(5, usuario.getEndereco());
-            preparedStatement.setString(6, usuario.getTipoUsuario()); // Dentro do BD os usuários são "admin", tatuador e usuario(usuário normal/regular)
-            preparedStatement.setString(7, usuario.getImagemPerfil()); // campo para imagens de perfil do usuário
+            preparedStatement.setString(6, usuario.getImagemPerfil()); // campo para imagens de perfil do usuário
+            preparedStatement.setString(7, usuario.getTipoUsuario()); // Dentro do BD os usuários são "admin", tatuador e usuario(usuário normal/regular)
 
             preparedStatement.execute();
 
@@ -62,11 +62,10 @@ public class UsuarioDAO {
                 String usuarioSenha = resultSet.getString("senha");
                 String usuarioTelefone = resultSet.getString("telefone");
                 String usuarioEndereco = resultSet.getString("endereco");
-                String usuarioTipoUsuario = resultSet.getString("tipo_usuario");
                 String imagemPerfil = resultSet.getString("imagemPerfil");
+                String usuarioTipoUsuario = resultSet.getString("tipo_usuario");
 
-                Usuario usuario = new Usuario();
-
+                Usuario usuario = new Usuario(usuarioID, usuarioNome, usuarioEmail, usuarioSenha, usuarioTelefone, usuarioEndereco, imagemPerfil,usuarioTipoUsuario)
 
                 usuarios.add(usuario);
 

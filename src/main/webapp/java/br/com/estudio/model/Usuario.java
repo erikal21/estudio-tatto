@@ -37,6 +37,17 @@ public class Usuario {
             this.senha= senha;
     }
 
+    public Usuario(String id, String nome, String email, String senha, String telefone, String endereco, String tipoUsuario, String imagemPerfil) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.tipoUsuario = tipoUsuario;
+        this.imagemPerfil = imagemPerfil;
+    }
+
     public Usuario() {
         this.id = id;
         this.nome = nome;
