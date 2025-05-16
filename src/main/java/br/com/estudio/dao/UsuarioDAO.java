@@ -56,16 +56,16 @@ public class UsuarioDAO {
             List<Usuario> usuarios = new ArrayList<>();
 
             while (resultSet.next()) {
-                String usuarioID = resultSet.getString("ID_USUARIO");
-                String usuarioNome = resultSet.getString("nome");
-                String usuarioEmail = resultSet.getString("email");
-                String usuarioSenha = resultSet.getString("senha");
-                String usuarioTelefone = resultSet.getString("telefone");
-                String usuarioEndereco = resultSet.getString("endereco");
-                String usuarioTipoUsuario = resultSet.getString("tipo_usuario");
+                String id = resultSet.getString("ID_USUARIO");
+                String nome = resultSet.getString("nome");
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                String telefone = resultSet.getString("telefone");
+                String endereco = resultSet.getString("endereco");
+                String tipoUsuario = resultSet.getString("tipo_usuario");
                 String imagemPerfil = resultSet.getString("imagemPerfil");
 
-                Usuario usuario = new Usuario();
+                Usuario usuario = new Usuario(id, nome, email, senha, telefone, endereco, imagemPerfil, tipoUsuario); // Use o construtor que aceita todos os campos
 
 
                 usuarios.add(usuario);
