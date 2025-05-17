@@ -50,8 +50,11 @@ public class CreateUsuarioServlet extends HttpServlet {
         } else {
             usuarioDAO.updateUsuario(usuario);
         }
-
-        resp.sendRedirect("/find-all-usuarios");
+        if (usuario.getTipoUsuario().equals("tatuador")) {
+            resp.sendRedirect("/find-all-usuarios");
+        } else {
+            req.getRequestDispatcher("/find-all-usuarios").forward(req, resp);
+        }
     }
 
     private void checkFieldType(FileItem item, Map requestParameters) throws Exception {

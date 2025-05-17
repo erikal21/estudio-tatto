@@ -114,7 +114,7 @@ public class UsuarioDAO {
 
     public void updateUsuario(Usuario usuario) {
 
-        String SQL = "UPDATE USUARIO SET nome = ?, email = ?, senha = ?, telefone = ?, endereco = ?,  imagemPerfil = ?, tipo_usuario= ?, WHERE ID_USUARIO = ?";
+        String SQL = "UPDATE USUARIO SET nome = ?, email = ?, senha = ?, telefone = ?, endereco = ?,  imagemPerfil = ?, tipo_usuario= ? WHERE ID_USUARIO = ?";
 
         try {
 

@@ -49,14 +49,6 @@ INSERT INTO estilo_arte (nome) VALUES
 ('Realismo');
 
 
-INSERT INTO usuario (nome, email, senha, telefone, endereco, tipo_usuario) VALUES
-('Admin', 'admin@admin', '123', '11111111111', 'Rua Admin, 1', 'admin'),
-('Carlos Tattoo', 'carlos@tattoo.com', '111', '11977777777', 'Av. Artística, 789', 'tatuador'),
-('João Silva', 'joao@usuario.com', '222', '11966666666', 'Rua Usuário, 321', 'usuario'),
-('Ana Costa', 'ana@tattoo.com', 'senha123', '11999998888', 'Rua das Flores, 123', 'tatuador'),
-('Bruno Silva', 'bruno@ink.com', 'senha456', '21988887777', 'Av. Brasil, 456', 'tatuador'),
-('Clara Souza', 'clara@arte.com', 'senha789', '31977776666', 'Rua da Liberdade, 789', 'tatuador');
-
 INSERT INTO perfil_tatuador (id_usuario, texto_perfil) VALUES
 (2, 'Tatuagens modernas com estilo próprio.'),
 (4, 'Apaixonada por traços finos e arte tradicional.'),

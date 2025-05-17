@@ -59,7 +59,7 @@ nav ul li a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url("img/tattoo1.jpg") no-repeat center center/cover;
+    background: url("imgL/tattoo1.jpg") no-repeat center center/cover;
     filter: brightness(24%);
     z-index: -1;
     opacity: 0.4;
