@@ -5,6 +5,7 @@ import br.com.estudio.model.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -144,5 +145,33 @@ public class UsuarioDAO {
         }
     }
 
+    public Usuario autenticar(String email, String senha) {
+        // Realize a conexão com o banco de dados e faça a consulta para verificar se o email e senha estão corretos
+        try (Connection connection = ConnectionPoolConfig.getConnection()) {
+            String sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
+            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+                stmt.setString(1, email);
+                stmt.setString(2, senha);
+
+                ResultSet rs = stmt.executeQuery();
+                if (rs.next()) {
+                    // Cria e retorna o objeto Usuario com os dados do banco
+                    return new Usuario(
+                            rs.getString("id"),
+                            rs.getString("nome"),
+                            rs.getString("email"),
+                            rs.getString("senha"),
+                            rs.getString("telefone"),
+                            rs.getString("endereco"),
+                            rs.getString("imagemPerfil"),
+                            rs.getString("tipoUsuario")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;  // Retorna null se não encontrar o usuário
+    }
 
 }

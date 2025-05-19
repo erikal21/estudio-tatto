@@ -25,18 +25,21 @@ public class LoginServlet extends HttpServlet {
         String email = req.getParameter("nm-email");
         String senha = req.getParameter("nm-password");
 
-        Usuario user = new Usuario(email, senha);
+        Usuario loginAttempt = new Usuario(email, senha);
 
-        boolean isValidUser = new UserDAO().verifyCredentials(user);
+        Usuario usuarioLogado = new UserDAO().verifyCredentials(loginAttempt);
 
-        //Se o retorno for verdadeiro e o usuário for válido ele é logado e redirecionado
-        if (isValidUser) {
-            req.getSession().setAttribute("loggedUser", email);
-            resp.sendRedirect("find-all-usuarios"); // envia o usuário para a página com todos os usuários, pode ser modificado no futuro
-        }
-        // se o retorno for falso o usuário não é logado e volta para a página de login
-        else {
-            req.setAttribute("message", "Credenciais inválidas!"); //  mensagem falando que as credenciais estão inválidas
+        if (usuarioLogado != null) {
+            req.getSession().setAttribute("usuarioLogado", usuarioLogado);
+
+            // Redireciona de acordo com o tipo de usuário
+            if ("tatuador".equalsIgnoreCase(usuarioLogado.getTipoUsuario())) {
+                resp.sendRedirect("artistaCadastro.jsp");
+            } else {
+                resp.sendRedirect("index.jsp");
+            }
+        } else {
+            req.setAttribute("message", "Credenciais inválidas!");
             req.getRequestDispatcher("login.jsp").forward(req, resp);
         }
     }

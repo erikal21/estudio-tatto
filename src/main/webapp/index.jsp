@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,8 +9,40 @@
     <link href="https://fonts.cdnfonts.com/css/annabelle" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"/>
 </head>
+<script>
+    const carouselWrapper = document.querySelector('.carousel-wrapper');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    const totalItems = carouselWrapper.children.length;
+    const itemsPerPage = 3;
+    let currentIndex = 0;
+
+    function updateCarousel() {
+        const moveX = -(currentIndex * (100 / itemsPerPage));
+        carouselWrapper.style.transform = `translateX(${moveX}%)`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < totalItems - itemsPerPage) {
+            currentIndex++;
+            updateCarousel();
+        }
+    });
+
+    // Inicializa a posição do carrossel
+    updateCarousel();
+</script>
+
 <body>
 <header>
     <nav>
@@ -51,33 +85,45 @@
     </div>
 </section>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <section id="artistas" class="section">
     <div class="container">
         <div class="header">
             <h1>ARTISTAS</h1>
         </div>
-        <div class="carousel">
-            <div class="artists" id="artists">
+
+        <div class="carousel-container" style="position: relative; width: 100%; overflow: hidden;">
+            <button id="prevBtn" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); z-index: 10;">&#10094;</button>
+            <button id="nextBtn" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 10;">&#10095;</button>
+
+            <div class="carousel-wrapper" style="display: flex; transition: transform 0.5s ease;">
                 <c:forEach var="tatuador" items="${tatuadores}">
-                    <div class="artist">
-                        <div class="artist-image" style="background-image: url('${tatuador.foto1}'); background-size: cover; background-position: center; width: 200px; height: 200px; border-radius: 10px;"></div>
+                    <div class="artist" style="flex: 0 0 33.3333%; box-sizing: border-box; padding: 10px;">
+                        <div class="artist-image" style="background-image: url('${tatuador.foto1}'); height: 200px; background-size: cover; background-position: center; border-radius: 8px;"></div>
                         <h2>${tatuador.nome}</h2>
-                        <p>${tatuador.especialidade}</p>
-                        <a href="#" onclick="openModal('modal-${tatuador.idTatuador}')">VER GALERIA</a>
+                        <p><strong>Especialidade:</strong> ${tatuador.especialidade}</p>
+                        <p>${tatuador.descricao}</p>
+                        <a href="#" class="btn-gallery" onclick="openModal('modal-${tatuador.idTatuador}')">Ver Galeria</a>
+
+                        <div id="modal-${tatuador.idTatuador}" class="modal" style="display:none; position:fixed; top:0; left:0;
+                            width:100%; height:100%; background: rgba(0,0,0,0.8); justify-content:center; align-items:center;">
+                            <div style="background:#fff; padding:20px; border-radius:8px; max-width:600px; width:90%; position:relative;">
+                                <button style="position:absolute; top:10px; right:10px;" onclick="closeModal('modal-${tatuador.idTatuador}')">X</button>
+                                <h2>${tatuador.nome} - Galeria</h2>
+                                <p>${tatuador.descricao}</p>
+                                <div>
+                                    <img src="${tatuador.foto1}" alt="Foto 1" style="max-width:100%; margin-bottom:10px;">
+                                    <img src="${tatuador.foto2}" alt="Foto 2" style="max-width:100%; margin-bottom:10px;">
+                                    <img src="${tatuador.foto3}" alt="Foto 3" style="max-width:100%; margin-bottom:10px;">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </c:forEach>
-            </div>
-            <div class="carousel-buttons">
-                <button class="carousel-button" onclick="prevSlide('artists')">❮</button>
-                <button class="carousel-button" onclick="nextSlide('artists')">❯</button>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Seção Reviews -->
 <section id="reviews" class="section">
     <div class="container">
         <div class="header">
@@ -96,7 +142,6 @@
     </div>
 </section>
 
-<!-- Seção Serviços -->
 <section id="servicos" class="section">
     <div class="container">
         <div class="header">
@@ -123,7 +168,6 @@
     </div>
 </section>
 
-<!-- Seção FAQ -->
 <section id="faq-section">
     <div class="faq-container">
         <div class="faq-header">
@@ -136,7 +180,7 @@
                 <div class="question">QUANTO TEMPO LEVA PARA FAZER UMA TATUAGEM?</div>
                 <div class="number">01</div>
                 <button class="faq-button">+</button>
-                <div class="answer">
+                <div class="answer" style="display:none;">
                     O tempo varia dependendo do tamanho e complexidade da tatuagem. Uma tatuagem pequena pode levar cerca de 1 hora, enquanto designs maiores podem levar várias sessões de 3 a 5 horas cada.
                 </div>
             </div>
@@ -144,7 +188,7 @@
                 <div class="question">QUAIS SÃO OS CUIDADOS APÓS FAZER UMA TATUAGEM?</div>
                 <div class="number">02</div>
                 <button class="faq-button">-</button>
-                <div class="answer">
+                <div class="answer" style="display:block;">
                     Mantenha a tatuagem limpa, aplique uma pomada cicatrizante recomendada pelo tatuador, evite exposição ao sol e não coce ou retire as casquinhas durante a cicatrização, que leva cerca de 2 a 4 semanas.
                 </div>
             </div>
@@ -162,105 +206,51 @@
             <div class="conosco">CONOSCO</div>
         </div>
         <div class="description1">
-            Somos um estúdio de tatuagem que vai além da tinta na pele, aqui respiramos arte, criatividade e autenticidade todos os dias. Nosso espaço é moderno, acolhedor e focado em proporcionar a melhor experiência tanto para os nossos clientes quanto para os profissionais que trabalham conosco.
-            Estamos em busca de tatuadores(as) talentosos, apaixonados pela arte e comprometidos com o atendimento de qualidade. Seja você iniciante ou experiente, aqui você terá liberdade para criar, desenvolver seu estilo e crescer junto com a gente.
-            Você é um artista e busca um espaço onde sua arte seja valorizada?
-            <div class="geforce">
-                <a href="artistaCadastro.jsp">Então venha fazer parte do nosso time!</a>
-            </div>
+            Somos um estúdio de tatuagem que vai além da tinta na pele, aqui respiramos arte, criatividade e autenticidade todos os dias. Nosso espaço é moderno, acolhedor e focado em proporcionar a melhor experiência tanto para os nossos clientes quanto para os profissionais. Venha fazer parte dessa família artística!
         </div>
+        <button class="btn_contato">CONTATO</button>
     </div>
     <div class="metade-direita">
-        <div class="form">FORM</div>
-        <div class="input-container">
-            <input type="text" placeholder="Digite sua dúvida"/>
-        </div>
-        <div class="button-container">
-            <button>BOTÃO DE CONTATO</button>
-        </div>
+        <div class="linha"><img src="imgL/linha.svg" alt="Linha"/></div>
+        <img src="imgL/foto.svg" alt="Foto" class="img"/>
     </div>
 </div>
 
-<div class="container">
-    <div class="contato">CONTATO</div>
-    <div class="fale">FALE</div>
-    <div class="conosco">CONOSCO</div>
-    <div class="info">
-        <div>
-            <p>
-                <strong>ENDEREÇO</strong><br/>Rua Dr. Simões Mendes <br/>03475900
-            </p>
+<footer>
+    <div class="footer-container">
+        <div class="footer-left">
+            <a href="#">Contato</a>
+            <a href="#">Política de Privacidade</a>
+            <a href="#">Termos de Uso</a>
         </div>
-        <div>
-            <p><strong>TELEFONE</strong><br/>(11) 9999-9999</p>
-        </div>
-        <div>
-            <p><strong>EMAIL</strong><br/><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2d1d6d7c6c6cbcd8cd6c3d6d6cde2c5cfc3cbce8cc1cdcf">[email protected]</a></p>
+        <div class="footer-right">
+            <a href="#"><img src="imgL/facebook.svg" alt="Facebook"/></a>
+            <a href="#"><img src="imgL/instagram.svg" alt="Instagram"/></a>
+            <a href="#"><img src="imgL/twitter.svg" alt="Twitter"/></a>
         </div>
     </div>
-    <div class="social">
-        <p>
-            <a href="https://www.instagram.com/">INSTAGRAM</a>
-            <a href="https://www.facebook.com/">FACEBOOK</a>
-            <a href="https://x.com/">TWITTER</a>
-            <br/>
-            Siga para atualizações e inspirações
-        </p>
-    </div>
-</div>
+</footer>
 
 <script>
     function openModal(id) {
-        document.getElementById(id).style.display = "flex";
+        document.getElementById(id).style.display = 'flex';
     }
-
     function closeModal(id) {
-        document.getElementById(id).style.display = "none";
+        document.getElementById(id).style.display = 'none';
     }
-
-    let carouselIndices = {
-        'artists': 0
-    };
-
-    function updateCarousel(carouselId) {
-        const carousel = document.getElementById(carouselId);
-        const items = carousel.querySelectorAll('.artist');
-        const totalItems = items.length;
-        const slideWidth = 100 / 3; // Cada item ocupa 33.33% do carrossel
-        const maxIndex = Math.max(0, totalItems - 3); // Mostra 3 itens por vez
-        if (carouselIndices[carouselId] > maxIndex) carouselIndices[carouselId] = maxIndex;
-        if (carouselIndices[carouselId] < 0) carouselIndices[carouselId] = 0;
-        carousel.style.transform = `translateX(-${carouselIndices[carouselId] * slideWidth}%)`;
-    }
-
-    function nextSlide(carouselId) {
-        carouselIndices[carouselId]++;
-        updateCarousel(carouselId);
-    }
-
-    function prevSlide(carouselId) {
-        carouselIndices[carouselId]--;
-        updateCarousel(carouselId);
-    }
-
-    // Toggle FAQ answers
     document.querySelectorAll('.faq-button').forEach(button => {
         button.addEventListener('click', () => {
             const faqItem = button.parentElement;
             const answer = faqItem.querySelector('.answer');
-            const isHidden = answer.style.display === 'none' || answer.style.display === '';
-
-            if (isHidden) {
-                answer.style.display = 'block';
-                button.textContent = '−';
-            } else {
+            if(answer.style.display === 'block') {
                 answer.style.display = 'none';
                 button.textContent = '+';
+            } else {
+                answer.style.display = 'block';
+                button.textContent = '-';
             }
         });
     });
 </script>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-<script src="./script.js"></script>
 </body>
 </html>
