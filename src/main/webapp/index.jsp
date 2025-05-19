@@ -51,7 +51,8 @@
     </div>
 </section>
 
-<!-- Seção Artistas -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <section id="artistas" class="section">
     <div class="container">
         <div class="header">
@@ -59,24 +60,14 @@
         </div>
         <div class="carousel">
             <div class="artists" id="artists">
-                <div class="artist">
-                    <div class="artist-image"></div>
-                    <h2>João Tinta</h2>
-                    <p>Especialista em realismo e sombreamento.</p>
-                    <a href="#" onclick="openModal('modal1')">VER GALERIA</a>
-                </div>
-                <div class="artist">
-                    <div class="artist-image"></div>
-                    <h2>Artista 2</h2>
-                    <p>Especialista em old school.</p>
-                    <a href="#" onclick="openModal('modal2')">VER GALERIA</a>
-                </div>
-                <div class="artist">
-                    <div class="artist-image"></div>
-                    <h2>Artista 3</h2>
-                    <p>Especialista em aquarela.</p>
-                    <a href="#" onclick="openModal('modal3')">VER GALERIA</a>
-                </div>
+                <c:forEach var="tatuador" items="${tatuadores}">
+                    <div class="artist">
+                        <div class="artist-image" style="background-image: url('${tatuador.foto1}'); background-size: cover; background-position: center; width: 200px; height: 200px; border-radius: 10px;"></div>
+                        <h2>${tatuador.nome}</h2>
+                        <p>${tatuador.especialidade}</p>
+                        <a href="#" onclick="openModal('modal-${tatuador.idTatuador}')">VER GALERIA</a>
+                    </div>
+                </c:forEach>
             </div>
             <div class="carousel-buttons">
                 <button class="carousel-button" onclick="prevSlide('artists')">❮</button>
