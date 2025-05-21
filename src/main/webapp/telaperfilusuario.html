@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil de Erik</title>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+  />
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Oswald", sans-serif;
+      background-color: #000;
+      color: white;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .profile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+      width: 100%;
+    }
+
+    .profile-header h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      color: red;
+      text-transform: uppercase;
+    }
+
+    .avatar {
+      width: 4rem;
+      height: 4rem;
+      border: 2px solid red;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #000;
+    }
+
+    .user-icon {
+      color: red;
+    }
+
+
+    .profile-info {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 2px solid red;
+      transition: all 0.3s ease;
+      animation: fadeIn 0.3s ease-out forwards;
+    }
+
+    .info-row:hover {
+      border-color: #ff3333;
+    }
+
+    .info-content {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .label {
+      font-size: 1.2rem;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    .icon {
+      color: red;
+      display: flex;
+      align-items: center;
+    }
+
+
+    .toggle-password {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: red;
+      padding: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .toggle-password:hover {
+      color: #ff3333;
+    }
+
+
+    .navigation {
+      margin: 3rem 0 2rem;
+      display: flex;
+      justify-content: center;
+      grid-column: 1 / -1;
+    }
+
+    .nav-button {
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      color: white;
+      background: transparent;
+      border: 2px solid red;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      font-family: "Oswald", sans-serif;
+      letter-spacing: 1px;
+      border-radius: 5px;
+    }
+
+    .nav-button:hover {
+      background-color: red;
+      color: white;
+    }
+
+
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      color: #666;
+      font-size: 0.875rem;
+      margin-top: auto;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      grid-column: 1 / -1;
+    }
+
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    @media (max-width: 640px) {
+      .profile-header h1 {
+        font-size: 2rem;
+      }
+
+      .avatar {
+        width: 3.5rem;
+        height: 3.5rem;
+      }
+
+      .label {
+        font-size: 1rem;
+      }
+
+      .profile-info {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <header class="profile-header">
+    <h1>PERFIL DE PESSOA</h1>
+    <div class="avatar">
+      <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="user-icon"
+      >
+        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+    </div>
+  </header>
+
+  <main class="profile-info">
+    <div class="info-row">
+          <span class="info-content">
+            <span class="icon">⟳</span>
+            <span class="label">email</span>
+          </span>
+    </div>
+
+    <div class="info-row">
+      <span class="label">email</span>
+      <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon"
+      >
+        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+      </svg>
+    </div>
+
+    <div class="info-row">
+          <span class="info-content">
+            <span class="icon">⟳</span>
+            <span class="label password-field">••••••••</span>
+          </span>
+      <button class="toggle-password" onclick="togglePassword()">
+        <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="eye-icon"
+        >
+          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+      </button>
+    </div>
+
+    <div class="info-row">
+      <span class="label">Endereço</span>
+      <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon"
+      >
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+        <circle cx="12" cy="10" r="3"></circle>
+      </svg>
+    </div>
+
+    <div class="info-row">
+          <span class="info-content">
+            <span class="icon">⟳</span>
+            <span class="label">Número</span>
+          </span>
+    </div>
+
+    <div class="info-row">
+      <span class="label">Tipo usuário</span>
+      <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon"
+      >
+        <circle cx="8" cy="21" r="1"></circle>
+        <circle cx="19" cy="21" r="1"></circle>
+        <path
+                d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"
+        ></path>
+      </svg>
+    </div>
+  </main>
+
+  <nav class="navigation">
+    <button class="nav-button">Home</button>
+  </nav>
+
+  <footer>
+    <p></p>
+  </footer>
+</div>
+
+<script>
+  function togglePassword() {
+    const passwordField = document.querySelector(".password-field");
+    const eyeIcon = document.querySelector(".eye-icon");
+
+    if (passwordField.textContent === "••••••••") {
+      passwordField.textContent = "senha";//colocar a senha aqui
+      eyeIcon.innerHTML =
+        '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+    } else {
+      passwordField.textContent = "••••••••";
+      eyeIcon.innerHTML =
+        '<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle>';
+    }
+  }
+</script>
+</body>
+</html>
