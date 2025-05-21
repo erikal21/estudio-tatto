@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
             req.getSession().setAttribute("usuarioLogado", usuarioLogado);
 
             if ("tatuador".equalsIgnoreCase(usuarioLogado.getTipoUsuario())) {
-                resp.sendRedirect("artistaCadastro.jsp");
+                resp.sendRedirect("usuarioPerfil");
             } else {
                 resp.sendRedirect("usuarioPerfil");
             }

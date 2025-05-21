@@ -15,11 +15,10 @@
 <header>
     <nav>
         <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Sobre</a></li>
-            <li><a href="">Loja</a></li>
-            <li><a href="">Artistas</a></li>
-            <li><a href="">Contato</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#artistas">Artistas</a></li>
+            <li><a href="#">Contato</a></li>
             <li><a href="login.jsp">👤</a></li>
         </ul>
     </nav>
