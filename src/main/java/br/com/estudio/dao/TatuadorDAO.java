@@ -30,7 +30,7 @@ public class TatuadorDAO {
     }
 
     public List<TatuadorUsuario> listarComUsuario() throws SQLException {
-        String sql = "SELECT t.ID_TATUADOR, t.ID_USUARIO, u.NOME, u.EMAIL, t.DESCRICAO, t.ESPECIALIDADE, t.FOTO1, t.FOTO2, t.FOTO3 " +
+        String sql = "SELECT t.ID_TATUADOR, t.ID_USUARIO, u.NOME, u.EMAIL, u.IMAGEMPERFIL, t.DESCRICAO, t.ESPECIALIDADE, t.FOTO1, t.FOTO2, t.FOTO3 " +
                 "FROM TATUADOR t JOIN USUARIO u ON t.ID_USUARIO = u.ID_USUARIO";
         List<TatuadorUsuario> lista = new ArrayList<>();
         try (PreparedStatement ps = connection.prepareStatement(sql);

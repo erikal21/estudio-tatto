@@ -146,7 +146,6 @@ public class UsuarioDAO {
     }
 
     public Usuario autenticar(String email, String senha) {
-        // Realize a conexão com o banco de dados e faça a consulta para verificar se o email e senha estão corretos
         try (Connection connection = ConnectionPoolConfig.getConnection()) {
             String sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -171,7 +170,38 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;  // Retorna null se não encontrar o usuário
+        return null;
+    }
+    public Usuario buscarPorId(String idUsuario) {
+        String SQL = "SELECT * FROM USUARIO WHERE ID_USUARIO = ?";
+        try {
+            Connection connection = ConnectionPoolConfig.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1, idUsuario);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String id = resultSet.getString("ID_USUARIO");
+                String nome = resultSet.getString("nome");
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                String telefone = resultSet.getString("telefone");
+                String endereco = resultSet.getString("endereco");
+                String tipoUsuario = resultSet.getString("tipo_usuario");
+                String imagemPerfil = resultSet.getString("imagemPerfil");
+
+                Usuario usuario = new Usuario(id, nome, email, senha, telefone, endereco, imagemPerfil, tipoUsuario);
+
+                connection.close();
+                return usuario;
+            }
+
+            connection.close();
+        } catch (Exception e) {
+            System.out.println("Erro ao buscar usuário por ID: " + e.getMessage());
+        }
+        return null;
     }
 
 }

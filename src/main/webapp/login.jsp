@@ -14,7 +14,6 @@
             padding: 0;
             color: white;
         }
-
         .container {
             max-width: 400px;
             margin: 60px auto;
@@ -23,20 +22,23 @@
             border-radius: 8px;
             position: relative;
         }
-
         .login {
-            font-size: 36px;
+            font-size: 48px;
             color: red;
             text-align: center;
             margin-bottom: 30px;
+            letter-spacing: 2px;
         }
-
         .input-container {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
-
+        label {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
         input {
             background-color: #000;
             border: 2px solid red;
@@ -45,20 +47,25 @@
             border-radius: 4px;
             font-size: 16px;
         }
-
         input::placeholder {
-            color: #aaa;
+            color: #bbb;
         }
-
-        label {
-            display: none;
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 1000px #000 inset !important;
+            -webkit-text-fill-color: white !important;
+            transition: background-color 5000s ease-in-out 0s;
         }
-
+        input:-moz-autofill {
+            box-shadow: 0 0 0 1000px #000 inset !important;
+            -moz-text-fill-color: white !important;
+        }
         .button-container {
             margin-top: 30px;
             text-align: center;
         }
-
         button {
             background-color: #000;
             color: white;
@@ -66,58 +73,57 @@
             border: 2px solid red;
             cursor: pointer;
             font-family: 'Oswald', sans-serif;
-            transition: background-color 0.3s, border-color 0.3s;
             font-size: 16px;
             border-radius: 5px;
+            transition: none;
         }
-
+        button:hover {
+            background-color: #000;
+            color: white;
+            border-color: red;
+            cursor: pointer;
+        }
         .register-link {
             margin-top: 20px;
             text-align: center;
         }
-
         .register-link a {
             color: red;
             text-decoration: none;
             font-size: 14px;
         }
-
         .register-link a:hover {
             text-decoration: underline;
         }
-
         .message {
             color: red;
             text-align: center;
             margin-bottom: 15px;
             font-size: 14px;
         }
-         .back-button {
-                    position: absolute;
-                    top: 15px;
-                    left: 15px;
-                }
-
-                .back-button a {
-                    text-decoration: none;
-                    color: red;
-                    font-size: 18px;
-                }
-
-                .back-button a:hover {
-                    text-decoration: underline;
-                }
-
-                .back-button a::before {
-                    content: "← ";
-                }
+        .back-button {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+        .back-button a {
+            text-decoration: none;
+            color: red;
+            font-size: 18px;
+        }
+        .back-button a:hover {
+            text-decoration: underline;
+        }
+        .back-button a::before {
+            content: "← ";
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
- <div class="back-button">
-        <a href="index.html"></a>
+    <div class="back-button">
+        <a href="index.jsp"></a>
     </div>
     <div class="login">
         LOGIN
@@ -129,11 +135,11 @@
         </c:if>
 
         <div class="input-container">
-            <label for="nm-email"></label>
-            <input type="text" name="nm-email" id="nm-email" required placeholder="Email">
+            <label for="nm-email">Email</label>
+            <input type="text" name="nm-email" id="nm-email" required placeholder="Digite seu email">
 
-            <label for="nm-password"></label>
-            <input type="password" name="nm-password" id="nm-password" required placeholder="Senha">
+            <label for="nm-password">Senha</label>
+            <input type="password" name="nm-password" id="nm-password" required placeholder="Digite sua senha">
         </div>
 
         <div class="button-container">

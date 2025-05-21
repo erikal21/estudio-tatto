@@ -11,38 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css"/>
 </head>
-<script>
-    const carouselWrapper = document.querySelector('.carousel-wrapper');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-
-    const totalItems = carouselWrapper.children.length;
-    const itemsPerPage = 3;
-    let currentIndex = 0;
-
-    function updateCarousel() {
-        const moveX = -(currentIndex * (100 / itemsPerPage));
-        carouselWrapper.style.transform = `translateX(${moveX}%)`;
-    }
-
-    prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateCarousel();
-        }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (currentIndex < totalItems - itemsPerPage) {
-            currentIndex++;
-            updateCarousel();
-        }
-    });
-
-    // Inicializa a posição do carrossel
-    updateCarousel();
-</script>
-
 <body>
 <header>
     <nav>
@@ -92,28 +60,23 @@
         </div>
 
         <div class="carousel-container" style="position: relative; width: 100%; overflow: hidden;">
-            <button id="prevBtn" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); z-index: 10;">&#10094;</button>
-            <button id="nextBtn" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 10;">&#10095;</button>
-
-            <div class="carousel-wrapper" style="display: flex; transition: transform 0.5s ease;">
+            <div class="carousel-wrapper" id="carouselWrapper" style="display: flex; transition: transform 0.5s ease;">
                 <c:forEach var="tatuador" items="${tatuadores}">
                     <div class="artist" style="flex: 0 0 33.3333%; box-sizing: border-box; padding: 10px;">
-                        <div class="artist-image" style="background-image: url('${tatuador.foto1}'); height: 200px; background-size: cover; background-position: center; border-radius: 8px;"></div>
+                        <div class="artist-image" style="background-image: url('${tatuador.foto1}'); height: 400px; background-size: cover; background-position: center;"></div>
                         <h2>${tatuador.nome}</h2>
                         <p><strong>Especialidade:</strong> ${tatuador.especialidade}</p>
-                        <p>${tatuador.descricao}</p>
                         <a href="#" class="btn-gallery" onclick="openModal('modal-${tatuador.idTatuador}')">Ver Galeria</a>
 
-                        <div id="modal-${tatuador.idTatuador}" class="modal" style="display:none; position:fixed; top:0; left:0;
-                            width:100%; height:100%; background: rgba(0,0,0,0.8); justify-content:center; align-items:center;">
+                        <div id="modal-${tatuador.idTatuador}" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); justify-content:center; align-items:center;">
                             <div style="background:#fff; padding:20px; border-radius:8px; max-width:600px; width:90%; position:relative;">
                                 <button style="position:absolute; top:10px; right:10px;" onclick="closeModal('modal-${tatuador.idTatuador}')">X</button>
-                                <h2>${tatuador.nome} - Galeria</h2>
+                               <h2 style="color: red;">${tatuador.nome} - Galeria</h2>
                                 <p>${tatuador.descricao}</p>
-                                <div>
-                                    <img src="${tatuador.foto1}" alt="Foto 1" style="max-width:100%; margin-bottom:10px;">
-                                    <img src="${tatuador.foto2}" alt="Foto 2" style="max-width:100%; margin-bottom:10px;">
-                                    <img src="${tatuador.foto3}" alt="Foto 3" style="max-width:100%; margin-bottom:10px;">
+                                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                                    <img src="${tatuador.foto1}" alt="Foto 1" style="flex: 1; max-width: 33%; object-fit: cover; border-radius: 5px;">
+                                    <img src="${tatuador.foto2}" alt="Foto 2" style="flex: 1; max-width: 33%; object-fit: cover; border-radius: 5px;">
+                                    <img src="${tatuador.foto3}" alt="Foto 3" style="flex: 1; max-width: 33%; object-fit: cover; border-radius: 5px;">
                                 </div>
                             </div>
                         </div>
@@ -123,6 +86,26 @@
         </div>
     </div>
 </section>
+
+<script>
+    const wrapper = document.getElementById('carouselWrapper');
+    const totalItems = wrapper.children.length;
+    const itemsPerSlide = 3;
+    const totalSlides = Math.ceil(totalItems / itemsPerSlide);
+    let currentIndex = 0;
+
+    function moveCarousel() {
+        currentIndex++;
+        if (currentIndex >= totalSlides) {
+            currentIndex = 0;
+        }
+        const offset = -(currentIndex * 100);
+        wrapper.style.transform = `translateX(${offset}%)`;
+    }
+
+    setInterval(moveCarousel, 4000);
+</script>
+
 
 <section id="reviews" class="section">
     <div class="container">
@@ -235,22 +218,41 @@
     function openModal(id) {
         document.getElementById(id).style.display = 'flex';
     }
+
     function closeModal(id) {
         document.getElementById(id).style.display = 'none';
     }
-    document.querySelectorAll('.faq-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const faqItem = button.parentElement;
-            const answer = faqItem.querySelector('.answer');
-            if(answer.style.display === 'block') {
-                answer.style.display = 'none';
-                button.textContent = '+';
-            } else {
-                answer.style.display = 'block';
-                button.textContent = '-';
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const wrapper = document.querySelector('.carousel-wrapper');
+        const cards = wrapper.querySelectorAll('.artist');
+        const visible = 3;
+        const total = cards.length;
+        let index = 0;
+
+        if (total <= visible) {
+            wrapper.style.justifyContent = 'center';
+            return;
+        }
+
+        function update() {
+            const cardWidth = cards[0].offsetWidth + 20; // 20 = padding/margin
+            wrapper.style.transform = `translateX(-${index * cardWidth}px)`;
+        }
+
+        function autoScroll() {
+            index++;
+            if (index > total - visible) {
+                index = 0;
             }
-        });
+            update();
+        }
+
+        setInterval(autoScroll, 4000); // troca a cada 4 segundos
+        update();
     });
 </script>
+
+
 </body>
 </html>

@@ -32,11 +32,10 @@ public class LoginServlet extends HttpServlet {
         if (usuarioLogado != null) {
             req.getSession().setAttribute("usuarioLogado", usuarioLogado);
 
-            // Redireciona de acordo com o tipo de usuário
             if ("tatuador".equalsIgnoreCase(usuarioLogado.getTipoUsuario())) {
                 resp.sendRedirect("artistaCadastro.jsp");
             } else {
-                resp.sendRedirect("index.jsp");
+                resp.sendRedirect("usuarioPerfil");
             }
         } else {
             req.setAttribute("message", "Credenciais inválidas!");
