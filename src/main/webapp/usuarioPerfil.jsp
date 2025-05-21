@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -167,6 +166,51 @@
   text-decoration: none;
   transition: all 0.3s ease;
 }
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    width: 300px;
+  }
+
+  .close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .modal-btn {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    margin: 10px 5px 0 5px;
+    font-family: "Oswald", sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+
+  .modal-btn:hover {
+    background-color: #ff3333;
+  }
 
 .custom-action-button:hover {
   background-color: black;
@@ -266,14 +310,20 @@
   </form>
 
   <c:if test="${usuario.tipoUsuario == 'tatuador'}">
-    <a href="maisInformacoes.jsp?id=${usuario.id}" class="nav-button custom-action-button">
-      Mais Informações
-    </a>
+    <button id="openModalBtn" class="nav-button custom-action-button">ANÚNCIO</button>
   </c:if>
 
+
+  <div id="myModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Escolha uma opção</h2>
+      <button id="verAnuncioBtn" class="modal-btn">Ver Anúncio</button>
+      <button id="criarAnuncioBtn" class="modal-btn">Criar Anúncio</button>
+    </div>
+  </div>
+
 </div>
-
-
 
 
   <footer>
@@ -282,6 +332,35 @@
 </div>
 
 <script>
+
+const modal = document.getElementById("myModal");
+  const openBtn = document.getElementById("openModalBtn");
+  const closeBtn = document.querySelector(".close");
+  const verBtn = document.getElementById("verAnuncioBtn");
+  const criarBtn = document.getElementById("criarAnuncioBtn");
+
+  openBtn.onclick = () => {
+    modal.style.display = "flex";
+  };
+
+  closeBtn.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  window.onclick = (event) => {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  criarBtn.onclick = () => {
+    window.location.href = "artistaCadastro.jsp?id=${id.usuario}";
+  };
+
+  verBtn.onclick = () => {
+    window.location.href = "listar-artistas?id=${id.usuario}";
+  };
+
   let showingPassword = false;
 
   function togglePassword() {

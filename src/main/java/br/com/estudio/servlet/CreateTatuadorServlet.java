@@ -51,7 +51,7 @@ public class CreateTatuadorServlet extends HttpServlet {
             TatuadorDAO tatuadorDAO = new TatuadorDAO(ConnectionPoolConfig.getConnection());
             tatuadorDAO.inserir(tatuador);
 
-            response.sendRedirect("artistaPerfil.jsp"); // Redireciona para o perfil do tatuador
+            response.sendRedirect("/list-tatuadores");
 
         } catch (Exception e) {
             e.printStackTrace();

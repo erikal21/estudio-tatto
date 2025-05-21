@@ -18,7 +18,7 @@ public class DeleteUsuarioServlet extends HttpServlet {
 
         new UsuarioDAO().deleteUsuarioById(usuarioId);
 
-        resp.sendRedirect("/find-all-usuarios");
+        resp.sendRedirect("/index.jsp");
 
     }
 

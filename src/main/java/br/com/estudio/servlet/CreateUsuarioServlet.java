@@ -51,9 +51,9 @@ public class CreateUsuarioServlet extends HttpServlet {
 
         // Redireciona conforme o tipo de usuário (sem login automático)
         if ("tatuador".equalsIgnoreCase(tipoUsuario)) {
-            resp.sendRedirect("login.jsp");
+            resp.sendRedirect("usuarioPerfil");
         } else {
-            resp.sendRedirect("index.jsp");
+            resp.sendRedirect("usuarioPerfil");
         }
     }
 
