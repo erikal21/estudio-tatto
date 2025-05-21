@@ -118,7 +118,7 @@
             <input type="password" name="senha" id="senha" value="${param.senha}" required placeholder=" Senha "/>
 
             <label for="telefone"></label>
-            <input type="text" name="telefone" id="telefone" value="${param.telefone}" placeholder="Telefone" maxlength="13"/>
+            <input type="text" name="telefone" id="telefone" value="${param.telefone}" placeholder="Telefone" maxlength="15"/>
 
             <label for="endereco"></label>
             <input type="text" name="endereco" id="endereco" value="${param.endereco}" placeholder=" Endereço "/>
@@ -142,24 +142,13 @@
 
 <script>
     const inputTelefone = document.getElementById("telefone");
-
-    inputTelefone.addEventListener("input", function () {
-        let valor = this.value.replace(/\D/g, "");
-
-        if (valor.length > 11) {
-            valor = valor.substring(0, 11);
-        }
-
-        if (valor.length > 7) {
-            valor = valor.replace(/^(\d{2})(\d{5})(\d{0,4}).*/, '$1 $2-$3');
-        } else if (valor.length > 2) {
-            valor = valor.replace(/^(\d{2})(\d{0,5})/, '$1 $2');
-        }
-
-        this.value = valor;
-    });
+        inputTelefone?.addEventListener("input", function () {
+            let valor = this.value.replace(/\D/g, "").slice(0, 11);
+            valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2");
+            valor = valor.replace(/(\d{5})(\d{4})$/, "$1-$2");
+            this.value = valor;
+        });
 </script>
-
 
 </body>
 </html>
