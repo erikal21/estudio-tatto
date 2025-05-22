@@ -29,18 +29,12 @@ https://paletadecores.com/paleta/939393/aeaeae/c9c9c9/e4e4e4/ffffff
 ### 🏠 **Navegação e Catálogo**
 
 - [ ] A página inicial deve exibir destaques de tatuadores e estilos populares;
-- [ ] O catálogo deve listar tatuadores filtráveis por especialidade, localização e avaliações;
 - [ ] Cada tatuador terá uma página de perfil com seu portfólio, descrição e contato;
 - [ ] O sistema deve permitir que os clientes avaliem os tatuadores, deixando comentários e feedbacks sobre suas experiências;
-
-### 🛒 **Carrinho e Pagamento**
-- [ ] Os clientes devem poder adicionar serviços ao carrinho;
-- [ ] O pagamento deve ser realizado de forma segura através de métodos como Pix, cartão de crédito e boleto;
 
 ### 👤 **Perfil do Tatuador**
 - [ ] O tatuador poderá adicionar e gerenciar seus serviços e fotos de portfólio;
 - [ ] O perfil permitirá edição de dados como localização e redes sociais;
-- [ ] O sistema deve permitir aos tatuadores responder e avaliar clientes, deixando comentários e feedbacks sobre suas experiências;
 
 ### ℹ️ **Outras Funcionalidades**
 
