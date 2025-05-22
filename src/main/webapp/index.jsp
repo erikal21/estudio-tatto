@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="br.com.estudio.model.Usuario" %>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -19,7 +21,23 @@
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#artistas">Artistas</a></li>
             <li><a href="#">Contato</a></li>
-            <li><a href="login.jsp">👤</a></li>
+
+            <%
+                Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+            %>
+            <li>
+                <% if (usuario != null) { %>
+                    <a href="usuarioPerfil" title="Perfil do Usuário">👤 <%= usuario.getNome().split(" ")[0] %></a>
+                <% } else { %>
+                    <a href="login" title="Fazer Login">👤</a>
+                <% } %>
+            </li>
+
+        <% if (usuario != null) { %>
+        <li><a href="logout">Sair</a></li>
+        <% } %>
+
+
         </ul>
     </nav>
 </header>

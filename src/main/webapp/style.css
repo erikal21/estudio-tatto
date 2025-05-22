@@ -17,12 +17,18 @@ header {
 }
 
 nav {
-    position: absolute;
-    top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    text-align: center;
-    z-index: 10;
+    background: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    padding: 15px 0;
+    transition: background 0.3s, padding 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
+
 
 nav ul {
     display: flex;
@@ -31,9 +37,20 @@ nav ul {
     padding: 0;
 }
 
-nav ul li {
-    margin: 0 15px;
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
 }
+
+nav ul li a:hover {
+    background-color: red;
+    color: #121212;
+}
+
 
 nav ul li a {
     color: white;
@@ -50,6 +67,7 @@ nav ul li a {
     text-align: center;
     padding: 20px;
     overflow: hidden;
+    margin-top: 80px;
 }
 
 .hero::before {
@@ -437,7 +455,7 @@ a:hover {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Reviews Section Styles */
+
 .review-container {
     display: flex;
     justify-content: center;
@@ -485,7 +503,7 @@ a:hover {
     font-weight: normal;
 }
 
-/* Services Section Styles */
+
 .service-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -515,7 +533,7 @@ a:hover {
     color: #b3b3b3;
 }
 
-/* FAQ Section Styles */
+
 #faq-section {
     padding: 100px 0;
     background-color: #000000;
@@ -638,7 +656,7 @@ a:hover {
     padding-left: 300px;
 }
 
-/* Add a subtle glitch effect to the background */
+
 #faq-section::before {
     content: "";
     position: absolute;
@@ -651,4 +669,34 @@ a:hover {
     background-size: 20px 20px;
     opacity: 0.1;
     z-index: -1;
+}
+
+footer {
+    background-color: #800080;
+    padding: 20px 0;
+    color: white;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-left, .footer-right {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-left a, .footer-right a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-right img {
+    width: 24px;
+    height: 24px;
 }
