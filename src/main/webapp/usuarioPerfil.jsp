@@ -251,7 +251,7 @@
 <body>
 <div class="container">
 <div class="back-button">
-        <a href="index.jsp"></a>
+        <a href="list-tatuadores"></a>
     </div>
 
   <header class="profile-header">

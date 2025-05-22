@@ -7,36 +7,35 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Landingpage</title>
+    <title>StudioTatto</title>
     <link href="https://fonts.cdnfonts.com/css/annabelle" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css"/>
 </head>
 <body>
 <header>
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
+            <li><a href="#Home">Home</a></li>
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#artistas">Artistas</a></li>
-            <li><a href="#">Contato</a></li>
+            <li><a href="#contato">Contato</a></li>
 
             <%
-                Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+            Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
             %>
             <li>
                 <% if (usuario != null) { %>
-                    <a href="usuarioPerfil" title="Perfil do Usuário">👤 <%= usuario.getNome().split(" ")[0] %></a>
+                <a href="usuarioPerfil" title="Perfil do Usuário">👤 <%= usuario.getNome().split(" ")[0] %></a>
                 <% } else { %>
-                    <a href="login" title="Fazer Login">👤</a>
+                <a href="login" title="Fazer Login">👤</a>
                 <% } %>
             </li>
 
-        <% if (usuario != null) { %>
-        <li><a href="logout">Sair</a></li>
-        <% } %>
-
+            <% if (usuario != null) { %>
+            <li><a href="logout">Sair</a></li>
+            <% } %>
 
         </ul>
     </nav>
@@ -63,10 +62,10 @@
         certo!
     </p>
     <div class="fotosTattoo">
-        <img src="imgL/fotoT67.jpg" alt="Foto1"/>
-        <img src="imgL/fotoT2.jpg" alt="Foto2"/>
-        <img src="imgL/fotoT3.jpg" alt="Foto3"/>
-        <img src="imgL/fotoT5.jpg" alt="Foto4"/>
+        <img src="${pageContext.request.contextPath}/imgL/fotoT67.jpg" alt="Foto1"/>
+        <img src="${pageContext.request.contextPath}/imgL/fotoT2.jpg" alt="Foto2"/>
+        <img src="${pageContext.request.contextPath}/imgL/fotoT3.jpg" alt="Foto3"/>
+        <img src="${pageContext.request.contextPath}/imgL/fotoT5.jpg" alt="Foto4"/>
     </div>
 </section>
 
@@ -75,54 +74,45 @@
         <div class="header">
             <h1>ARTISTAS</h1>
         </div>
-
-        <div class="carousel-container" style="position: relative; width: 100%; overflow: hidden;">
-            <div class="carousel-wrapper" id="carouselWrapper" style="display: flex; transition: transform 0.5s ease;">
-                <c:forEach var="tatuador" items="${tatuadores}">
-                    <div class="artist" style="flex: 0 0 33.3333%; box-sizing: border-box; padding: 10px;">
-                        <div class="artist-image" style="background-image: url('${tatuador.foto1}'); height: 400px; background-size: cover; background-position: center;"></div>
-                        <h2>${tatuador.nome}</h2>
-                        <p><strong>Especialidade:</strong> ${tatuador.especialidade}</p>
-                        <a href="#" class="btn-gallery" onclick="openModal('modal-${tatuador.idTatuador}')">Ver Galeria</a>
-
-                        <div id="modal-${tatuador.idTatuador}" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); justify-content:center; align-items:center;">
-                            <div style="background:#fff; padding:20px; border-radius:8px; max-width:600px; width:90%; position:relative;">
-                                <button style="position:absolute; top:10px; right:10px;" onclick="closeModal('modal-${tatuador.idTatuador}')">X</button>
-                               <h2 style="color: red;">${tatuador.nome} - Galeria</h2>
-                                <p>${tatuador.descricao}</p>
-                                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
-                                    <img src="${tatuador.foto1}" alt="Foto 1" style="flex: 1; max-width: 33%; object-fit: cover; border-radius: 5px;">
-                                    <img src="${tatuador.foto2}" alt="Foto 2" style="flex: 1; max-width: 33%; object-fit: cover; border-radius: 5px;">
-                                    <img src="${tatuador.foto3}" alt="Foto 3" style="flex: 1; max-width: 33%; object-fit: cover; border-radius: 5px;">
-                                </div>
-                            </div>
+        <div class="carousel-container">
+            <button class="carousel-button prev" onclick="scrollCarousel('artistCarousel', -1, event)">❮</button>
+            <div class="carousel" id="artistCarousel">
+                <div class="carousel-wrapper">
+                    <c:forEach var="tatuador" items="${tatuadores}">
+                        <div class="artist">
+                            <div class="artist-image" style="background-image: url('<c:out value='${pageContext.request.contextPath}/${tatuador.foto1}' default='${pageContext.request.contextPath}/imgL/placeholder.jpg'/>');"></div>
+                            <h2><c:out value="${tatuador.nome}" default="Artista Desconhecido"/></h2>
+                            <p><strong>Especialidade:</strong> <c:out value="${tatuador.especialidade}" default="Não informada"/></p>
+                            <p><c:out value="${tatuador.descricao}" default="Sem descrição"/></p>
+                            <a href="#" class="btn-gallery" onclick="openModal(
+                                '<c:out value="${tatuador.nome}" default="Artista Desconhecido"/>',
+                            '<c:out value="${tatuador.especialidade}" default="Não informada"/>',
+                            '<c:out value="${tatuador.descricao}" default="Sem descrição"/>',
+                            [
+                            '<c:out value="${pageContext.request.contextPath}/${tatuador.foto1}" default="${pageContext.request.contextPath}/imgL/placeholder.jpg"/>',
+                            '<c:out value="${pageContext.request.contextPath}/${tatuador.foto2}" default="${pageContext.request.contextPath}/imgL/placeholder.jpg"/>',
+                            '<c:out value="${pageContext.request.contextPath}/${tatuador.foto3}" default="${pageContext.request.contextPath}/imgL/placeholder.jpg"/>'
+                            ]
+                            )">Ver Galeria</a>
                         </div>
-                    </div>
-                </c:forEach>
+                    </c:forEach>
+                </div>
             </div>
+            <button class="carousel-button next" onclick="scrollCarousel('artistCarousel', 1, event)">❯</button>
         </div>
     </div>
 </section>
 
-<script>
-    const wrapper = document.getElementById('carouselWrapper');
-    const totalItems = wrapper.children.length;
-    const itemsPerSlide = 3;
-    const totalSlides = Math.ceil(totalItems / itemsPerSlide);
-    let currentIndex = 0;
-
-    function moveCarousel() {
-        currentIndex++;
-        if (currentIndex >= totalSlides) {
-            currentIndex = 0;
-        }
-        const offset = -(currentIndex * 100);
-        wrapper.style.transform = `translateX(${offset}%)`;
-    }
-
-    setInterval(moveCarousel, 4000);
-</script>
-
+<!-- Single Modal for all artists -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">×</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalSpecialty"></p>
+        <p id="modalDescription"></p>
+        <div class="gallery" id="modalGallery"></div>
+    </div>
+</div>
 
 <section id="reviews" class="section">
     <div class="container">
@@ -149,20 +139,20 @@
         </div>
         <div class="service-container">
             <div class="service-card">
-                <h2>TATUAGENS</h2>
-                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. text ever since the 1500s,</p>
+                <h2>TRADICIONAL</h2>
+                <p>Estilo clássico com linhas bold e cores vibrantes, inspirado na arte tradicional americana, ideal para designs icônicos.</p>
             </div>
             <div class="service-card">
-                <h2>TATUAGENS</h2>
-                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. text ever since the 1500s,</p>
+                <h2>REALISMO</h2>
+                <p>Técnica avançada que cria tatuagens com detalhes realistas, como retratos ou paisagens, usando sombreado fino.</p>
             </div>
             <div class="service-card">
-                <h2>TATUAGENS</h2>
-                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. text ever since the 1500s,</p>
+                <h2>DOTWORK</h2>
+                <p>Técnica que utiliza pontos para formar padrões geométricos ou ilustrações, perfeita para designs minimalistas e únicos.</p>
             </div>
             <div class="service-card">
-                <h2>TATUAGENS</h2>
-                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. text ever since the 1500s,</p>
+                <h2>COVER-UP</h2>
+                <p>Serviço para cobrir tatuagens antigas com novos designs criativos, adaptando-se ao desenho original.</p>
             </div>
         </div>
     </div>
@@ -180,7 +170,7 @@
                 <div class="question">QUANTO TEMPO LEVA PARA FAZER UMA TATUAGEM?</div>
                 <div class="number">01</div>
                 <button class="faq-button">+</button>
-                <div class="answer" style="display:none;">
+                <div class="answer">
                     O tempo varia dependendo do tamanho e complexidade da tatuagem. Uma tatuagem pequena pode levar cerca de 1 hora, enquanto designs maiores podem levar várias sessões de 3 a 5 horas cada.
                 </div>
             </div>
@@ -201,75 +191,65 @@
 
 <div class="container2">
     <div class="metade-esquerda">
-        <div class="boxEsq">
-            <div class="contato">TRABALHE</div>
-            <div class="conosco">CONOSCO</div>
-        </div>
-        <div class="description1">
-            Somos um estúdio de tatuagem que vai além da tinta na pele, aqui respiramos arte, criatividade e autenticidade todos os dias. Nosso espaço é moderno, acolhedor e focado em proporcionar a melhor experiência tanto para os nossos clientes quanto para os profissionais. Venha fazer parte dessa família artística!
-        </div>
-        <button class="btn_contato">CONTATO</button>
+        <img src="${pageContext.request.contextPath}/img/tattoo_img.jpg" alt="Tattoo Artist Working" class="full-image"/>
     </div>
     <div class="metade-direita">
-        <div class="linha"><img src="imgL/linha.svg" alt="Linha"/></div>
-        <img src="imgL/foto.svg" alt="Foto" class="img"/>
+        <div class="form-title">FORM</div>
+        <form class="contact-form">
+            <div class="input-container">
+                <input type="text" placeholder="NOME" required/>
+            </div>
+            <div class="input-container">
+                <input type="email" placeholder="E-MAIL" required/>
+            </div>
+            <div class="input-container">
+                <textarea placeholder="COMENTÁRIOS" rows="5" required></textarea>
+            </div>
+            <div class="button-container">
+                <button type="submit">ENVIAR FEEDBACK</button>
+            </div>
+        </form>
     </div>
 </div>
 
+<section id="contato">
 <footer>
     <div class="footer-container">
-        <div class="footer-left">
-            <a href="#">Contato</a>
-            <a href="#">Política de Privacidade</a>
-            <a href="#">Termos de Uso</a>
+        <div class="footer-header">
+            <div class="contato-wrapper">
+                <span class="contato">CONTATO</span>
+            </div>
+            <div class="fale-conosco-wrapper">
+                <span class="fale">FALE</span>
+                <span class="conosco">CONOSCO</span>
+            </div>
         </div>
-        <div class="footer-right">
-            <a href="#"><img src="imgL/facebook.svg" alt="Facebook"/></a>
-            <a href="#"><img src="imgL/instagram.svg" alt="Instagram"/></a>
-            <a href="#"><img src="imgL/twitter.svg" alt="Twitter"/></a>
+        <div class="footer-info">
+            <div class="info-item">
+                <h3>ENDEREÇO</h3>
+                <p>XXXXXXXXXXXX XXXXXXXXXXXX</p>
+            </div>
+            <div class="info-item">
+                <h3>TELEFONE</h3>
+                <p>(11)9999-9999</p>
+            </div>
+            <div class="info-item">
+                <h3>EMAIL</h3>
+                <p>contato@thiago.com</p>
+            </div>
         </div>
+        <div class="footer-social">
+            <span>Siga a gente</span>
+            <a href="#">INSTAGRAM</a>
+            <a href="#">FACEBOOK</a>
+            <a href="#">TWITTER</a>
+            <span>Siga para atualizações e inspirações</span>
+        </div>
+        <div class="footer-text"></div>
     </div>
 </footer>
+</section>
 
-<script>
-    function openModal(id) {
-        document.getElementById(id).style.display = 'flex';
-    }
-
-    function closeModal(id) {
-        document.getElementById(id).style.display = 'none';
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-        const wrapper = document.querySelector('.carousel-wrapper');
-        const cards = wrapper.querySelectorAll('.artist');
-        const visible = 3;
-        const total = cards.length;
-        let index = 0;
-
-        if (total <= visible) {
-            wrapper.style.justifyContent = 'center';
-            return;
-        }
-
-        function update() {
-            const cardWidth = cards[0].offsetWidth + 20; // 20 = padding/margin
-            wrapper.style.transform = `translateX(-${index * cardWidth}px)`;
-        }
-
-        function autoScroll() {
-            index++;
-            if (index > total - visible) {
-                index = 0;
-            }
-            update();
-        }
-
-        setInterval(autoScroll, 4000); // troca a cada 4 segundos
-        update();
-    });
-</script>
-
-
+<script src="${pageContext.request.contextPath}/script.js"></script>
 </body>
 </html>

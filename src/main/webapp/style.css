@@ -10,6 +10,7 @@ body {
     color: white;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 header {
@@ -17,10 +18,14 @@ header {
 }
 
 nav {
+    position: absolute;
+    top: 20px;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    text-align: center;
+    z-index: 10;
     background: rgba(18, 18, 18, 0.8);
     backdrop-filter: blur(6px);
     z-index: 1000;
@@ -29,7 +34,6 @@ nav {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-
 nav ul {
     display: flex;
     justify-content: center;
@@ -37,20 +41,9 @@ nav ul {
     padding: 0;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background 0.3s, color 0.3s;
+nav ul li {
+    margin: 0 15px;
 }
-
-nav ul li a:hover {
-    background-color: red;
-    color: #121212;
-}
-
 
 nav ul li a {
     color: white;
@@ -67,7 +60,6 @@ nav ul li a {
     text-align: center;
     padding: 20px;
     overflow: hidden;
-    margin-top: 80px;
 }
 
 .hero::before {
@@ -126,8 +118,12 @@ nav ul li a {
 }
 
 .container {
-    padding: 50px;
-    background-color: #621ad2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #121212;
+    position: relative;
+    overflow: hidden;
 }
 
 .container-art {
@@ -159,7 +155,6 @@ nav ul li a {
     font-size: 80px;
     font-family: "Oswald", sans-serif;
     color: #310c77;
-    padding-left: 100px;
     padding-left: 0;
     margin-top: -20px;
 }
@@ -196,58 +191,87 @@ nav ul li a {
     width: 50%;
     height: 100%;
     background-color: black;
+    overflow: hidden;
+}
+
+.metade-esquerda .full-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .metade-direita {
     width: 50%;
     height: 100%;
     background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-.form {
+.form-title {
     font-family: "Oswald", sans-serif;
     font-size: 100px;
     text-transform: uppercase;
     color: #d9d9d9;
-    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .input-container {
-    margin-top: 100px;
+    width: 100%;
 }
 
-.input-container input {
-    width: 80%;
-    max-width: 400px;
-    outline: none;
+.input-container input,
+.input-container textarea {
+    width: 100%;
     padding: 10px;
     border: 2px solid red;
     background-color: black;
+    font-family: "Oswald", sans-serif;
     font-size: 16px;
-    text-align: center;
     color: #ffffff;
+    outline: none;
+    resize: none;
 }
 
-.input-container input::placeholder {
+.input-container input::placeholder,
+.input-container textarea::placeholder {
     color: white;
     opacity: 0.7;
+    font-family: "Oswald", sans-serif;
 }
 
 .button-container {
-    margin-top: 30px;
+    width: 100%;
 }
 
 .button-container button {
-    width: 80%;
-    max-width: 330px;
+    width: 100%;
     padding: 10px;
     border: 2px solid red;
     background-color: black;
-    font-size: 16px;
-    text-align: center;
-    color: #ffffff;
-    font-size: 15px;
     font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: red;
+    color: white;
 }
 
 section {
@@ -258,7 +282,7 @@ a:hover {
     color: red;
 }
 
-/* MODAL */
+/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -275,9 +299,9 @@ a:hover {
 
 .modal-content {
     background-color: #000000;
-    padding: 30px;
+    padding: 20px;
     border: 2px solid red;
-    width: 90%;
+    width: 100%;
     max-width: 700px;
     border-radius: 12px;
     color: white;
@@ -294,25 +318,51 @@ a:hover {
     margin-bottom: 10px;
 }
 
-.modal-content p {
-    font-size: 16px;
-    color: #aaa;
-    margin: 5px 0;
+.modal-content #modalSpecialty {
+    font-size: 18px;
+    color: #b3b3b3;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
-.modal-content img {
-    margin-top: 15px;
-    max-width: 100%;
-    height: auto;
+.modal-content #modalDescription {
+    font-size: 16px;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.modal-content .gallery {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+.modal-content .gallery img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
     border: 2px solid #621ad2;
     border-radius: 8px;
+}
+
+.modal-content .gallery img:not([src]),
+.modal-content .gallery img[src=""],
+.modal-content .gallery img[src="null"] {
+    background-color: #333;
+    color: #aaa;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .close {
     color: white;
     position: absolute;
-    top: 15px;
-    right: 20px;
+    top: 10px;
+    right: 15px;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
@@ -336,33 +386,21 @@ a:hover {
     }
 }
 
-.description1 {
-    font-size: 18px;
-    color: #aaa;
-    margin-top: 10px;
-    max-width: 500px;
-    padding: 20px;
+/* Responsive Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 90%;
+    }
+    .modal-content .gallery img {
+        width: 150px;
+        height: 150px;
+    }
 }
 
-.geforce {
-    margin-top: 25px;
-    padding: 20px;
-}
-
-.boxEsq {
-    padding: 20px;
-}
-
-/* Section and Carousel Styles */
+/* Carousel Styles */
 .section {
     background-color: #121212;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    background-color: #121212;
+    overflow: hidden;
 }
 
 .header {
@@ -377,27 +415,47 @@ a:hover {
     letter-spacing: 2px;
 }
 
-.carousel {
+.carousel-container {
     position: relative;
-    overflow: hidden;
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.artists {
+.carousel {
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    width: 100%;
+    user-select: none;
+    pointer-events: none;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-wrapper {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    width: fit-content;
+    transition: transform 0.3s ease;
 }
 
 .artist {
-    flex: 0 0 33.33%;
-    padding: 0 15px;
+    flex: 0 0 calc(100% / 3);
+    padding: 10px;
+    box-sizing: border-box;
     text-align: left;
+    min-width: 300px;
+    max-width: calc(100% / 3);
 }
 
 .artist-image {
     width: 100%;
-    height: 350px;
-    background-color: #d3d3d3;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
     margin-bottom: 20px;
 }
 
@@ -425,6 +483,7 @@ a:hover {
     padding: 8px 15px;
     display: inline-block;
     transition: background-color 0.3s, color 0.3s;
+    pointer-events: auto;
 }
 
 .artist a:hover {
@@ -432,30 +491,38 @@ a:hover {
     color: #121212;
 }
 
-.carousel-buttons {
+.carousel-button {
     position: absolute;
     top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
     transform: translateY(-50%);
-}
-
-.carousel-button {
     background-color: rgba(255, 255, 255, 0.2);
     border: none;
     color: #fff;
     font-size: 24px;
-    padding: 10px;
+    padding: 10px 15px;
     cursor: pointer;
     transition: background-color 0.3s;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-button.prev {
+    left: -60px;
+}
+
+.carousel-button.next {
+    right: -60px;
 }
 
 .carousel-button:hover {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-
+/* Reviews Section Styles */
 .review-container {
     display: flex;
     justify-content: center;
@@ -503,7 +570,7 @@ a:hover {
     font-weight: normal;
 }
 
-
+/* Services Section Styles */
 .service-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -533,7 +600,7 @@ a:hover {
     color: #b3b3b3;
 }
 
-
+/* FAQ Section Styles */
 #faq-section {
     padding: 100px 0;
     background-color: #000000;
@@ -656,7 +723,6 @@ a:hover {
     padding-left: 300px;
 }
 
-
 #faq-section::before {
     content: "";
     position: absolute;
@@ -672,31 +738,119 @@ a:hover {
 }
 
 footer {
-    background-color: #800080;
-    padding: 20px 0;
-    color: white;
+    background-color: #621ad2;
+    padding: 10px 20px 50px 20px;
+    margin: 0;
     text-align: center;
+    clear: both;
+    box-sizing: border-box;
 }
 
 .footer-container {
-    display: flex;
-    justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    position: relative;
 }
 
-.footer-left, .footer-right {
+.footer-header {
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contato-wrapper {
+    display: block;
+}
+
+.footer-header .contato {
+    font-family: "Oswald", sans-serif;
+    font-size: 100px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #310c77;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.fale-conosco-wrapper {
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    margin-top: -10px;
 }
 
-.footer-left a, .footer-right a {
-    color: white;
+.footer-header .fale {
+    font-family: "Oswald", sans-serif;
+    font-size: 70px;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-right: 2px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.footer-header .conosco {
+    font-family: "Oswald", sans-serif;
+    font-size: 80px;
+    text-transform: uppercase;
+    color: #310c77;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 50px;
+    margin-bottom: 20px;
+    text-align: left;
+    margin-left: 170px;
+}
+
+.info-item {
+    text-align: left;
+    flex: 0 0 auto;
+}
+
+.info-item h3 {
+    font-family: "Oswald", sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.info-item p {
+    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.footer-social {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+    margin-left: 170px;
+}
+
+.footer-social span,
+.footer-social a {
+    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    color: #ffffff;
     text-decoration: none;
+    text-transform: uppercase;
 }
 
-.footer-right img {
-    width: 24px;
-    height: 24px;
+.footer-social a:hover {
+    color: red;
+}
+
+.footer-text {
+    display: none;
 }
