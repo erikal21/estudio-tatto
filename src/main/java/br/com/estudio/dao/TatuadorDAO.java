@@ -1,5 +1,7 @@
 package br.com.estudio.dao;
 
+import br.com.estudio.config.ConnectionPoolConfig;
+import br.com.estudio.model.Tatuador;
 import br.com.estudio.model.TatuadorUsuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -89,4 +91,7 @@ public class TatuadorDAO {
             stmt.executeUpdate();
         }
     }
+
+
+
 }

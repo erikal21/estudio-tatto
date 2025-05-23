@@ -189,10 +189,7 @@
                     Mantenha a tatuagem limpa, aplique uma pomada cicatrizante recomendada pelo tatuador, evite exposição ao sol e não coce ou retire as casquinhas durante a cicatrização, que leva cerca de 2 a 4 semanas.
                 </div>
             </div>
-        </div>
-        <div class="faq-description">
-            Lorem ipsum is simply dummy text of the printing and typesetting industry, text ever since the 1500s, when an unknown printer
-        </div>
+
     </div>
 </section>
 

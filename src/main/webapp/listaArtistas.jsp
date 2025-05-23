@@ -273,6 +273,30 @@
             </c:forEach>
         </c:if>
 
+        <c:if test="${not empty tatuadorParaEditar}">
+            <h2>Editar Artista: ${tatuadorParaEditar.nome}</h2>
+            <form action="${pageContext.request.contextPath}/atualizar-tatuador" method="post">
+                <input type="hidden" name="idTatuador" value="${tatuadorParaEditar.idTatuador}" />
+
+                <label>Descrição:</label><br/>
+                <textarea name="descricao" rows="3" cols="50">${tatuadorParaEditar.descricao}</textarea><br/>
+
+                <label>Especialidade:</label><br/>
+                <input type="text" name="especialidade" value="${tatuadorParaEditar.especialidade}" /><br/>
+
+                <label>Foto 1 URL:</label><br/>
+                <input type="text" name="foto1" value="${tatuadorParaEditar.foto1}" /><br/>
+
+                <label>Foto 2 URL:</label><br/>
+                <input type="text" name="foto2" value="${tatuadorParaEditar.foto2}" /><br/>
+
+                <label>Foto 3 URL:</label><br/>
+                <input type="text" name="foto3" value="${tatuadorParaEditar.foto3}" /><br/>
+
+                <button type="submit">Salvar Alterações</button>
+            </form>
+        </c:if>
+
         <c:if test="${not empty tatuadores}">
             <h2>Todos os Artistas</h2>
             <c:forEach var="t" items="${tatuadores}">
@@ -296,10 +320,6 @@
     </div>
 </div>
 
-<footer>
-    <div class="footer-container">
-        <div class="footer-text">Direitos Reservados</div>
-    </div>
-</footer>
+
 </body>
 </html>
