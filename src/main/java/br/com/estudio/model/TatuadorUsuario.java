@@ -10,6 +10,7 @@ public class TatuadorUsuario {
     private String foto1;
     private String foto2;
     private String foto3;
+    private String imagemPerfil;
 
     public int getIdTatuador() { return idTatuador; }
     public void setIdTatuador(int idTatuador) { this.idTatuador = idTatuador; }
@@ -29,4 +30,7 @@ public class TatuadorUsuario {
     public void setFoto2(String foto2) { this.foto2 = foto2; }
     public String getFoto3() { return foto3; }
     public void setFoto3(String foto3) { this.foto3 = foto3; }
+
+    public String getImagemPerfil() { return imagemPerfil; }
+    public void setImagemPerfil(String imagemPerfil) { this.imagemPerfil = imagemPerfil; }
 }

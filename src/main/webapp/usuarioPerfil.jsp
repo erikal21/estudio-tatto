@@ -358,7 +358,7 @@ const modal = document.getElementById("myModal");
   };
 
   verBtn.onclick = () => {
-    window.location.href = "listar-artistas?id=${id.usuario}";
+    window.location.href = "list-perfil?id=${id.usuario}";
   };
 
   let showingPassword = false;

@@ -80,7 +80,7 @@
                 <div class="carousel-wrapper">
                     <c:forEach var="tatuador" items="${tatuadores}">
                         <div class="artist">
-                            <div class="artist-image" style="background-image: url('<c:out value='${pageContext.request.contextPath}/${tatuador.foto1}' default='${pageContext.request.contextPath}/imgL/placeholder.jpg'/>');"></div>
+                            <div class="artist-image" style="background-image: url('<c:out value='${pageContext.request.contextPath}/${tatuador.imagemPerfil}' default='${pageContext.request.contextPath}/imgL/placeholder.jpg'/>');"></div>
                             <h2><c:out value="${tatuador.nome}" default="Artista Desconhecido"/></h2>
                             <p><strong>Especialidade:</strong> <c:out value="${tatuador.especialidade}" default="Não informada"/></p>
                             <p><c:out value="${tatuador.descricao}" default="Sem descrição"/></p>
