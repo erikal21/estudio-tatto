@@ -4,20 +4,21 @@ const artistsPerView = 3;
 function scrollCarousel(id, direction, event) {
     event.preventDefault();
     const carousel = document.getElementById(id);
-    const wrapper = carousel?.querySelector('.carousel-wrapper');
-    const artists = wrapper?.querySelectorAll('.artist') || [];
+    const wrapper = carousel.querySelector('.carousel-wrapper');
+    const artists = wrapper.querySelectorAll('.artist');
     const totalArtists = artists.length;
 
-    if (!carousel || !wrapper || artists.length === 0) {
+    if (!carousel || !wrapper || !artists.length) {
         console.error(`Carousel elements not found: ID=${id}, wrapper=${wrapper}, artists=${artists.length}`);
         return;
     }
 
-    const artistWidth = artists[0].offsetWidth + 20; // include spacing
+    const artistWidth = artists[0].offsetWidth + 20; // Include padding
     const maxIndex = Math.max(0, totalArtists - artistsPerView);
-    currentIndex = Math.min(Math.max(currentIndex + direction, 0), maxIndex);
 
+    currentIndex = Math.min(Math.max(currentIndex + direction, 0), maxIndex);
     console.log(`Scrolling: direction=${direction}, currentIndex=${currentIndex}, maxIndex=${maxIndex}`);
+
     wrapper.style.transform = `translateX(-${currentIndex * artistWidth}px)`;
 }
 
@@ -41,10 +42,7 @@ function openModal(artistName, specialty, description, photos) {
     console.log('Photos passed to modal:', photos, 'Valid photos:', validPhotos);
 
     modalGallery.innerHTML = validPhotos.length > 0
-        ? validPhotos.map(photo => `
-            <img src="${photo}" alt="Galeria de ${artistName || 'Artista'}"
-                 onerror="this.src='${window.location.pathname.replace(/\\/[^/]*$/, '')}/imgL/placeholder.jpg'; this.alt='Imagem não carregada';">
-        `).join('')
+        ? validPhotos.map(photo => `<img src="${photo}" alt="Galeria de ${artistName || 'Artista'}" onerror="this.src='${window.location.pathname.replace(/\/[^/]*$/, '')}/imgL/placeholder.jpg'; this.alt='Imagem não carregada';">`).join('')
         : '<p>Sem imagens disponíveis</p>';
 
     modal.style.display = 'flex';
@@ -64,9 +62,13 @@ document.querySelectorAll('.faq-button').forEach(button => {
     button.addEventListener('click', () => {
         const faqItem = button.parentElement;
         const answer = faqItem.querySelector('.answer');
-        const isVisible = window.getComputedStyle(answer).display === 'block';
-        answer.style.display = isVisible ? 'none' : 'block';
-        button.textContent = isVisible ? '+' : '-';
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            button.textContent = '+';
+        } else {
+            answer.style.display = 'block';
+            button.textContent = '-';
+        }
     });
 });
 
@@ -83,14 +85,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            const visible = entry.isIntersecting;
-            prevButton.style.display = visible ? 'flex' : 'none';
-            nextButton.style.display = visible ? 'flex' : 'none';
+            if (entry.isIntersecting) {
+                prevButton.style.display = 'flex';
+                nextButton.style.display = 'flex';
+                console.log('Carousel is visible, showing arrows');
+            } else {
+                prevButton.style.display = 'none';
+                nextButton.style.display = 'none';
+                console.log('Carousel is out of view, hiding arrows');
+            }
         });
     }, {
-        root: null,
-        threshold: 0.7,
-        rootMargin: '-50px 0px'
+        root: null, // Use viewport as root
+        threshold: 0.7, // Trigger when 70% of carousel is visible
+        rootMargin: '-50px 0px' // Delay trigger by 50px
     });
 
     observer.observe(carousel);

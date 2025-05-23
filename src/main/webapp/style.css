@@ -20,18 +20,9 @@ header {
 nav {
     position: absolute;
     top: 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     text-align: center;
     z-index: 10;
-    background: rgba(18, 18, 18, 0.8);
-    backdrop-filter: blur(6px);
-    z-index: 1000;
-    padding: 15px 0;
-    transition: background 0.3s, padding 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 nav ul {
@@ -600,27 +591,23 @@ a:hover {
     color: #b3b3b3;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
+/* FAQ Section Styles */
 #faq-section {
-  min-height: 800px !important;
-  outline: 2px solid red;
+    padding: 100px 0;
+    background-color: #000000;
+    position: relative;
+    overflow: hidden;
 }
-
-
 
 .faq-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    width: 100%;
+    position: relative;
 }
 
 .faq-header {
+    position: relative;
     margin-bottom: 60px;
 }
 
@@ -630,6 +617,7 @@ a:hover {
     text-transform: uppercase;
     color: #d9d9d9;
     display: block;
+    padding-right: 900px;
     margin-bottom: -40px;
 }
 
@@ -639,9 +627,9 @@ a:hover {
     text-transform: uppercase;
     color: #ffffff;
     display: block;
+    margin-left: 200px;
     margin-top: -40px;
     margin-bottom: -30px;
-    margin-left: 200px;
 }
 
 .perguntas {
@@ -740,9 +728,6 @@ a:hover {
     z-index: -1;
 }
 
-
-
-
 footer {
     background-color: #621ad2;
     padding: 10px 20px 50px 20px;
@@ -751,7 +736,6 @@ footer {
     clear: both;
     box-sizing: border-box;
 }
-
 
 .footer-container {
     max-width: 1200px;
@@ -859,7 +843,5 @@ footer {
 }
 
 .footer-text {
-    display: none;
+    display: none;
 }
-
-

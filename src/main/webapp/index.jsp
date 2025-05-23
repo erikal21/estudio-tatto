@@ -1,7 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="br.com.estudio.model.Usuario" %>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -19,24 +17,10 @@
         <ul>
             <li><a href="#Home">Home</a></li>
             <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#loja">Loja</a></li>
             <li><a href="#artistas">Artistas</a></li>
-            <li><a href="#sessaocontato">Contato</a></li>
-
-            <%
-            Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
-            %>
-            <li>
-                <% if (usuario != null) { %>
-                <a href="usuarioPerfil" title="Perfil do Usuário">👤 <%= usuario.getNome().split(" ")[0] %></a>
-                <% } else { %>
-                <a href="login" title="Fazer Login">👤</a>
-                <% } %>
-            </li>
-
-            <% if (usuario != null) { %>
-            <li><a href="logout">Sair</a></li>
-            <% } %>
-
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="login.jsp">👤</a></li>
         </ul>
     </nav>
 </header>
@@ -80,19 +64,19 @@
                 <div class="carousel-wrapper">
                     <c:forEach var="tatuador" items="${tatuadores}">
                         <div class="artist">
-                            <div class="artist-image" style="background-image: url('<c:out value='${pageContext.request.contextPath}/${tatuador.imagemPerfil}' default='${pageContext.request.contextPath}/imgL/placeholder.jpg'/>');"></div>
+                            <div class="artist-image" style="background-image: url('<c:out value='${pageContext.request.contextPath}/${tatuador.foto1}' default='${pageContext.request.contextPath}/imgL/placeholder.jpg'/>');"></div>
                             <h2><c:out value="${tatuador.nome}" default="Artista Desconhecido"/></h2>
                             <p><strong>Especialidade:</strong> <c:out value="${tatuador.especialidade}" default="Não informada"/></p>
                             <p><c:out value="${tatuador.descricao}" default="Sem descrição"/></p>
                             <a href="#" class="btn-gallery" onclick="openModal(
                                 '<c:out value="${tatuador.nome}" default="Artista Desconhecido"/>',
-                            '<c:out value="${tatuador.especialidade}" default="Não informada"/>',
-                            '<c:out value="${tatuador.descricao}" default="Sem descrição"/>',
-                            [
-                            '<c:out value="${pageContext.request.contextPath}/${tatuador.foto1}" default="${pageContext.request.contextPath}/imgL/placeholder.jpg"/>',
-                            '<c:out value="${pageContext.request.contextPath}/${tatuador.foto2}" default="${pageContext.request.contextPath}/imgL/placeholder.jpg"/>',
-                            '<c:out value="${pageContext.request.contextPath}/${tatuador.foto3}" default="${pageContext.request.contextPath}/imgL/placeholder.jpg"/>'
-                            ]
+                                '<c:out value="${tatuador.especialidade}" default="Não informada"/>',
+                                '<c:out value="${tatuador.descricao}" default="Sem descrição"/>',
+                                [
+                                    '<c:out value="${pageContext.request.contextPath}/${tatuador.foto1}" default="${pageContext.request.contextPath}/imgL/placeholder.jpg"/>',
+                                    '<c:out value="${pageContext.request.contextPath}/${tatuador.foto2}" default="${pageContext.request.contextPath}/imgL/placeholder.jpg"/>',
+                                    '<c:out value="${pageContext.request.contextPath}/${tatuador.foto3}" default="${pageContext.request.contextPath}/imgL/placeholder.jpg"/>'
+                                ]
                             )">Ver Galeria</a>
                         </div>
                     </c:forEach>
@@ -182,29 +166,12 @@
                     Mantenha a tatuagem limpa, aplique uma pomada cicatrizante recomendada pelo tatuador, evite exposição ao sol e não coce ou retire as casquinhas durante a cicatrização, que leva cerca de 2 a 4 semanas.
                 </div>
             </div>
-            <div class="faq-item">
-                <div class="question">EXEMPLO DE PERGUNTA EXTRA</div>
-                <div class="number">03</div>
-                <button class="faq-button">-</button>
-                <div class="answer" style="display:block;">
-                    Essa é uma resposta maior para testar o crescimento da seção FAQ.
-                </div>
-            </div>
+        </div>
+        <div class="faq-description">
+            Lorem ipsum is simply dummy text of the printing and typesetting industry, text ever since the 1500s, when an unknown printer
         </div>
     </div>
 </section>
-
-<script>
-document.querySelectorAll('.faq-button').forEach(button => {
-    button.addEventListener('click', () => {
-        const faqItem = button.parentElement;
-        const answer = faqItem.querySelector('.answer');
-        const isVisible = window.getComputedStyle(answer).display === 'block';
-        answer.style.display = isVisible ? 'none' : 'block';
-        button.textContent = isVisible ? '+' : '-';
-    });
-});
-</script>
 
 <div class="container2">
     <div class="metade-esquerda">
@@ -229,9 +196,7 @@ document.querySelectorAll('.faq-button').forEach(button => {
     </div>
 </div>
 
-
 <footer>
-<section id="sessaocontato">
     <div class="footer-container">
         <div class="footer-header">
             <div class="contato-wrapper">
@@ -265,9 +230,7 @@ document.querySelectorAll('.faq-button').forEach(button => {
         </div>
         <div class="footer-text"></div>
     </div>
-    </section>
 </footer>
-
 
 <script src="${pageContext.request.contextPath}/script.js"></script>
 </body>
