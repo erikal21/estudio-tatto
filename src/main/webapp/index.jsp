@@ -10,17 +10,17 @@
     <title>StudioTatto</title>
     <link href="https://fonts.cdnfonts.com/css/annabelle" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=stylesheet"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css?v=4"/>
 </head>
 <body>
 <header>
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
+            <li><a href="#Home">Home</a></li>
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#artistas">Artistas</a></li>
-            <li><a href="#">Contato</a></li>
+            <li><a href="#contato">Contato</a></li>
             <%
                 Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
             %>
@@ -31,17 +31,12 @@
                     <a href="login" title="Fazer Login">👤</a>
                 <% } %>
             </li>
-
-        <% if (usuario != null) { %>
-        <li><a href="logout">Sair</a></li>
-        <% } %>
-
-
+            <% if (usuario != null) { %>
+            <li><a href="logout">Sair</a></li>
+            <% } %>
         </ul>
     </nav>
 </header>
-
-
 
 <section class="hero" id="Home">
     <div>
@@ -113,11 +108,11 @@
         <p id="modalSpecialty"></p>
         <p id="modalDescription"></p>
         <div class="gallery" id="modalGallery"></div>
-    <a href="https://wa.me/11978355298?text=Olá,%20gostaria%20de%20conhecer%20seu%20trabalho!"
-   class="whatsapp-button"
-   target="_blank">
-   Entre em Contato via WhatsApp
-    </a>
+        <a href="https://wa.me/11978355298?text=Olá,%20gostaria%20de%20conhecer%20seu%20trabalho!"
+           class="whatsapp-button"
+           target="_blank">
+            Entre em Contato via WhatsApp
+        </a>
     </div>
 </div>
 
@@ -219,7 +214,7 @@
     </div>
 </div>
 
-<footer>
+<footer id="contato">
     <div class="footer-container">
         <div class="footer-header">
             <span class="contato">CONTATO</span>

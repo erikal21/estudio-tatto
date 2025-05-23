@@ -74,7 +74,7 @@ Landingpage:
 ---
 ## MER | Modelo Entidade e Relacionamento do Projeto
 
-![image](img/mer_estudiotatto_cadastros.png)
+![image](img/MER.png)
 
 ## 📂 Tecnologias Utilizadas
 
