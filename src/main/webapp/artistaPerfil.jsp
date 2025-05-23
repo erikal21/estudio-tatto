@@ -1,3 +1,6 @@
+eradadaaaaaaaaaaaaaaaaa
+
+
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -6,7 +9,6 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Perfil do Artista</title>
-<<<<<<< Updated upstream
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"/>
     <style>
@@ -199,8 +201,7 @@
             }
         }
     </style>
-=======
->>>>>>> Stashed changes
+
 </head>
 <body>
 <header>
@@ -248,6 +249,8 @@
 
                         <h1>${perfil.nome}</h1>
                         <p><strong>Email:</strong> ${perfil.email}</p>
+                        <p><strong>Telefone:</strong> ${perfil.telefone}</p>
+                        <p><strong>Telefone:</strong> ${perfil.telefone}</p>
                         <p><strong>Telefone:</strong> ${perfil.telefone}</p>
                         <p><strong>Endereço:</strong> ${perfil.endereco}</p>
                         <p><strong>Especialidade:</strong> ${perfil.especialidade}</p>

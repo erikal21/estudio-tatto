@@ -84,9 +84,9 @@ public class TatuadorDAO {
 
     public void excluir(int idTatuador) throws SQLException {
         String sql = "DELETE FROM TATUADOR WHERE ID_TATUADOR = ?";
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setInt(1, idTatuador);
-            ps.executeUpdate();
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, idTatuador);
+            stmt.executeUpdate();
         }
     }
 }
