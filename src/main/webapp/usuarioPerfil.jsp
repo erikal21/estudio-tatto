@@ -358,7 +358,7 @@ const modal = document.getElementById("myModal");
   };
 
   verBtn.onclick = () => {
-    window.location.href = "list-perfil?id=${id.usuario}";
+    window.location.href = "list-perfil?id=${usuario.id}";
   };
 
   let showingPassword = false;

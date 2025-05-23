@@ -52,14 +52,18 @@ public class TatuadorDAO {
         }
         return lista;
     }
-    public TatuadorUsuario buscarPorIdUsuario(int idUsuario) throws SQLException {
-        String sql = "SELECT t.ID_TATUADOR, t.ID_USUARIO, u.NOME, u.EMAIL, u.IMAGEMPERFIL, t.DESCRICAO, " +
-                "t.ESPECIALIDADE, t.FOTO1, t.FOTO2, t.FOTO3 " +
-                "FROM TATUADOR t JOIN USUARIO u ON t.ID_USUARIO = u.ID_USUARIO WHERE t.ID_USUARIO = ?";
+    public List<TatuadorUsuario> buscarPorIdUsuario(int idUsuario) throws SQLException {
+        String sql = "SELECT t.ID_TATUADOR, t.ID_USUARIO, u.NOME, u.EMAIL, u.IMAGEMPERFIL, " +
+                "t.DESCRICAO, t.ESPECIALIDADE, t.FOTO1, t.FOTO2, t.FOTO3 " +
+                "FROM TATUADOR t JOIN USUARIO u ON t.ID_USUARIO = u.ID_USUARIO " +
+                "WHERE t.ID_USUARIO = ?";
+
+        List<TatuadorUsuario> lista = new ArrayList<>();
+
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setInt(1, idUsuario);
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
+                while (rs.next()) {
                     TatuadorUsuario tu = new TatuadorUsuario();
                     tu.setIdTatuador(rs.getInt("ID_TATUADOR"));
                     tu.setIdUsuario(rs.getInt("ID_USUARIO"));
@@ -71,11 +75,18 @@ public class TatuadorDAO {
                     tu.setFoto2(rs.getString("FOTO2"));
                     tu.setFoto3(rs.getString("FOTO3"));
                     tu.setImagemPerfil(rs.getString("IMAGEMPERFIL"));
-                    return tu;
+                    lista.add(tu);
                 }
             }
         }
-        return null;
+        return lista;
     }
 
+    public void excluir(int idTatuador) throws SQLException {
+        String sql = "DELETE FROM TATUADOR WHERE ID_TATUADOR = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, idTatuador);
+            ps.executeUpdate();
+        }
+    }
 }

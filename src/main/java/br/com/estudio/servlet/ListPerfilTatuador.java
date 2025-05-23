@@ -11,9 +11,11 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet("/list-perfil")
 public class ListPerfilTatuador extends HttpServlet {
+
 
     private static final String URL = "jdbc:h2:~/test";
     private static final String USER = "sa";
@@ -21,20 +23,32 @@ public class ListPerfilTatuador extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Integer idUsuario = (Integer) req.getSession().getAttribute("idUsuario");
-
-        if (idUsuario == null) {
-            resp.sendRedirect("index.jsp");
-            return;
-        }
+        String idParam = req.getParameter("id");
 
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
             TatuadorDAO dao = new TatuadorDAO(connection);
-            TatuadorUsuario tatuador = dao.buscarPorIdUsuario(idUsuario);
 
-            req.setAttribute("tatuador", tatuador);
-            req.getRequestDispatcher("/list-perfil").forward(req, resp);
+            if (idParam != null && !idParam.isEmpty()) {
 
+                int id = Integer.parseInt(idParam);
+                List<TatuadorUsuario> tatuador = dao.buscarPorIdUsuario(id);
+
+                if (!tatuador.isEmpty()) {
+                    req.setAttribute("tatuadoresDoUsuario", tatuador);
+                } else {
+                    req.setAttribute("erro", "Nenhum trabalho encontrado para este artista.");
+                }
+
+            } else {
+
+                List<TatuadorUsuario> tatuadores = dao.listarComUsuario();
+                req.setAttribute("tatuadores", tatuadores);
+            }
+
+            req.getRequestDispatcher("/listaArtistas.jsp").forward(req, resp);
+
+        } catch (NumberFormatException e) {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido");
         } catch (SQLException e) {
             throw new ServletException(e);
         }

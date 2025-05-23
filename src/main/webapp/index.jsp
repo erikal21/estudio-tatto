@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="br.com.estudio.model.Usuario" %>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,21 +11,37 @@
     <link href="https://fonts.cdnfonts.com/css/annabelle" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css?v=4"/>
 </head>
 <body>
 <header>
     <nav>
         <ul>
-            <li><a href="#Home">Home</a></li>
+            <li><a href="#home">Home</a></li>
             <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#loja">Loja</a></li>
             <li><a href="#artistas">Artistas</a></li>
-            <li><a href="#contato">Contato</a></li>
-            <li><a href="login.jsp">👤</a></li>
+            <li><a href="#">Contato</a></li>
+            <%
+                Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+            %>
+            <li>
+                <% if (usuario != null) { %>
+                    <a href="usuarioPerfil" title="Perfil do Usuário">👤 <%= usuario.getNome().split(" ")[0] %></a>
+                <% } else { %>
+                    <a href="login" title="Fazer Login">👤</a>
+                <% } %>
+            </li>
+
+        <% if (usuario != null) { %>
+        <li><a href="logout">Sair</a></li>
+        <% } %>
+
+
         </ul>
     </nav>
 </header>
+
+
 
 <section class="hero" id="Home">
     <div>
@@ -64,7 +82,7 @@
                 <div class="carousel-wrapper">
                     <c:forEach var="tatuador" items="${tatuadores}">
                         <div class="artist">
-                            <div class="artist-image" style="background-image: url('<c:out value='${pageContext.request.contextPath}/${tatuador.foto1}' default='${pageContext.request.contextPath}/imgL/placeholder.jpg'/>');"></div>
+                            <div class="artist-image" style="background-image: url('<c:out value='${pageContext.request.contextPath}/${tatuador.imagemPerfil}' default='${pageContext.request.contextPath}/imgL/placeholder.jpg'/>');"></div>
                             <h2><c:out value="${tatuador.nome}" default="Artista Desconhecido"/></h2>
                             <p><strong>Especialidade:</strong> <c:out value="${tatuador.especialidade}" default="Não informada"/></p>
                             <p><c:out value="${tatuador.descricao}" default="Sem descrição"/></p>
@@ -95,6 +113,11 @@
         <p id="modalSpecialty"></p>
         <p id="modalDescription"></p>
         <div class="gallery" id="modalGallery"></div>
+    <a href="https://wa.me/11978355298?text=Olá,%20gostaria%20de%20conhecer%20seu%20trabalho!"
+   class="whatsapp-button"
+   target="_blank">
+   Entre em Contato via WhatsApp
+    </a>
     </div>
 </div>
 
@@ -199,9 +222,7 @@
 <footer>
     <div class="footer-container">
         <div class="footer-header">
-            <div class="contato-wrapper">
-                <span class="contato">CONTATO</span>
-            </div>
+            <span class="contato">CONTATO</span>
             <div class="fale-conosco-wrapper">
                 <span class="fale">FALE</span>
                 <span class="conosco">CONOSCO</span>
