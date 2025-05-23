@@ -20,7 +20,7 @@
             <li><a href="#Home">Home</a></li>
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#artistas">Artistas</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a href="#sessaocontato">Contato</a></li>
 
             <%
             Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
@@ -182,12 +182,29 @@
                     Mantenha a tatuagem limpa, aplique uma pomada cicatrizante recomendada pelo tatuador, evite exposição ao sol e não coce ou retire as casquinhas durante a cicatrização, que leva cerca de 2 a 4 semanas.
                 </div>
             </div>
-        </div>
-        <div class="faq-description">
-            Lorem ipsum is simply dummy text of the printing and typesetting industry, text ever since the 1500s, when an unknown printer
+            <div class="faq-item">
+                <div class="question">EXEMPLO DE PERGUNTA EXTRA</div>
+                <div class="number">03</div>
+                <button class="faq-button">-</button>
+                <div class="answer" style="display:block;">
+                    Essa é uma resposta maior para testar o crescimento da seção FAQ.
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+<script>
+document.querySelectorAll('.faq-button').forEach(button => {
+    button.addEventListener('click', () => {
+        const faqItem = button.parentElement;
+        const answer = faqItem.querySelector('.answer');
+        const isVisible = window.getComputedStyle(answer).display === 'block';
+        answer.style.display = isVisible ? 'none' : 'block';
+        button.textContent = isVisible ? '+' : '-';
+    });
+});
+</script>
 
 <div class="container2">
     <div class="metade-esquerda">
@@ -212,8 +229,9 @@
     </div>
 </div>
 
-<section id="contato">
+
 <footer>
+<section id="sessaocontato">
     <div class="footer-container">
         <div class="footer-header">
             <div class="contato-wrapper">
@@ -247,8 +265,9 @@
         </div>
         <div class="footer-text"></div>
     </div>
+    </section>
 </footer>
-</section>
+
 
 <script src="${pageContext.request.contextPath}/script.js"></script>
 </body>

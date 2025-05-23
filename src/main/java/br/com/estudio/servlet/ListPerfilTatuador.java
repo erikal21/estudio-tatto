@@ -24,7 +24,7 @@ public class ListPerfilTatuador extends HttpServlet {
         Integer idUsuario = (Integer) req.getSession().getAttribute("idUsuario");
 
         if (idUsuario == null) {
-            resp.sendRedirect("login.jsp");
+            resp.sendRedirect("index.jsp");
             return;
         }
 
@@ -33,7 +33,7 @@ public class ListPerfilTatuador extends HttpServlet {
             TatuadorUsuario tatuador = dao.buscarPorIdUsuario(idUsuario);
 
             req.setAttribute("tatuador", tatuador);
-            req.getRequestDispatcher("/meuPerfil.jsp").forward(req, resp);
+            req.getRequestDispatcher("/list-perfil").forward(req, resp);
 
         } catch (SQLException e) {
             throw new ServletException(e);
