@@ -9,7 +9,7 @@
     <link href="https://fonts.cdnfonts.com/css/annabelle" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css?v=4"/>
 </head>
 <body>
 <header>
@@ -199,9 +199,7 @@
 <footer>
     <div class="footer-container">
         <div class="footer-header">
-            <div class="contato-wrapper">
-                <span class="contato">CONTATO</span>
-            </div>
+            <span class="contato">CONTATO</span>
             <div class="fale-conosco-wrapper">
                 <span class="fale">FALE</span>
                 <span class="conosco">CONOSCO</span>
